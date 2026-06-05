@@ -1,0 +1,13 @@
+目录说明：
+- app/core：系统能力层。
+- app/contracts：跨层数据契约。
+- app/document_model：统一事实中心。
+- app/workflow：主链流程组织。
+- app/workspace：工作区模型和构建。
+- app/export：导出策略和操作模型。
+- app/storage：持久化读写。
+- app/state：状态记录和推进。
+- app/routes：接口层。
+- app/diagnostics：诊断层。
+- app/ui：界面层。
+- project_context：项目上下文和架构文档。
