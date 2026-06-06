@@ -30,3 +30,9 @@ Core 禁止：
 Excel Template Core 修正：
 合并单元格识别已从字符串匹配改为真实坐标范围判断。
 避免 A1 与 A10 等坐标误判问题。
+
+导出执行能力（Executor Capability）：
+- 当前已建立 Excel 执行器（Excel Executor）。
+- 支持根据 ExportStrategy 中的 ExportOperation 把值写回 Excel 模板。
+- 当前只支持 write_value 操作。
+- 当前不支持 PDF / Word。

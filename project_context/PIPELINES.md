@@ -36,3 +36,22 @@ Export Strategy Pipeline 计划：
 - 不直接写文件。
 - 不绕过 ConfirmedOrderObject。
 - 不直接读取 WorkspaceSnapshot。
+
+Export Execute Pipeline 计划：
+
+输入：
+- ExportStrategy。
+
+步骤：
+- 读取 ExportOperation。
+- 选择 Executor。
+- 调用 Excel Executor。
+- 生成最终 Excel 文件。
+
+输出：
+- 最终 Excel 文件。
+
+禁止：
+- 不生成 ExportStrategy。
+- 不绕过 ExportStrategy 直接读取 ConfirmedOrderObject。
+- 不自行判断字段目标位置。
