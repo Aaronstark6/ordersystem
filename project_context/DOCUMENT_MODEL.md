@@ -1,5 +1,21 @@
 DocumentModel 是唯一事实中心。
 
+# CORE_COMPLETION_V1
+
+以下文档模型能力已进入 `CORE_COMPLETION_V1`：
+- Coordinate。
+- FieldNode。
+- TableNode。
+- SectionNode。
+- ImageNode。
+- ConditionNode。
+- ChoiceNode。
+
+接入状态：
+- Image Logic 已接入 DocumentModel。
+- Condition Logic 已接入 DocumentModel。
+- Choice Logic 已接入 DocumentModel。
+
 当前已建立：
 - Coordinate。
 - FieldNode。

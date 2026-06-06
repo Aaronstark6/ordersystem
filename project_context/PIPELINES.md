@@ -1,6 +1,34 @@
-当前 Pipeline 尚未实现。
+# 主链
 
-计划主链：
+Template
+↓
+TemplateAnalysisResult
+↓
+DocumentModel
+↓
+WorkspaceSnapshot
+↓
+ConfirmedOrderObject
+↓
+ExportStrategy
+↓
+Executor
+
+# 共享主链
+
+- Excel、PDF、Word 共享同一条业务主链。
+- 文档类型差异由 Template Reader、Coordinate 和 Executor 能力处理。
+- 上游事实对象和流程边界保持一致。
+
+# Pipeline 原则
+
+- Pipeline 只组织流程。
+- Pipeline 不实现核心能力。
+- Pipeline 不直接写页面。
+- Pipeline 不直接做存储细节。
+
+# Pipeline 组成
+
 - Template Intake Pipeline。
 - Template Analysis Pipeline。
 - DocumentModel Pipeline。
@@ -11,13 +39,7 @@
 - Export Strategy Pipeline。
 - Export Execute Pipeline。
 
-当前原则：
-- Pipeline 只组织流程。
-- Pipeline 不实现核心能力。
-- Pipeline 不直接写页面。
-- Pipeline 不直接做存储细节。
-
-Export Strategy Pipeline 计划：
+# Export Strategy Pipeline
 
 输入：
 - ConfirmedOrderObject。
@@ -37,7 +59,7 @@ Export Strategy Pipeline 计划：
 - 不绕过 ConfirmedOrderObject。
 - 不直接读取 WorkspaceSnapshot。
 
-Export Execute Pipeline 计划：
+# Export Execute Pipeline
 
 输入：
 - ExportStrategy。
@@ -45,8 +67,8 @@ Export Execute Pipeline 计划：
 步骤：
 - 读取 ExportOperation。
 - 选择 Executor。
-- 调用 Excel Executor。
-- 生成最终 Excel 文件。
+- 调用对应文档类型的 Executor。
+- 生成最终输出文件。
 
 当前执行器支持：
 - Excel Executor：write_value、write_table、insert_image 占位校验。
@@ -54,17 +76,9 @@ Export Execute Pipeline 计划：
 - PDF Executor：基础执行入口和 skipped 结果。
 
 输出：
-- 最终 Excel 文件。
+- Excel、PDF 或 Word 输出文件。
 
 禁止：
 - 不生成 ExportStrategy。
 - 不绕过 ExportStrategy 直接读取 ConfirmedOrderObject。
 - 不自行判断字段目标位置。
-
-# Stage 2 说明
-
-Stage 2 期间优先完善 Core。
-
-Workspace Pipeline 暂不继续扩展。
-
-Config Pipeline 暂不继续扩展。

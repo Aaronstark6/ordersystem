@@ -1,7 +1,7 @@
-当前新系统没有废弃组件。
+# 替代关系
 
-后续如果组件被替代、废弃或删除，必须记录：
-- 旧组件。
-- 替代组件。
-- 废弃原因。
-- 删除条件。
+`CORE_COMPLETION_V1` 前后的替代关系：
+
+- 旧 Executor 设计 → Executor Enhancement。
+- 旧 Reader 设计 → Reader Dispatcher。
+- 旧 Builder 设计 → 支持 ImageNode / ConditionNode / ChoiceNode 的 Builder。
