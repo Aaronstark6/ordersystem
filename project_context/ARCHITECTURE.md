@@ -33,3 +33,8 @@
 - Workspace 不负责导出。
 - Workspace 不负责状态推进。
 - Workspace 不负责模板分析。
+
+人工确认对象（ConfirmedOrderObject）层：
+- ConfirmedOrderObject 负责保存用户确认后的最终事实（Final Truth）。
+- ConfirmedOrderObject 位于 Workspace 之后、ExportStrategy 之前。
+- 导出链路不得绕过 ConfirmedOrderObject。

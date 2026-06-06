@@ -1,11 +1,11 @@
 当前任务：
-NEW_SYSTEM_WORKSPACE_BUILDER_01
+NEW_SYSTEM_CONFIRMED_ORDER_OBJECT_01
 
 当前目标：
-建立 Workspace Builder，把 DocumentModel 转换为 WorkspaceSnapshot。
+建立 ConfirmedOrderObject，把 WorkspaceSnapshot 转换为最终事实（Final Truth）。
 
 下一任务建议：
-评估 ConfirmedOrderObject，或评估进入 Workspace 路由/页面前所需的 Pipeline。
+实现 ExportStrategy 第一版，把 ConfirmedOrderObject 转换为 ExportOperation。
 
 保留待决问题：
 1. Relationship 是否需要独立存在。
