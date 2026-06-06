@@ -32,9 +32,11 @@ Executor Enhancement
 
 Template Reader Expansion
 
+Word Coordinate Extension
+
 当前任务：
 
-STAGE2_10_TEMPLATE_READER_EXPANSION_01
+STAGE2_11_COORDINATE_WORD_EXTENSION_01
 
 下一目标：
 - PDF / Word Executor。

@@ -68,3 +68,26 @@ ChoiceNode：
 系统约束：
 - 禁止出现第二套坐标标准。
 - Visual Logic 必须继续复用 DocumentModel Coordinate。
+
+# Coordinate 字段说明
+
+Coordinate 是系统唯一坐标模型。
+
+Excel：
+- sheet_name。
+- cell。
+- row。
+- column。
+
+PDF：
+- page_index。
+- x。
+- y。
+- width。
+- height。
+
+Word：
+- paragraph_index。
+- table_index。
+- bookmark。
+- placeholder。

@@ -23,7 +23,9 @@
 - State 不保存第二套事实。
 
 坐标标准（Coordinate Standard）：
-- DocumentModel Coordinate 是系统唯一标准坐标来源。
+- Coordinate 是系统唯一坐标模型和标准坐标来源。
+- 当前 Coordinate 支持 Excel / PDF / Word 三类表达。
+- 禁止创建 CoordinateV2、PdfCoordinate、WordCoordinate、VisualCoordinate。
 - Workspace、ExportStrategy、未来 Pipeline 禁止直接依赖 cell、range_ref、source_cell、target_cell。
 - 上游原始坐标必须先转换为 Coordinate，再进入下游。
 

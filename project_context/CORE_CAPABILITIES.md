@@ -127,6 +127,12 @@ Excel Template Core 修正：
 - Coordinate 是唯一坐标标准。
 - 禁止建立第二套坐标体系。
 
+统一坐标模型（Unified Coordinate Model）：
+- Coordinate 已扩展支持 Excel / PDF / Word。
+- Excel 使用单元格坐标。
+- PDF 使用页面绝对坐标。
+- Word 使用段落、表格、书签和占位符结构坐标。
+
 字段逻辑增强（Field Logic Enhancement）：
 
 当前能力：

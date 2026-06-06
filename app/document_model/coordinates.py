@@ -14,3 +14,7 @@ class Coordinate:
     y: Optional[float] = None
     width: Optional[float] = None
     height: Optional[float] = None
+    paragraph_index: Optional[int] = None
+    table_index: Optional[int] = None
+    bookmark: str = ""
+    placeholder: str = ""

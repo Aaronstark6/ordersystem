@@ -19,3 +19,18 @@ def excel_cell_to_coordinate(sheet_name: str, cell: str, row: int, column: int) 
         row=row,
         column=column,
     )
+
+
+def build_word_coordinate(
+    paragraph_index: int | None = None,
+    table_index: int | None = None,
+    bookmark: str = "",
+    placeholder: str = "",
+) -> Coordinate:
+    return Coordinate(
+        document_type="word",
+        paragraph_index=paragraph_index,
+        table_index=table_index,
+        bookmark=bookmark,
+        placeholder=placeholder,
+    )
