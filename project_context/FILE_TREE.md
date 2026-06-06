@@ -90,8 +90,11 @@ app/core/matching：
 
 app/core/executors：
 - 导出执行能力层。
-- 当前包含 Excel 执行器（Excel Executor）及导出结果对象。
+- 当前包含 Excel、Word、PDF 执行器及导出结果对象。
 - excel_executor.py：执行 ExportStrategy 操作并生成 ExcelExportResult。
+- result_model.py：定义通用 ExportExecutionResult 和 ExportOperationResult。
+- word_executor.py：执行 docx placeholder 替换。
+- pdf_executor.py：提供 PDF 基础执行入口和 skipped 结果。
 - README.md：说明执行器能力、结果统计和禁止边界。
 
 app/core/template_reader：

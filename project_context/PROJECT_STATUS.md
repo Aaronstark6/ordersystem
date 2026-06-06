@@ -34,15 +34,16 @@ Template Reader Expansion
 
 Word Coordinate Extension
 
+PDF / Word Executor
+
 当前任务：
 
-STAGE2_11_COORDINATE_WORD_EXTENSION_01
+STAGE2_12_PDF_WORD_EXECUTOR_01
 
 下一目标：
-- PDF / Word Executor。
+- DocumentModel Integration。
 
 当前仍需完成：
-- PDF / Word Executor。
-- DocumentModel Builder Expansion。
+- DocumentModel Integration。
 - Relationship Audit。
 - Coordinate Audit。

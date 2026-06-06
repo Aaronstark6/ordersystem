@@ -48,8 +48,20 @@ Excel Template Core 修正：
 
 当前未实现：
 - Excel 真正图片插入。
-- PDF 执行器。
-- Word 执行器。
+
+PDF / Word 执行器（PDF / Word Executor）：
+
+当前能力：
+- Word Executor 支持 docx placeholder 替换。
+- PDF Executor 支持基础执行入口和结果记录。
+- 通用 ExportExecutionResult。
+- 通用 ExportOperationResult。
+
+当前未实现：
+- PDF 真实写入。
+- Word 复杂表格写入。
+- Word bookmark 真实定位。
+- 图片真实插入 PDF / Word。
 
 # Stage 2 Core Completion
 

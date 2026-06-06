@@ -49,9 +49,9 @@ Export Execute Pipeline 计划：
 - 生成最终 Excel 文件。
 
 当前执行器支持：
-- write_value。
-- write_table。
-- insert_image 占位校验。
+- Excel Executor：write_value、write_table、insert_image 占位校验。
+- Word Executor：docx placeholder 替换。
+- PDF Executor：基础执行入口和 skipped 结果。
 
 输出：
 - 最终 Excel 文件。
