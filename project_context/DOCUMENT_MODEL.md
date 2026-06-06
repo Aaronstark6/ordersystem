@@ -23,7 +23,7 @@ DocumentModel 是唯一事实中心。
 
 DocumentModel Builder：
 - 转换来源：TemplateAnalysisResult。
-- 当前支持：FieldNode、TableNode、SectionNode。
+- 当前支持：FieldNode、TableNode、SectionNode、ImageNode、ConditionNode、ChoiceNode。
 - 成功生成的 DocumentModel 至少包含一个节点。
 - 所有生成节点统一使用 Coordinate。
 
@@ -31,24 +31,21 @@ DocumentModel Builder：
 - Relationship 是否需要独立存在。
 - 保留至：DOCUMENTMODEL_RELATIONSHIP_AUDIT_01。
 
-# 待完成节点接入
+# 节点接入状态
 
 ImageNode：
 - ImageNode 是 DocumentModel 中表达图片区域、图片占位区、图片上传位置的节点。
-- 当前 Stage 2 只建立 Image Logic 内核准备。
-- 后续再接入 DocumentModel Builder。
+- 当前已通过 TemplateAnalysisResult.images 接入 DocumentModel Builder。
 
 ConditionNode：
 - ConditionNode 描述“谁控制谁”。
 - 条件来源可以是产品类型等字段。
 - 被控制对象可以是软糖区域、胶囊区域、图片区域等节点。
-- 当前 Stage 2 已建立 Condition Logic 内核能力。
-- 后续再接入 DocumentModel Builder。
+- 当前已通过 TemplateAnalysisResult.conditions 接入 DocumentModel Builder。
 
 ChoiceNode：
 - ChoiceNode 表达单选、多选、互斥选项和默认选项。
-- 当前 Choice Logic 内核已建立。
-- 尚未接入 DocumentModel Builder。
+- 当前已通过 TemplateAnalysisResult.choices 接入 DocumentModel Builder。
 
 # DocumentModel V1 冻结条件
 
@@ -102,5 +99,5 @@ Word：
 - conditions。
 - choices。
 
-Image、Condition、Choice 当前已经可以进入 TemplateAnalysisResult，
-但尚未接入 DocumentModel Builder。
+Image、Condition、Choice 通过 TemplateAnalysisResult 中的
+images、conditions、choices 进入 DocumentModel。

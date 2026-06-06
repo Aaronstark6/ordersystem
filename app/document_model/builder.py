@@ -8,7 +8,14 @@ from app.contracts.template_analysis_result import (
 )
 from app.document_model.coordinates import Coordinate
 from app.document_model.model import DocumentModel
-from app.document_model.nodes import FieldNode, SectionNode, TableNode
+from app.document_model.nodes import (
+    ChoiceNode,
+    ConditionNode,
+    FieldNode,
+    ImageNode,
+    SectionNode,
+    TableNode,
+)
 
 
 def _field_coordinate(candidate: FieldLabelCandidate, document_type: str) -> Coordinate:
@@ -40,6 +47,20 @@ def _section_coordinate(candidate: VisualRegionCandidate, document_type: str) ->
         column=candidate.min_col,
         width=float(candidate.max_col - candidate.min_col + 1),
         height=float(candidate.max_row - candidate.min_row + 1),
+    )
+
+
+def _candidate_coordinate(candidate: object, document_type: str) -> Coordinate:
+    coordinate = getattr(candidate, "coordinate", None)
+    if coordinate is not None:
+        return coordinate
+
+    return Coordinate(
+        document_type=document_type,
+        sheet_name=getattr(candidate, "sheet_name", ""),
+        cell=getattr(candidate, "cell", ""),
+        row=getattr(candidate, "row", None),
+        column=getattr(candidate, "column", None),
     )
 
 
@@ -93,6 +114,72 @@ def build_document_model(analysis_result: TemplateAnalysisResult) -> DocumentMod
             metadata={
                 "confidence": candidate.confidence,
                 "region_type": candidate.region_type,
+            },
+        )
+
+    for index, candidate in enumerate(analysis_result.images, start=1):
+        node_id = f"image:{index}"
+        image_key = getattr(candidate, "image_key", node_id)
+        label = getattr(candidate, "label", image_key)
+        document_model.images[node_id] = ImageNode(
+            node_id=node_id,
+            node_type="image",
+            label=label,
+            coordinate=_candidate_coordinate(
+                candidate,
+                analysis_result.document_type,
+            ),
+            image_key=image_key,
+            image_role=getattr(candidate, "image_role", "attachment"),
+            metadata={
+                "source_candidate": type(candidate).__name__,
+            },
+        )
+
+    for index, candidate in enumerate(analysis_result.conditions, start=1):
+        node_id = f"condition:{index}"
+        condition_key = getattr(candidate, "condition_key", node_id)
+        operator = getattr(candidate, "operator", "")
+        source_field = getattr(candidate, "source_field", "")
+        expected_value = getattr(candidate, "expected_value", "")
+        expression = f"{source_field} {operator} {expected_value}".strip()
+        document_model.conditions[node_id] = ConditionNode(
+            node_id=node_id,
+            node_type="condition",
+            label=getattr(candidate, "label", condition_key),
+            condition_key=condition_key,
+            expression=expression,
+            controls_node_ids=list(
+                getattr(candidate, "controlled_nodes", [])
+            ),
+            metadata={
+                "source_field": source_field,
+                "operator": operator,
+                "expected_value": expected_value,
+                "source_candidate": type(candidate).__name__,
+            },
+        )
+
+    for index, candidate in enumerate(analysis_result.choices, start=1):
+        node_id = f"choice:{index}"
+        choice_key = getattr(candidate, "choice_key", node_id)
+        options = []
+        for option in getattr(candidate, "options", []):
+            option_value = getattr(option, "value", option)
+            options.append(str(option_value))
+
+        document_model.choices[node_id] = ChoiceNode(
+            node_id=node_id,
+            node_type="choice",
+            label=getattr(candidate, "label", choice_key),
+            choice_key=choice_key,
+            options=options,
+            allow_multiple=bool(
+                getattr(candidate, "allow_multiple", False)
+            ),
+            default_option=getattr(candidate, "default_option", None),
+            metadata={
+                "source_candidate": type(candidate).__name__,
             },
         )
 
