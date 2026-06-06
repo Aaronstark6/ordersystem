@@ -2,11 +2,15 @@
 
 当前任务：
 
-STAGE2_02_CONDITION_LOGIC_01
+STAGE2_03_CHOICE_LOGIC_01
 
 下一任务建议：
 
-STAGE2_03_CHOICE_LOGIC_01 选择逻辑（Choice Logic）
+STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01 表格逻辑增强（Table Logic Enhancement）
+
+保留待决问题：
+1. Relationship 是否需要独立存在。
+2. Coordinate Standard 是否已完全收敛到 DocumentModel Coordinate。
 
 # Stage 2 任务列表
 

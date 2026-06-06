@@ -40,7 +40,6 @@ Excel Template Core 修正：
 # Stage 2 Core Completion
 
 待完成能力：
-- 选择逻辑（Choice Logic）。
 - 增强表格逻辑（Enhanced Table Logic）。
 - 增强视觉逻辑（Enhanced Visual Logic）。
 
@@ -72,3 +71,20 @@ Excel Template Core 修正：
 - AND。
 - OR。
 - 嵌套条件。
+
+选择逻辑（Choice Logic）：
+
+当前能力：
+- ChoiceCandidate。
+- ChoiceOption。
+- ChoiceGroup。
+- ChoiceResolver。
+- 单选校验。
+- 多选支持。
+- 非法选项拒绝。
+
+当前未实现：
+- 自动识别选择区域。
+- 与 Condition Logic 自动联动。
+- 接入 Workspace。
+- 接入 ExportStrategy。

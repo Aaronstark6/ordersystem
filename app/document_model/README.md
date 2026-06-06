@@ -31,3 +31,9 @@ ConditionNode：
 ConditionNode 描述条件及其控制的节点，也就是“谁控制谁”。
 
 当前 Stage 2 已建立 ConditionCandidate、ConditionRule 和 ConditionEvaluator，尚未接入 DocumentModel Builder。
+
+ChoiceNode：
+
+ChoiceNode 用于表达单选、多选、互斥选项和默认选项等选择结构。
+
+当前 Choice Logic 已建立内核能力，但尚未接入 DocumentModel Builder。

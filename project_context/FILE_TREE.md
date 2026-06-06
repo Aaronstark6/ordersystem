@@ -46,3 +46,9 @@ app/core/condition_logic：
 - condition_detector.py：定义 ConditionCandidate 和结构化构建函数。
 - condition_evaluator.py：定义 ConditionRule 和 ConditionEvaluator。
 - README.md：说明条件逻辑职责、支持范围和边界。
+
+app/core/choice_logic：
+- 选择逻辑（Choice Logic）能力层。
+- choice_detector.py：定义 ChoiceCandidate、ChoiceOption 和 ChoiceGroup。
+- choice_resolver.py：校验并解析单选或多选结果。
+- README.md：说明选择逻辑职责、支持范围和边界。
