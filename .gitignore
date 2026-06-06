@@ -1,0 +1,16 @@
+﻿__pycache__/
+*.pyc
+
+audit_output/
+audit_temp/
+
+.env
+.venv/
+
+.vscode/
+.idea/
+
+*.log
+
+Thumbs.db
+Desktop.ini
