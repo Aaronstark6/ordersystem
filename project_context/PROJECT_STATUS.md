@@ -24,12 +24,14 @@ Visual Logic Enhancement
 
 Field Logic Enhancement
 
+AI Parser Core
+
 当前任务：
 
-STAGE2_06_FIELD_LOGIC_ENHANCEMENT_01
+STAGE2_07_AI_PARSER_CORE_01
 
 下一目标：
-- AI Parser。
+- Matching。
 
 当前仍需完成：
 - DocumentModel Builder Expansion。

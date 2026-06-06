@@ -125,3 +125,19 @@ Excel Template Core 修正：
 - AI 语义匹配。
 - 与 AI Parser 完整接入。
 - 与 DocumentModel Builder 完整接入。
+
+订单解析器内核（AI Parser Core）：
+
+当前能力：
+- OrderObject。
+- OrderField。
+- MissingField。
+- ParseResult。
+- parse_order_text_stub。
+- Prompt Builder。
+
+当前未实现：
+- 真实 AI 调用。
+- API Key 管理。
+- 多模型适配。
+- 与 Matching 完整接入。

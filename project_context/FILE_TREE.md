@@ -73,3 +73,10 @@ app/core/field_logic：
 - field_normalizer.py：将字段标签标准化为字段 key。
 - field_matcher.py：定义 FieldMatchCandidate 和简单字段匹配。
 - README.md：说明字段逻辑职责、当前能力和边界。
+
+app/core/ai_parser：
+- 订单解析器内核（AI Parser Core）能力层。
+- order_object.py：定义 OrderObject、OrderField、MissingField 和 ParseResult。
+- order_parser.py：提供本地订单文本解析占位器。
+- prompt_builder.py：构建未来 AI 解析使用的提示词。
+- README.md：说明解析器内核能力和禁止边界。
