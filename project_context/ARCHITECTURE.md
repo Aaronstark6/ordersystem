@@ -26,3 +26,10 @@
 - DocumentModel Coordinate 是系统唯一标准坐标来源。
 - Workspace、ExportStrategy、未来 Pipeline 禁止直接依赖 cell、range_ref、source_cell、target_cell。
 - 上游原始坐标必须先转换为 Coordinate，再进入下游。
+
+工作区（Workspace）层：
+- Workspace 负责把 DocumentModel 转换成人可以查看、编辑、确认的数据结构。
+- Workspace 不是页面，页面只展示 Workspace。
+- Workspace 不负责导出。
+- Workspace 不负责状态推进。
+- Workspace 不负责模板分析。

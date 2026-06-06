@@ -1,9 +1,12 @@
 当前任务：
-NEW_SYSTEM_DOCUMENTMODEL_BUILDER_01
+NEW_SYSTEM_WORKSPACE_BUILDER_01
 
-目标：
-实现 TemplateAnalysisResult 到 DocumentModel 的第一版转换器。
+当前目标：
+建立 Workspace Builder，把 DocumentModel 转换为 WorkspaceSnapshot。
 
-待决问题：
+下一任务建议：
+评估 ConfirmedOrderObject，或评估进入 Workspace 路由/页面前所需的 Pipeline。
+
+保留待决问题：
 1. Relationship 是否需要独立存在。
-2. Coordinate 标准是否完全收敛。
+2. Coordinate Standard 是否已经完全收敛到 DocumentModel Coordinate。

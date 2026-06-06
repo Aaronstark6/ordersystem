@@ -11,3 +11,10 @@
 - app/diagnostics：诊断层。
 - app/ui：界面层。
 - project_context：项目上下文和架构文档。
+
+app/workspace：
+- 工作区层。
+- model.py：定义 WorkspaceSnapshot、WorkspaceSection、WorkspaceField。
+- builder.py：把 DocumentModel 转换为 WorkspaceSnapshot。
+- validators.py：校验 WorkspaceSnapshot。
+- serializer.py：将 WorkspaceSnapshot 转换为 dict。

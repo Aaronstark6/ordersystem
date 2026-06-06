@@ -14,4 +14,17 @@
 NEW_SYSTEM_CORE_EXCEL_MERGED_RANGE_FIX_01 完成。
 Excel Core 第一版已修复合并区域识别逻辑。
 
-NEW_SYSTEM_DOCUMENTMODEL_BUILDER_01 进行中。
+NEW_SYSTEM_DOCUMENTMODEL_BUILDER_01 已完成。
+
+NEW_SYSTEM_WORKSPACE_BUILDER_01 已完成。系统主链进度达到：
+Excel 模板
+→ TemplateAnalysisResult
+→ DocumentModel
+→ WorkspaceSnapshot
+
+当前仍未实现：
+- UI。
+- Routes。
+- ConfirmedOrderObject。
+- ExportStrategy。
+- Excel Executor。
