@@ -52,3 +52,10 @@ app/core/choice_logic：
 - choice_detector.py：定义 ChoiceCandidate、ChoiceOption 和 ChoiceGroup。
 - choice_resolver.py：校验并解析单选或多选结果。
 - README.md：说明选择逻辑职责、支持范围和边界。
+
+app/core/table_logic：
+- 表格逻辑（Table Logic）能力层。
+- table_detector.py：识别表格候选并定义 TableRangeCandidate。
+- header_detector.py：识别 TableHeaderCandidate。
+- merged_cell_detector.py：将合并区域转换为 MergedCellCandidate。
+- README.md：说明表格逻辑职责、当前能力和边界。

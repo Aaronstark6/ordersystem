@@ -18,12 +18,14 @@ Condition Logic
 
 Choice Logic
 
+Table Logic Enhancement
+
 当前任务：
 
-STAGE2_03_CHOICE_LOGIC_01
+STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01
 
 当前仍未完成：
-- Table Logic Enhancement。
 - Visual Logic Enhancement。
+- DocumentModel Builder Expansion。
 - Relationship Audit。
 - Coordinate Audit。

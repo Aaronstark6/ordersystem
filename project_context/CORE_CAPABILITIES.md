@@ -40,7 +40,6 @@ Excel Template Core 修正：
 # Stage 2 Core Completion
 
 待完成能力：
-- 增强表格逻辑（Enhanced Table Logic）。
 - 增强视觉逻辑（Enhanced Visual Logic）。
 
 图片逻辑（Image Logic）：
@@ -88,3 +87,16 @@ Excel Template Core 修正：
 - 与 Condition Logic 自动联动。
 - 接入 Workspace。
 - 接入 ExportStrategy。
+
+表格逻辑增强（Table Logic Enhancement）：
+
+当前能力：
+- 表格候选识别（Table Candidate Detection）。
+- 表头候选识别（Header Candidate Detection）。
+- 合并单元格识别（Merged Cell Detection）。
+- 表格范围候选（TableRangeCandidate）。
+
+当前未实现：
+- 表格数据自动填充。
+- 与 DocumentModel Builder 的完整接入。
+- 高级跨行跨列表格判断。

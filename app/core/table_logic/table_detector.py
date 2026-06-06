@@ -1,8 +1,55 @@
-from typing import List
+from dataclasses import dataclass, field
+from typing import Any, Dict, List
 
 from openpyxl.utils import get_column_letter
 
 from app.contracts.template_analysis_result import SheetInfo, TableCandidate
+
+
+@dataclass
+class TableRangeCandidate:
+    sheet_name: str
+    range_ref: str
+    min_row: int
+    max_row: int
+    min_col: int
+    max_col: int
+    header_row: int
+    data_start_row: int
+    data_end_row: int
+    confidence: float = 0.0
+    reason: str = ""
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+def build_table_range_candidate(
+    sheet_name: str,
+    range_ref: str,
+    min_row: int,
+    max_row: int,
+    min_col: int,
+    max_col: int,
+    header_row: int,
+    data_start_row: int,
+    data_end_row: int,
+    confidence: float = 0.0,
+    reason: str = "",
+    metadata: Dict[str, Any] | None = None,
+) -> TableRangeCandidate:
+    return TableRangeCandidate(
+        sheet_name=sheet_name,
+        range_ref=range_ref,
+        min_row=min_row,
+        max_row=max_row,
+        min_col=min_col,
+        max_col=max_col,
+        header_row=header_row,
+        data_start_row=data_start_row,
+        data_end_row=data_end_row,
+        confidence=confidence,
+        reason=reason,
+        metadata=dict(metadata or {}),
+    )
 
 
 def _text(value: object) -> str:

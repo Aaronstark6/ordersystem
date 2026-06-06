@@ -2,11 +2,11 @@
 
 当前任务：
 
-STAGE2_03_CHOICE_LOGIC_01
+STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01
 
 下一任务建议：
 
-STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01 表格逻辑增强（Table Logic Enhancement）
+STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01 视觉逻辑增强（Visual Logic Enhancement）
 
 保留待决问题：
 1. Relationship 是否需要独立存在。
