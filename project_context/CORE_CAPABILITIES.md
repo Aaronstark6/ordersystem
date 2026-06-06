@@ -42,6 +42,17 @@ Excel Template Core 修正：
 待完成能力：
 - 条件逻辑（Condition Logic）。
 - 选择逻辑（Choice Logic）。
-- 图片逻辑（Image Logic）。
 - 增强表格逻辑（Enhanced Table Logic）。
 - 增强视觉逻辑（Enhanced Visual Logic）。
+
+图片逻辑（Image Logic）：
+
+当前能力：
+- 定义图片区域候选（ImageAreaCandidate）。
+- 定义图片锚点候选（ImageAnchorCandidate）。
+- 为后续 Template Analysis 和 DocumentModel 接入图片能力做准备。
+
+当前未实现：
+- 不读取真实图片文件。
+- 不插入图片。
+- 不执行图片导出。

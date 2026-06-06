@@ -19,3 +19,9 @@ DocumentModel Builder：
 当前支持：FieldNode、TableNode、SectionNode。
 
 坐标规则：所有生成节点必须拥有 Coordinate，原始单元格或范围信息不得绕过 Coordinate 直接进入下游。
+
+ImageNode：
+
+ImageNode 是 DocumentModel 中表达图片区域、图片占位区和图片上传位置的节点。
+
+当前 Stage 2 只建立 Image Logic 内核准备，尚未接入 DocumentModel Builder。

@@ -31,11 +31,15 @@ DocumentModel Builder：
 - Relationship 是否需要独立存在。
 - 保留至：DOCUMENTMODEL_RELATIONSHIP_AUDIT_01。
 
-# 待新增节点
+# 待完成节点接入
 
 - ConditionNode。
 - ChoiceNode。
-- ImageNode。
+
+ImageNode：
+- ImageNode 是 DocumentModel 中表达图片区域、图片占位区、图片上传位置的节点。
+- 当前 Stage 2 只建立 Image Logic 内核准备。
+- 后续再接入 DocumentModel Builder。
 
 # DocumentModel V1 冻结条件
 

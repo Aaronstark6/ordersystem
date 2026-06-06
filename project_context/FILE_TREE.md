@@ -34,3 +34,9 @@ app/export：
 - validators.py：校验 ExportStrategy。
 - serializer.py：将 ExportStrategy 转换为 dict。
 - README.md：说明导出策略层职责和边界。
+
+app/core/image_logic：
+- 图片逻辑（Image Logic）能力层。
+- image_detector.py：定义 ImageAreaCandidate 和结构化构建函数。
+- image_anchor.py：定义 ImageAnchorCandidate 和结构化构建函数。
+- README.md：说明图片逻辑职责和边界。

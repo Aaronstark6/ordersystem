@@ -2,9 +2,7 @@
 
 当前阶段：
 
-Stage 2
-
-Core Completion
+Stage 2：内核完善（Core Completion）
 
 状态：
 
@@ -14,6 +12,6 @@ Core Completion
 
 Minimum Main Chain
 
-下一目标：
+当前任务：
 
-STAGE2_01_CONDITION_LOGIC_01
+STAGE2_01_IMAGE_LOGIC_01
