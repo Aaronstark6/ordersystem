@@ -30,3 +30,19 @@ DocumentModel Builder：
 待验证设计点：
 - Relationship 是否需要独立存在。
 - 保留至：DOCUMENTMODEL_RELATIONSHIP_AUDIT_01。
+
+# 待新增节点
+
+- ConditionNode。
+- ChoiceNode。
+- ImageNode。
+
+# DocumentModel V1 冻结条件
+
+以下节点全部完成并验证通过：
+- FieldNode。
+- TableNode。
+- SectionNode。
+- ConditionNode。
+- ChoiceNode。
+- ImageNode。

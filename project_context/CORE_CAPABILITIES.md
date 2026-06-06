@@ -36,3 +36,12 @@ Excel Template Core 修正：
 - 支持根据 ExportStrategy 中的 ExportOperation 把值写回 Excel 模板。
 - 当前只支持 write_value 操作。
 - 当前不支持 PDF / Word。
+
+# Stage 2 Core Completion
+
+待完成能力：
+- 条件逻辑（Condition Logic）。
+- 选择逻辑（Choice Logic）。
+- 图片逻辑（Image Logic）。
+- 增强表格逻辑（Enhanced Table Logic）。
+- 增强视觉逻辑（Enhanced Visual Logic）。

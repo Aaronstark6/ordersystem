@@ -55,3 +55,11 @@ Export Execute Pipeline 计划：
 - 不生成 ExportStrategy。
 - 不绕过 ExportStrategy 直接读取 ConfirmedOrderObject。
 - 不自行判断字段目标位置。
+
+# Stage 2 说明
+
+Stage 2 期间优先完善 Core。
+
+Workspace Pipeline 暂不继续扩展。
+
+Config Pipeline 暂不继续扩展。

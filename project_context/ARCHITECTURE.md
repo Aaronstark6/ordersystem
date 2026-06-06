@@ -43,3 +43,59 @@
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
 - ExportStrategy 只生成写入计划，不直接写 Excel / PDF / Word 文件。
 - ConfirmedOrderObject 不得绕过 ExportStrategy 直接进入 Executor。
+
+# 当前开发阶段
+
+## 阶段一（Stage 1）
+
+最小主链（Minimum Main Chain）
+
+状态：
+- 已完成。
+- 已验证通过。
+
+完成链路：
+
+Excel 模板
+↓
+TemplateAnalysisResult
+↓
+DocumentModel
+↓
+WorkspaceSnapshot
+↓
+ConfirmedOrderObject
+↓
+ExportStrategy
+↓
+ExportOperation
+↓
+Excel Executor
+↓
+最终 Excel 文件
+
+# 新开发路线
+
+## 阶段二（Stage 2）
+
+内核完善（Core Completion）
+
+## 阶段三（Stage 3）
+
+文档模型冻结（DocumentModel Freeze）
+
+## 阶段四（Stage 4）
+
+工作区（Workspace）
+
+## 阶段五（Stage 5）
+
+配置页（Config）
+
+## 阶段六（Stage 6）
+
+订单解析（AI Parser）与匹配（Matching）
+
+## 阶段七（Stage 7）
+
+PDF / Word

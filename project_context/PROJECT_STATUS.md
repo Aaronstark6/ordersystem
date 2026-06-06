@@ -1,81 +1,19 @@
-当前阶段：P0 新系统基础建设。
+# 项目状态
+
+当前阶段：
+
+Stage 2
+
+Core Completion
+
+状态：
+
+进行中
 
 已完成：
-1. 系统目录骨架。
-2. DocumentModel 第一版类型骨架。
-3. Excel Template Core 第一版。
 
-当前状态：
-尚未实现 Pipeline、Route、UI、Storage、State、Workspace、Export。
+Minimum Main Chain
 
-下一步：
-完善文档体系后，进入 Excel Template Core 小修或 TemplateAnalysisResult 到 DocumentModel 构建链。
+下一目标：
 
-NEW_SYSTEM_CORE_EXCEL_MERGED_RANGE_FIX_01 完成。
-Excel Core 第一版已修复合并区域识别逻辑。
-
-NEW_SYSTEM_DOCUMENTMODEL_BUILDER_01 已完成。
-
-NEW_SYSTEM_WORKSPACE_BUILDER_01 已完成。系统主链进度达到：
-Excel 模板
-→ TemplateAnalysisResult
-→ DocumentModel
-→ WorkspaceSnapshot
-
-当前仍未实现：
-- UI。
-- Routes。
-
-NEW_SYSTEM_CONFIRMED_ORDER_OBJECT_01 已完成。系统主链进度达到：
-Excel 模板
-→ TemplateAnalysisResult
-→ DocumentModel
-→ WorkspaceSnapshot
-→ ConfirmedOrderObject
-
-当前仍未实现：
-- Workspace UI。
-- Routes。
-- Pipeline。
-
-NEW_SYSTEM_EXPORT_STRATEGY_01 已完成。系统主链进度达到：
-Excel 模板
-→ TemplateAnalysisResult
-→ DocumentModel
-→ WorkspaceSnapshot
-→ ConfirmedOrderObject
-→ ExportStrategy
-→ ExportOperation
-
-当前仍未实现：
-- Workspace UI。
-- Routes。
-- Pipeline。
-- Storage。
-- State。
-
-NEW_SYSTEM_EXCEL_EXECUTOR_01 已完成。系统最小主链（Minimum Main Chain）具备代码级闭环：
-Excel 模板
-↓
-TemplateAnalysisResult
-↓
-DocumentModel
-↓
-WorkspaceSnapshot
-↓
-ConfirmedOrderObject
-↓
-ExportStrategy
-↓
-ExportOperation
-↓
-Excel Executor
-↓
-最终 Excel 文件
-
-当前仍未完成：
-- Main Chain Validation。
-- UI。
-- Routes。
-- Storage。
-- State。
+STAGE2_01_CONDITION_LOGIC_01

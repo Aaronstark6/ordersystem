@@ -1,12 +1,39 @@
+# 当前任务
+
 当前任务：
-NEW_SYSTEM_EXCEL_EXECUTOR_01
 
-当前目标：
-建立 Excel Executor，根据 ExportOperation 写回 Excel 文件。
+PLAN_REBASE_STAGE2_CORE_FIRST_01
 
-下一任务建议：
-执行 Main Chain Validation，验证从 Excel 模板到最终 Excel 文件的真实闭环。
+完成后：
 
-保留待决问题：
-1. Relationship 是否需要独立存在。
-2. Coordinate Standard 是否已完全收敛到 DocumentModel Coordinate。
+STAGE2_01_CONDITION_LOGIC_01
+
+# Stage 2 任务列表
+
+## STAGE2_01_CONDITION_LOGIC_01
+
+条件逻辑（Condition Logic）
+
+## STAGE2_02_CHOICE_LOGIC_01
+
+选择逻辑（Choice Logic）
+
+## STAGE2_03_IMAGE_LOGIC_01
+
+图片逻辑（Image Logic）
+
+## STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01
+
+表格逻辑增强（Table Logic Enhancement）
+
+## STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01
+
+视觉逻辑增强（Visual Logic Enhancement）
+
+## STAGE2_06_RELATIONSHIP_AUDIT_01
+
+关系模型审计（Relationship Audit）
+
+## STAGE2_07_COORDINATE_AUDIT_01
+
+坐标标准审计（Coordinate Audit）
