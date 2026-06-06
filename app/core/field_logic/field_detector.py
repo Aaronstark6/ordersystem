@@ -1,6 +1,39 @@
-from typing import List
+from dataclasses import dataclass, field
+from typing import Any, Dict, List
 
 from app.contracts.template_analysis_result import FieldLabelCandidate, SheetInfo
+from app.document_model.coordinates import Coordinate
+
+
+@dataclass
+class FieldCandidate:
+    field_key: str
+    label: str
+    normalized_name: str
+    source: str
+    confidence: float
+    coordinate: Coordinate
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+def build_field_candidate(
+    field_key: str,
+    label: str,
+    normalized_name: str,
+    source: str,
+    confidence: float,
+    coordinate: Coordinate,
+    metadata: Dict[str, Any] | None = None,
+) -> FieldCandidate:
+    return FieldCandidate(
+        field_key=field_key,
+        label=label,
+        normalized_name=normalized_name,
+        source=source,
+        confidence=confidence,
+        coordinate=coordinate,
+        metadata=dict(metadata or {}),
+    )
 
 
 _LABEL_HINTS = (

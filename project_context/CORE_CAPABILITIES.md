@@ -112,3 +112,16 @@ Excel Template Core 修正：
 唯一规则：
 - Coordinate 是唯一坐标标准。
 - 禁止建立第二套坐标体系。
+
+字段逻辑增强（Field Logic Enhancement）：
+
+当前能力：
+- 字段候选（FieldCandidate）。
+- 字段标准化（Field Normalization）。
+- 字段匹配候选（FieldMatchCandidate）。
+- 简单字段匹配（Simple Field Matching）。
+
+当前未实现：
+- AI 语义匹配。
+- 与 AI Parser 完整接入。
+- 与 DocumentModel Builder 完整接入。

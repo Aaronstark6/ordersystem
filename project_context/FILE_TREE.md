@@ -66,3 +66,10 @@ app/core/visual_logic：
 - anchor_detector.py：定义 AnchorCandidate。
 - coordinate_model.py：复用 Coordinate 并定义 CoordinateGroup。
 - README.md：说明唯一坐标原则和禁止的第二套坐标类型。
+
+app/core/field_logic：
+- 字段逻辑（Field Logic）能力层。
+- field_detector.py：识别字段标签并定义 FieldCandidate。
+- field_normalizer.py：将字段标签标准化为字段 key。
+- field_matcher.py：定义 FieldMatchCandidate 和简单字段匹配。
+- README.md：说明字段逻辑职责、当前能力和边界。

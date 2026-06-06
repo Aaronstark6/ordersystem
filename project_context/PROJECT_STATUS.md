@@ -22,13 +22,16 @@ Table Logic Enhancement
 
 Visual Logic Enhancement
 
+Field Logic Enhancement
+
 当前任务：
 
-STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01
+STAGE2_06_FIELD_LOGIC_ENHANCEMENT_01
 
-下一阶段：
-- DocumentModel Builder Expansion。
+下一目标：
+- AI Parser。
 
 当前仍需完成：
+- DocumentModel Builder Expansion。
 - Relationship Audit。
 - Coordinate Audit。
