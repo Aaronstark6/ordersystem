@@ -1,11 +1,11 @@
 当前任务：
-NEW_SYSTEM_CONFIRMED_ORDER_OBJECT_01
+NEW_SYSTEM_EXPORT_STRATEGY_01
 
 当前目标：
-建立 ConfirmedOrderObject，把 WorkspaceSnapshot 转换为最终事实（Final Truth）。
+建立 ExportStrategy，把 ConfirmedOrderObject 转换为 ExportOperation。
 
 下一任务建议：
-实现 ExportStrategy 第一版，把 ConfirmedOrderObject 转换为 ExportOperation。
+实现 Excel Executor 第一版，根据 ExportOperation 写回 Excel 文件。
 
 保留待决问题：
 1. Relationship 是否需要独立存在。

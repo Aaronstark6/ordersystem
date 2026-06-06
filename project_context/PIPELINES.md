@@ -16,3 +16,23 @@
 - Pipeline 不实现核心能力。
 - Pipeline 不直接写页面。
 - Pipeline 不直接做存储细节。
+
+Export Strategy Pipeline 计划：
+
+输入：
+- ConfirmedOrderObject。
+
+步骤：
+- 读取最终事实（Final Truth）。
+- 生成 ExportStrategy。
+- 生成 ExportOperation。
+- 校验导出可执行性。
+
+输出：
+- ExportStrategy。
+- ExportOperation。
+
+禁止：
+- 不直接写文件。
+- 不绕过 ConfirmedOrderObject。
+- 不直接读取 WorkspaceSnapshot。

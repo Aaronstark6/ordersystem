@@ -38,3 +38,8 @@
 - ConfirmedOrderObject 负责保存用户确认后的最终事实（Final Truth）。
 - ConfirmedOrderObject 位于 Workspace 之后、ExportStrategy 之前。
 - 导出链路不得绕过 ConfirmedOrderObject。
+
+导出策略（ExportStrategy）层：
+- ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
+- ExportStrategy 只生成写入计划，不直接写 Excel / PDF / Word 文件。
+- ConfirmedOrderObject 不得绕过 ExportStrategy 直接进入 Executor。

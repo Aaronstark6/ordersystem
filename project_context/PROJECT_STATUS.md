@@ -25,7 +25,6 @@ Excel 模板
 当前仍未实现：
 - UI。
 - Routes。
-- ExportStrategy。
 - Excel Executor。
 
 NEW_SYSTEM_CONFIRMED_ORDER_OBJECT_01 已完成。系统主链进度达到：
@@ -38,6 +37,22 @@ Excel 模板
 当前仍未实现：
 - Workspace UI。
 - Routes。
-- ExportStrategy。
 - Excel Executor。
 - Pipeline。
+
+NEW_SYSTEM_EXPORT_STRATEGY_01 已完成。系统主链进度达到：
+Excel 模板
+→ TemplateAnalysisResult
+→ DocumentModel
+→ WorkspaceSnapshot
+→ ConfirmedOrderObject
+→ ExportStrategy
+→ ExportOperation
+
+当前仍未实现：
+- Excel Executor。
+- Workspace UI。
+- Routes。
+- Pipeline。
+- Storage。
+- State。

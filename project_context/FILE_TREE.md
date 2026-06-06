@@ -26,3 +26,11 @@ app/confirmed：
 - validators.py：校验 ConfirmedOrderObject。
 - serializer.py：将 ConfirmedOrderObject 转换为 dict。
 - README.md：说明人工确认层职责和边界。
+
+app/export：
+- 导出策略层。
+- model.py：定义 ExportStrategy 和 ExportOperation。
+- builder.py：把 ConfirmedOrderObject 转换为 ExportStrategy。
+- validators.py：校验 ExportStrategy。
+- serializer.py：将 ExportStrategy 转换为 dict。
+- README.md：说明导出策略层职责和边界。
