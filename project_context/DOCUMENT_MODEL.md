@@ -33,12 +33,18 @@ DocumentModel Builder：
 
 # 待完成节点接入
 
-- ConditionNode。
 - ChoiceNode。
 
 ImageNode：
 - ImageNode 是 DocumentModel 中表达图片区域、图片占位区、图片上传位置的节点。
 - 当前 Stage 2 只建立 Image Logic 内核准备。
+- 后续再接入 DocumentModel Builder。
+
+ConditionNode：
+- ConditionNode 描述“谁控制谁”。
+- 条件来源可以是产品类型等字段。
+- 被控制对象可以是软糖区域、胶囊区域、图片区域等节点。
+- 当前 Stage 2 已建立 Condition Logic 内核能力。
 - 后续再接入 DocumentModel Builder。
 
 # DocumentModel V1 冻结条件

@@ -40,3 +40,9 @@ app/core/image_logic：
 - image_detector.py：定义 ImageAreaCandidate 和结构化构建函数。
 - image_anchor.py：定义 ImageAnchorCandidate 和结构化构建函数。
 - README.md：说明图片逻辑职责和边界。
+
+app/core/condition_logic：
+- 条件逻辑（Condition Logic）能力层。
+- condition_detector.py：定义 ConditionCandidate 和结构化构建函数。
+- condition_evaluator.py：定义 ConditionRule 和 ConditionEvaluator。
+- README.md：说明条件逻辑职责、支持范围和边界。

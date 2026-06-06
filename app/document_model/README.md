@@ -25,3 +25,9 @@ ImageNode：
 ImageNode 是 DocumentModel 中表达图片区域、图片占位区和图片上传位置的节点。
 
 当前 Stage 2 只建立 Image Logic 内核准备，尚未接入 DocumentModel Builder。
+
+ConditionNode：
+
+ConditionNode 描述条件及其控制的节点，也就是“谁控制谁”。
+
+当前 Stage 2 已建立 ConditionCandidate、ConditionRule 和 ConditionEvaluator，尚未接入 DocumentModel Builder。

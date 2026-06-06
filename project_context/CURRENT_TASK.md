@@ -2,11 +2,11 @@
 
 当前任务：
 
-STAGE2_01_IMAGE_LOGIC_01
+STAGE2_02_CONDITION_LOGIC_01
 
 下一任务建议：
 
-STAGE2_02_CONDITION_LOGIC_01 条件逻辑（Condition Logic）
+STAGE2_03_CHOICE_LOGIC_01 选择逻辑（Choice Logic）
 
 # Stage 2 任务列表
 

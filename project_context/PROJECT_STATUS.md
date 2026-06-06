@@ -12,6 +12,8 @@ Stage 2：内核完善（Core Completion）
 
 Minimum Main Chain
 
+Image Logic
+
 当前任务：
 
-STAGE2_01_IMAGE_LOGIC_01
+STAGE2_02_CONDITION_LOGIC_01

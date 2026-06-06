@@ -40,7 +40,6 @@ Excel Template Core 修正：
 # Stage 2 Core Completion
 
 待完成能力：
-- 条件逻辑（Condition Logic）。
 - 选择逻辑（Choice Logic）。
 - 增强表格逻辑（Enhanced Table Logic）。
 - 增强视觉逻辑（Enhanced Visual Logic）。
@@ -56,3 +55,20 @@ Excel Template Core 修正：
 - 不读取真实图片文件。
 - 不插入图片。
 - 不执行图片导出。
+
+条件逻辑（Condition Logic）：
+
+当前能力：
+- ConditionCandidate。
+- ConditionRule。
+- ConditionEvaluator。
+
+支持：
+- equals。
+- not_equals。
+
+当前不支持：
+- 复杂表达式。
+- AND。
+- OR。
+- 嵌套条件。
