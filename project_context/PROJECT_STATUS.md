@@ -30,15 +30,17 @@ Matching Core
 
 Executor Enhancement
 
+Template Reader Expansion
+
 当前任务：
 
-STAGE2_09_EXPORT_EXECUTOR_ENHANCEMENT_01
+STAGE2_10_TEMPLATE_READER_EXPANSION_01
 
 下一目标：
-- Template Reader Expansion。
+- PDF / Word Executor。
 
 当前仍需完成：
-- Template Reader Expansion。
+- PDF / Word Executor。
 - DocumentModel Builder Expansion。
 - Relationship Audit。
 - Coordinate Audit。

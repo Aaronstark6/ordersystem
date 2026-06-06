@@ -12,8 +12,8 @@
 - 输出 TemplateAnalysisResult。
 
 当前未实现：
-- PDF 读取。
-- Word 读取。
+- PDF 深度解析。
+- Word 深度解析。
 - AI 订单解析。
 - 匹配能力。
 - 条件逻辑。
@@ -170,3 +170,16 @@ Excel Template Core 修正：
 - 人工映射配置。
 - 表格数据匹配。
 - 与 Workspace 的完整接入。
+
+模板读取扩展（Template Reader Expansion）：
+
+当前能力：
+- Excel 模板真实读取。
+- PDF 模板基础识别。
+- Word 模板基础识别。
+- 统一模板读取入口（Template Reader Dispatcher）。
+
+当前未实现：
+- PDF 内容深度解析。
+- Word 内容深度解析。
+- PDF / Word 模板分析。
