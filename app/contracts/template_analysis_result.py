@@ -86,6 +86,9 @@ class TemplateAnalysisResult:
     warnings: List[str] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    images: List[Any] = field(default_factory=list)
+    conditions: List[Any] = field(default_factory=list)
+    choices: List[Any] = field(default_factory=list)
 
     def has_errors(self) -> bool:
         return bool(self.errors)

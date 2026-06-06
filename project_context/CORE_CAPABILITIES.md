@@ -201,3 +201,9 @@ PDF / Word 执行器（PDF / Word Executor）：
 - PDF 内容深度解析。
 - Word 内容深度解析。
 - PDF / Word 模板分析。
+
+Core 到 DocumentModel 的接入状态：
+- Image Logic 已具备进入 TemplateAnalysisResult 的契约位置。
+- Condition Logic 已具备进入 TemplateAnalysisResult 的契约位置。
+- Choice Logic 已具备进入 TemplateAnalysisResult 的契约位置。
+- 上述能力尚未接入 DocumentModel Builder。

@@ -38,12 +38,15 @@ PDF / Word Executor
 
 当前任务：
 
-STAGE2_12_PDF_WORD_EXECUTOR_01
+STAGE2_13A_TEMPLATE_ANALYSIS_CONTRACT_EXPANSION_01
+
+当前状态：
+- TemplateAnalysisResult 已准备承载 images / conditions / choices。
 
 下一目标：
-- DocumentModel Integration。
+- STAGE2_13B_DOCUMENTMODEL_BUILDER_INTEGRATION_01。
 
 当前仍需完成：
-- DocumentModel Integration。
+- DocumentModel Builder Integration。
 - Relationship Audit。
 - Coordinate Audit。

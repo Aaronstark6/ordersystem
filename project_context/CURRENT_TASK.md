@@ -2,11 +2,12 @@
 
 当前任务：
 
-STAGE2_12_PDF_WORD_EXECUTOR_01
+STAGE2_13A_TEMPLATE_ANALYSIS_CONTRACT_EXPANSION_01
 
 下一任务建议：
 
-STAGE2_13_DOCUMENTMODEL_INTEGRATION_01 DocumentModel Integration
+STAGE2_13B_DOCUMENTMODEL_BUILDER_INTEGRATION_01
+文档模型构建器接入（DocumentModel Builder Integration）
 
 保留待决问题：
 1. Relationship 是否需要保留。
@@ -62,9 +63,13 @@ Word 坐标扩展（Word Coordinate Extension）
 
 PDF / Word 执行器（PDF / Word Executor）
 
-## STAGE2_13_DOCUMENTMODEL_INTEGRATION_01
+## STAGE2_13A_TEMPLATE_ANALYSIS_CONTRACT_EXPANSION_01
 
-文档模型接入（DocumentModel Integration）
+模板分析结果契约扩展（Template Analysis Contract Expansion）
+
+## STAGE2_13B_DOCUMENTMODEL_BUILDER_INTEGRATION_01
+
+文档模型构建器接入（DocumentModel Builder Integration）
 
 ## STAGE2_14_RELATIONSHIP_AUDIT_01
 

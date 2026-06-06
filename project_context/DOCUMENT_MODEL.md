@@ -91,3 +91,16 @@ Word：
 - table_index。
 - bookmark。
 - placeholder。
+
+# TemplateAnalysisResult 契约
+
+模板分析结果契约已扩展，当前可承载：
+- field_labels。
+- tables。
+- visual_regions。
+- images。
+- conditions。
+- choices。
+
+Image、Condition、Choice 当前已经可以进入 TemplateAnalysisResult，
+但尚未接入 DocumentModel Builder。
