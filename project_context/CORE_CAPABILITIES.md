@@ -34,8 +34,22 @@ Excel Template Core 修正：
 导出执行能力（Executor Capability）：
 - 当前已建立 Excel 执行器（Excel Executor）。
 - 支持根据 ExportStrategy 中的 ExportOperation 把值写回 Excel 模板。
-- 当前只支持 write_value 操作。
 - 当前不支持 PDF / Word。
+
+导出执行增强（Executor Enhancement）：
+
+当前能力：
+- Excel 执行器（Excel Executor）。
+- write_value。
+- write_table。
+- insert_image 占位校验。
+- ExcelExportResult。
+- 操作结果统计。
+
+当前未实现：
+- Excel 真正图片插入。
+- PDF 执行器。
+- Word 执行器。
 
 # Stage 2 Core Completion
 

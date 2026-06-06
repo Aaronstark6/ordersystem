@@ -5,7 +5,13 @@ app/core/executors
 提供导出执行能力（Executor Capabilities）。
 
 当前能力：
-Excel 执行器（Excel Executor）。
+- Excel 执行器（Excel Executor）。
+- write_value。
+- write_table。
+- insert_image 占位校验。
+- 导出操作结果（ExportOperationResult）。
+- Excel 导出结果（ExcelExportResult）。
+- 成功、跳过、失败操作统计。
 
 输入：
 Excel 模板文件路径。
@@ -14,7 +20,8 @@ Excel 模板文件路径。
 导出操作（ExportOperation）。
 
 输出：
-最终 Excel 文件。
+- 最终 Excel 文件。
+- ExcelExportResult。
 
 上游：
 导出策略（ExportStrategy）。
@@ -37,3 +44,12 @@ Excel 模板文件路径。
 执行器（Executor）只执行导出操作（ExportOperation）。
 执行器（Executor）不得自己决定字段写到哪里。
 字段写入目标必须来自导出策略（ExportStrategy）。
+
+当前不做：
+- 不真正插入图片。
+- 不执行 PDF。
+- 不执行 Word。
+- 不自行决定写入位置。
+
+样式原则：
+执行器只写单元格值，不主动修改模板样式。

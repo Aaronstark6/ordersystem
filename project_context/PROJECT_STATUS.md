@@ -28,15 +28,17 @@ AI Parser Core
 
 Matching Core
 
+Executor Enhancement
+
 当前任务：
 
-STAGE2_08_MATCHING_CORE_01
+STAGE2_09_EXPORT_EXECUTOR_ENHANCEMENT_01
 
 下一目标：
-- Export Executor Enhancement。
+- Template Reader Expansion。
 
 当前仍需完成：
-- Export Executor Enhancement。
+- Template Reader Expansion。
 - DocumentModel Builder Expansion。
 - Relationship Audit。
 - Coordinate Audit。

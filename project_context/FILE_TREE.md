@@ -87,3 +87,9 @@ app/core/matching：
 - confidence_scorer.py：提供简单字段匹配评分。
 - semantic_matcher.py：把 OrderObject 与 DocumentModel 字段进行第一版匹配。
 - README.md：说明匹配内核职责、当前能力和禁止边界。
+
+app/core/executors：
+- 导出执行能力层。
+- 当前包含 Excel 执行器（Excel Executor）及导出结果对象。
+- excel_executor.py：执行 ExportStrategy 操作并生成 ExcelExportResult。
+- README.md：说明执行器能力、结果统计和禁止边界。

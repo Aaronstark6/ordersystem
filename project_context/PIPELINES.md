@@ -48,6 +48,11 @@ Export Execute Pipeline 计划：
 - 调用 Excel Executor。
 - 生成最终 Excel 文件。
 
+当前执行器支持：
+- write_value。
+- write_table。
+- insert_image 占位校验。
+
 输出：
 - 最终 Excel 文件。
 
