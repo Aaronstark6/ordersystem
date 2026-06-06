@@ -18,5 +18,15 @@ DocumentModel 是唯一事实中心。
 - DocumentModel 不负责流程。
 - DocumentModel 只描述系统看到的文档世界。
 
-当前未完成：
-- TemplateAnalysisResult 到 DocumentModel 的构建链尚未实现。
+当前已建立：
+- TemplateAnalysisResult 到 DocumentModel 的第一版构建链。
+
+DocumentModel Builder：
+- 转换来源：TemplateAnalysisResult。
+- 当前支持：FieldNode、TableNode、SectionNode。
+- 成功生成的 DocumentModel 至少包含一个节点。
+- 所有生成节点统一使用 Coordinate。
+
+待验证设计点：
+- Relationship 是否需要独立存在。
+- 保留至：DOCUMENTMODEL_RELATIONSHIP_AUDIT_01。

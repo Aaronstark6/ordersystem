@@ -21,3 +21,8 @@
 - 路由不写业务。
 - Storage 不做业务判断。
 - State 不保存第二套事实。
+
+坐标标准（Coordinate Standard）：
+- DocumentModel Coordinate 是系统唯一标准坐标来源。
+- Workspace、ExportStrategy、未来 Pipeline 禁止直接依赖 cell、range_ref、source_cell、target_cell。
+- 上游原始坐标必须先转换为 Coordinate，再进入下游。

@@ -11,3 +11,11 @@
 下游：Workspace、Matching、Export Strategy。
 
 禁止：不负责识别，不负责导出，不负责流程。
+
+DocumentModel Builder：
+
+职责：将 TemplateAnalysisResult 转换为 DocumentModel。
+
+当前支持：FieldNode、TableNode、SectionNode。
+
+坐标规则：所有生成节点必须拥有 Coordinate，原始单元格或范围信息不得绕过 Coordinate 直接进入下游。
