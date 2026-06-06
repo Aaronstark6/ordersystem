@@ -20,12 +20,15 @@ Choice Logic
 
 Table Logic Enhancement
 
+Visual Logic Enhancement
+
 当前任务：
 
-STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01
+STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01
 
-当前仍未完成：
-- Visual Logic Enhancement。
+下一阶段：
 - DocumentModel Builder Expansion。
+
+当前仍需完成：
 - Relationship Audit。
 - Coordinate Audit。

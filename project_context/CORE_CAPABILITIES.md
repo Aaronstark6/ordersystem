@@ -40,7 +40,6 @@ Excel Template Core 修正：
 # Stage 2 Core Completion
 
 待完成能力：
-- 增强视觉逻辑（Enhanced Visual Logic）。
 
 图片逻辑（Image Logic）：
 
@@ -100,3 +99,16 @@ Excel Template Core 修正：
 - 表格数据自动填充。
 - 与 DocumentModel Builder 的完整接入。
 - 高级跨行跨列表格判断。
+
+视觉逻辑增强（Visual Logic Enhancement）：
+
+当前能力：
+- Coordinate。
+- CoordinateGroup。
+- VisualRegionCandidate。
+- LayoutRegionCandidate。
+- AnchorCandidate。
+
+唯一规则：
+- Coordinate 是唯一坐标标准。
+- 禁止建立第二套坐标体系。

@@ -59,3 +59,10 @@ app/core/table_logic：
 - header_detector.py：识别 TableHeaderCandidate。
 - merged_cell_detector.py：将合并区域转换为 MergedCellCandidate。
 - README.md：说明表格逻辑职责、当前能力和边界。
+
+app/core/visual_logic：
+- 视觉逻辑（Visual Logic）能力层。
+- visual_region_detector.py：定义 VisualRegionCandidate 和 LayoutRegionCandidate。
+- anchor_detector.py：定义 AnchorCandidate。
+- coordinate_model.py：复用 Coordinate 并定义 CoordinateGroup。
+- README.md：说明唯一坐标原则和禁止的第二套坐标类型。

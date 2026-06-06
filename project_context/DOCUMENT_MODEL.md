@@ -59,3 +59,12 @@ ChoiceNode：
 - ConditionNode。
 - ChoiceNode。
 - ImageNode。
+
+# 坐标待决问题更新
+
+当前仍需验证：
+- Coordinate 是否足以表达未来 PDF / Word。
+
+系统约束：
+- 禁止出现第二套坐标标准。
+- Visual Logic 必须继续复用 DocumentModel Coordinate。

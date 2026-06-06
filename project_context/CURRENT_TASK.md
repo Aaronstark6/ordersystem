@@ -2,15 +2,15 @@
 
 当前任务：
 
-STAGE2_04_TABLE_LOGIC_ENHANCEMENT_01
+STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01
 
-下一任务建议：
+下一任务：
 
-STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01 视觉逻辑增强（Visual Logic Enhancement）
+STAGE2_06_DOCUMENTMODEL_BUILDER_EXPANSION_01
 
 保留待决问题：
-1. Relationship 是否需要独立存在。
-2. Coordinate Standard 是否已完全收敛到 DocumentModel Coordinate。
+1. Relationship 是否需要保留。
+2. Coordinate 是否能覆盖 PDF / Word。
 
 # Stage 2 任务列表
 
@@ -34,10 +34,14 @@ STAGE2_05_VISUAL_LOGIC_ENHANCEMENT_01 视觉逻辑增强（Visual Logic Enhancem
 
 视觉逻辑增强（Visual Logic Enhancement）
 
-## STAGE2_06_RELATIONSHIP_AUDIT_01
+## STAGE2_06_DOCUMENTMODEL_BUILDER_EXPANSION_01
+
+文档模型构建器扩展（DocumentModel Builder Expansion）
+
+## STAGE2_07_RELATIONSHIP_AUDIT_01
 
 关系模型审计（Relationship Audit）
 
-## STAGE2_07_COORDINATE_AUDIT_01
+## STAGE2_08_COORDINATE_AUDIT_01
 
 坐标标准审计（Coordinate Audit）
