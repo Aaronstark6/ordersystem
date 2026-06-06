@@ -26,14 +26,17 @@ Field Logic Enhancement
 
 AI Parser Core
 
+Matching Core
+
 当前任务：
 
-STAGE2_07_AI_PARSER_CORE_01
+STAGE2_08_MATCHING_CORE_01
 
 下一目标：
-- Matching。
+- Export Executor Enhancement。
 
 当前仍需完成：
+- Export Executor Enhancement。
 - DocumentModel Builder Expansion。
 - Relationship Audit。
 - Coordinate Audit。

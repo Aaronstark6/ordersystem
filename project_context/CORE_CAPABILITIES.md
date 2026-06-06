@@ -141,3 +141,18 @@ Excel Template Core 修正：
 - API Key 管理。
 - 多模型适配。
 - 与 Matching 完整接入。
+
+匹配内核（Matching Core）：
+
+当前能力：
+- 候选填充值对象（CandidateFillObject）。
+- 候选填充字段（CandidateFillField）。
+- 字段匹配评分（score_field_match）。
+- OrderObject 到 DocumentModel 的字段匹配。
+
+当前未实现：
+- AI 语义匹配。
+- 多候选排序。
+- 人工映射配置。
+- 表格数据匹配。
+- 与 Workspace 的完整接入。

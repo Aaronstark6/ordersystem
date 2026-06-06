@@ -80,3 +80,10 @@ app/core/ai_parser：
 - order_parser.py：提供本地订单文本解析占位器。
 - prompt_builder.py：构建未来 AI 解析使用的提示词。
 - README.md：说明解析器内核能力和禁止边界。
+
+app/core/matching：
+- 匹配内核（Matching Core）能力层。
+- match_result.py：定义 CandidateFillObject 和 CandidateFillField。
+- confidence_scorer.py：提供简单字段匹配评分。
+- semantic_matcher.py：把 OrderObject 与 DocumentModel 字段进行第一版匹配。
+- README.md：说明匹配内核职责、当前能力和禁止边界。

@@ -2,11 +2,11 @@
 
 当前任务：
 
-STAGE2_07_AI_PARSER_CORE_01
+STAGE2_08_MATCHING_CORE_01
 
 下一任务建议：
 
-STAGE2_08_MATCHING_CORE_01 匹配能力（Matching Core）
+STAGE2_09_EXPORT_EXECUTOR_ENHANCEMENT_01 导出执行器增强（Export Executor Enhancement）
 
 保留待决问题：
 1. Relationship 是否需要保留。
@@ -46,14 +46,18 @@ STAGE2_08_MATCHING_CORE_01 匹配能力（Matching Core）
 
 匹配能力（Matching Core）
 
-## STAGE2_09_DOCUMENTMODEL_BUILDER_EXPANSION_01
+## STAGE2_09_EXPORT_EXECUTOR_ENHANCEMENT_01
+
+导出执行器增强（Export Executor Enhancement）
+
+## STAGE2_10_DOCUMENTMODEL_BUILDER_EXPANSION_01
 
 文档模型构建器扩展（DocumentModel Builder Expansion）
 
-## STAGE2_10_RELATIONSHIP_AUDIT_01
+## STAGE2_11_RELATIONSHIP_AUDIT_01
 
 关系模型审计（Relationship Audit）
 
-## STAGE2_11_COORDINATE_AUDIT_01
+## STAGE2_12_COORDINATE_AUDIT_01
 
 坐标标准审计（Coordinate Audit）
