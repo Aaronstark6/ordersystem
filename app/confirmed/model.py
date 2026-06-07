@@ -54,6 +54,10 @@ class ConfirmedChoice:
     confirmed: bool = True
     coordinate: Dict[str, Any] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    choice_mode: str = "value"
+    option_details: List[Dict[str, Any]] = field(default_factory=list)
+    selected_values: List[Any] = field(default_factory=list)
+    final_selected_values: List[Any] = field(default_factory=list)
 
 
 @dataclass

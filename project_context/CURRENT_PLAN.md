@@ -15,6 +15,7 @@ Stage3 当前步骤：
 5. Choice DocumentModel Upgrade。
 6. Choice Middle Layer Model Design。
 7. Choice Workspace Upgrade。
+8. Choice Confirmed Upgrade。
 
 后续：
 - Stage4 配置中心。

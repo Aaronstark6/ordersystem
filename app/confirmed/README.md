@@ -35,6 +35,15 @@ Builder 组织：
 - condition_builder.py 负责 ConfirmedCondition。
 - 未来新增对象类型时，应新增独立 builder 文件，不应继续堆入 builder.py。
 
+ConfirmedChoice：
+- ConfirmedChoice 保存人工确认后的最终选择事实。
+- 从 WorkspaceChoice 继承 `choice_mode`、`option_details` 和 `selected_values`。
+- `final_value` 保留用于旧 value choice。
+- `final_selected_values` 用于 checkbox_group、radio_group 和 multiselect。
+- 未提供用户覆盖时，`final_selected_values` 继承 WorkspaceChoice.selected_values。
+- 位置型选择收到 list 用户覆盖时，该列表成为 `final_selected_values`。
+- ConfirmedChoice 是 ExportStrategy 的选择事实来源，但本层不生成导出操作。
+
 禁止：
 不读取 Excel。
 不分析模板。

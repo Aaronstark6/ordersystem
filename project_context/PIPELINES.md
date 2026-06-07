@@ -130,7 +130,7 @@ ExportStrategy
 当前接入状态：
 - ChoiceCandidate → ChoiceNode 已支持 `choice_mode` 与 `option_details`。
 - ChoiceNode → WorkspaceChoice 已支持 `choice_mode`、`option_details` 与 `selected_values`。
-- WorkspaceChoice → ConfirmedChoice 仍是后续传播步骤。
+- WorkspaceChoice → ConfirmedChoice 已传播 `choice_mode`、`option_details`、`selected_values` 与 `final_selected_values`。
 - Export 仍未接入 Choice。
 
 Choice 中层链路：
@@ -154,7 +154,7 @@ ExportStrategy
 
 边界：
 - 当前内容是后续升级设计，不代表 `set_choice` 已实现。
-- 当前 ConfirmedChoice 代码尚未完成上述中层字段升级。
+- 当前 ConfirmedChoice 已完成中层字段升级，Export 仍是后续步骤。
 - Condition 不在本次 Choice Core 设计中处理。
 
 # Export Execute Pipeline

@@ -24,4 +24,18 @@ def validate_confirmed_order_object(confirmed_order: ConfirmedOrderObject) -> li
     if confirmed_order.total_object_count() == 0:
         errors.append("人工确认对象（ConfirmedOrderObject）没有可确认对象")
 
+    confirmed_choices = [
+        choice
+        for section in confirmed_order.sections
+        for choice in section.choices
+    ]
+    confirmed_choices.extend(confirmed_order.unsectioned_choices)
+
+    for choice in confirmed_choices:
+        if not isinstance(choice.final_selected_values, list):
+            errors.append(
+                "确认选择（ConfirmedChoice）final_selected_values 必须是 list: "
+                f"{choice.node_id}"
+            )
+
     return errors
