@@ -1,14 +1,13 @@
 # 当前任务
 
 当前任务：
-- `STAGE3_CHOICE_MIDDLE_LAYER_MODEL_DESIGN_01`
+- `STAGE3_CHOICE_WORKSPACE_UPGRADE_01`
 
 目标：
-- 设计 WorkspaceChoice / ConfirmedChoice 的中层模型。
-- 明确 value、selected_values 与 final_selected_values 的适用边界。
+- 将 ChoiceNode 新能力传播到 WorkspaceChoice。
+- 保留 value 旧链路，并增加位置型选择的工作区表达。
 
 边界：
-- 只输出中层模型设计结论。
+- 只升级 Workspace 层。
 - 不修改主链。
-- 不修改 WorkspaceChoice 或 ConfirmedChoice 代码。
-- 不实现 ExportOperation 或 Executor 行为。
+- 不修改 Core、DocumentModel、Confirmed、Export 或 Executor。

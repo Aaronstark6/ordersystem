@@ -47,6 +47,13 @@ class WorkspaceChoice:
     value: Any = ""
     coordinate: Dict[str, Any] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    choice_mode: str = "value"
+    option_details: List[Dict[str, Any]] = field(default_factory=list)
+    selected_values: List[Any] = field(default_factory=list)
+    editable: bool = True
+    required: bool = False
+    warnings: List[str] = field(default_factory=list)
+    errors: List[str] = field(default_factory=list)
 
 
 @dataclass

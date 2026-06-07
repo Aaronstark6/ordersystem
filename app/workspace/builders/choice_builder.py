@@ -20,4 +20,14 @@ def build_workspace_choice(choice_node: ChoiceNode) -> WorkspaceChoice:
         value=choice_node.default_option or "",
         coordinate=coordinate,
         metadata=dict(choice_node.metadata),
+        choice_mode=choice_node.choice_mode or "value",
+        option_details=[
+            dict(option_detail)
+            for option_detail in choice_node.option_details
+        ],
+        selected_values=(
+            [choice_node.default_option]
+            if choice_node.default_option is not None
+            else []
+        ),
     )

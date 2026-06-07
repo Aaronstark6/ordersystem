@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_MIDDLE_LAYER_MODEL_DESIGN_01`
+- `STAGE3_CHOICE_WORKSPACE_UPGRADE_01`
 
 当前状态：
-- 正在设计 Choice 的中层表达。
-- 正在明确 WorkspaceChoice 与 ConfirmedChoice 的职责、字段边界和升级顺序。
-- 当前只修改设计文档，不升级中层代码。
+- 正在将 ChoiceNode 新能力传播到 WorkspaceChoice。
+- WorkspaceChoice 开始承载 choice_mode、option_details 和 selected_values。
+- 本任务不修改 Confirmed、Export 或 Executor。

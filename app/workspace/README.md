@@ -34,6 +34,14 @@ Builder 组织：
 - condition_builder.py 负责 WorkspaceCondition。
 - 未来新增 Signature、Attachment、Barcode 等对象时，应新增独立 builder 文件，不应继续堆入 builder.py。
 
+WorkspaceChoice：
+- WorkspaceChoice 是用户确认前的选择表达。
+- 从 ChoiceNode 继承 `choice_mode`、`option_details`、`options`、`allow_multiple` 和 `default_option`。
+- 新增工作区状态 `selected_values`、`editable`、`required`、`warnings` 和 `errors`。
+- `value` 保留用于旧 value choice。
+- `selected_values` 用于 checkbox_group、radio_group 和 multiselect。
+- 最终确认结果属于 ConfirmedChoice，不属于 WorkspaceChoice。
+
 禁止：
 不读取 Excel。
 不分析模板。
