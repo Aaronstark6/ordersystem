@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
+from app.document_model.coordinates import Coordinate
+
 
 @dataclass
 class ChoiceOption:
@@ -9,6 +11,7 @@ class ChoiceOption:
     value: Any
     selected: bool = False
     metadata: Dict[str, Any] = field(default_factory=dict)
+    coordinate: Optional[Coordinate] = None
 
 
 @dataclass
@@ -29,6 +32,7 @@ class ChoiceCandidate:
     allow_multiple: bool = False
     default_option: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
+    choice_mode: str = "value"
 
 
 def build_choice_option(
@@ -37,6 +41,7 @@ def build_choice_option(
     value: Any,
     selected: bool = False,
     metadata: Dict[str, Any] | None = None,
+    coordinate: Optional[Coordinate] = None,
 ) -> ChoiceOption:
     return ChoiceOption(
         option_key=option_key,
@@ -44,6 +49,7 @@ def build_choice_option(
         value=value,
         selected=selected,
         metadata=metadata or {},
+        coordinate=coordinate,
     )
 
 
@@ -54,6 +60,7 @@ def build_choice_candidate(
     allow_multiple: bool = False,
     default_option: Optional[str] = None,
     metadata: Dict[str, Any] | None = None,
+    choice_mode: str = "value",
 ) -> ChoiceCandidate:
     return ChoiceCandidate(
         choice_key=choice_key,
@@ -62,6 +69,7 @@ def build_choice_candidate(
         allow_multiple=allow_multiple,
         default_option=default_option,
         metadata=metadata or {},
+        choice_mode=choice_mode,
     )
 
 

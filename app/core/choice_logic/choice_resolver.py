@@ -35,6 +35,7 @@ def resolve_choice(
                 value=option.value,
                 selected=option.value in selected_values,
                 metadata=option.metadata,
+                coordinate=option.coordinate,
             )
         )
 

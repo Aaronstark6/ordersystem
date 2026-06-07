@@ -149,14 +149,16 @@
 - `options`
 - `allow_multiple`
 - `default_option`
+- `ChoiceCandidate.choice_mode`
+- `ChoiceOption.coordinate`
 - 校验单选数量和非法选项值。
 - 生成带选中状态的选择结果。
 
 当前限制（Current Limitations）：
-- 不支持 option coordinate。
-- 不支持 checkbox choice。
-- 不支持 radio choice。
-- 不支持位置型选择。
+- 已开始契约升级，但尚不自动识别 checkbox、radio 或 dropdown。
+- choice_mode 与 option coordinate 尚未传播到 DocumentModel。
+- 尚未传播到 Workspace、Confirmed 和 Export。
+- 尚未执行位置型选择导出。
 
 成熟度（Maturity）：
 - `Upgrade Candidate`
@@ -175,14 +177,14 @@
 - `allow_multiple`。
 - `default_option`。
 - 简单值选择。
+- `ChoiceCandidate` 已具备 `choice_mode` 承载能力。
+- `ChoiceOption` 已具备 option coordinate 承载能力。
 
 当前无法支持：
-- option coordinate。
-- checkbox choice。
-- radio choice。
-- dropdown choice。
-- multiselect position choice。
-- 选项到模板坐标的映射。
+- checkbox、radio、dropdown 的自动识别。
+- multiselect position choice 的自动识别。
+- choice_mode 与 option coordinate 的完整下游传播。
+- 选项到导出目标的完整映射与执行。
 
 真实业务类型：
 - Value Choice：选择后写入一个普通值。
