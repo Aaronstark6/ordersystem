@@ -45,6 +45,8 @@ app/export：
 - operations/table_operation.py：ConfirmedTable 转换为 write_table。
 - operations/image_operation.py：ConfirmedImage 转换为 insert_image。
 - operations/README.md：说明操作构建器职责、扩展位和禁止边界。
+- policies/：未来用于导出策略规则，不在当前任务创建。
+- policies/condition_policy.py：未来根据 ConfirmedCondition 影响导出动作生成。
 - validators.py：校验 ExportStrategy。
 - serializer.py：将 ExportStrategy 转换为 dict。
 - README.md：说明导出策略层职责和边界。

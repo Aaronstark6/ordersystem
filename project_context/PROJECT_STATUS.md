@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_EXECUTOR_UPGRADE_01`
+- `STAGE3_CONDITION_POLICY_DESIGN_01`
 
 当前状态：
-- 正在为 Excel Executor 增加第一版 set_choice 执行能力。
-- Choice 主链将打通至 Excel 坐标型勾选写入。
-- 本任务不修改 Word / PDF Executor。
+- 正在收敛 Condition V1 与 ExportPolicy 的职责边界。
+- Condition 定位为影响 ExportStrategy 的 policy，不直接生成 ExportOperation。
+- 当前只修改设计文档，不创建目录或代码。

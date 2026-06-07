@@ -122,7 +122,7 @@
 ## Condition Core
 
 职责（Responsibility）：
-- 表达基础条件候选、条件规则并计算条件结果。
+- 表达条件规则、业务规则和联动规则，并计算基础条件结果。
 
 当前支持（Current Capabilities）：
 - 构造 `ConditionCandidate`。
@@ -130,15 +130,39 @@
 - `evaluate_condition` 支持 `equals` 和 `not_equals`。
 
 当前限制（Current Limitations）：
+- `is_empty`、`not_empty` 和 `contains` 尚未实现。
 - 不支持 `AND`、`OR`、嵌套条件或复杂表达式。
 - 不负责自动发现条件关系。
 - 不负责流程编排或页面联动。
+- Condition 尚未接入 ExportPolicy。
 
 成熟度（Maturity）：
-- `Reviewing`
+- `Upgrade Candidate`
 
 升级方向（Upgrade Direction）：
-- 根据真实条件模板评估现有操作符和条件组合能力是否足够。
+- 完成 Condition V1 常规操作符，并建立 ConditionPolicy 对 ExportStrategy 的影响链。
+
+Condition V1 定位：
+- Condition 表达条件规则、业务规则和联动规则。
+- Condition 不直接生成 ExportOperation。
+- Condition 通过 ExportPolicy 影响 ExportStrategy 中导出动作的生成。
+- Condition V1 范围只包含 `equals`、`not_equals`、`is_empty`、`not_empty` 和 `contains`。
+- Condition V1 不包含 `AND`、`OR`、嵌套条件或复杂表达式。
+
+Condition V1 控制对象：
+- Field。
+- Choice。
+- Table。
+- Image。
+- Section。
+
+Condition V1 控制行为：
+- `show`。
+- `hide`。
+- `enable`。
+- `disable`。
+- `export`。
+- `skip_export`。
 
 ## Choice Core
 

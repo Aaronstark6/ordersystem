@@ -18,6 +18,7 @@ Stage3 当前步骤：
 8. Choice Confirmed Upgrade。
 9. Choice Export Strategy Upgrade。
 10. Choice Executor Upgrade。
+11. Condition Policy Design。
 
 后续：
 - Stage4 配置中心。

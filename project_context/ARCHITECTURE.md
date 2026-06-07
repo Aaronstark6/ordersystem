@@ -61,6 +61,10 @@
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
 - ExportStrategy builder.py 只负责总调度。
 - ExportOperation 具体构建逻辑进入 app/export/operations。
+- ExportStrategy 内部未来分为 `operations/` 与 `policies/`。
+- `operations/` 负责生成导出动作。
+- `policies/` 负责根据规则影响导出动作的生成。
+- Condition 属于 policy，不属于 operation。
 - 禁止把具体操作构建继续堆入巨型 Export builder.py。
 - ExportStrategy 当前支持字段、表格和图片导出计划。
 - 字段导出计划来自 ConfirmedField。

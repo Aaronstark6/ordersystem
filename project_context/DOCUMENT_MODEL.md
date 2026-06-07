@@ -80,6 +80,12 @@ ConditionNode：
 - 条件来源可以是产品类型等字段。
 - 被控制对象可以是软糖区域、胶囊区域、图片区域等节点。
 - 当前已通过 TemplateAnalysisResult.conditions 接入 DocumentModel Builder。
+- ConditionNode 保存模板规则事实。
+- `expression` 保存条件表达。
+- `controls_node_ids` 保存被规则控制的节点标识。
+- ConditionNode 不保存当前生效状态。
+- ConditionNode 不保存用户确认结果。
+- ConditionNode 不保存导出结果。
 
 ChoiceNode：
 - ChoiceNode 表达单选、多选、互斥选项和默认选项。

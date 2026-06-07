@@ -158,6 +158,33 @@ ExportStrategy
 - Word / PDF Executor 尚未实现 `set_choice`。
 - Condition 不在本次 Choice Core 设计中处理。
 
+# Condition Policy 链路
+
+ConditionCandidate
+↓
+ConditionNode
+↓
+WorkspaceCondition
+↓
+ConfirmedCondition
+↓
+ExportPolicy
+↓
+ExportStrategy
+
+职责转换：
+- ConditionCandidate → ConditionNode：将条件候选转换为模板规则事实。
+- ConditionNode → WorkspaceCondition：将模板规则转换为可确认的中层表达。
+- WorkspaceCondition → ConfirmedCondition：形成确认后的规则事实。
+- ConfirmedCondition → ExportPolicy：计算规则对导出计划的影响。
+- ExportPolicy → ExportStrategy：决定相关导出动作应生成、保留或跳过。
+
+边界：
+- Condition 不直接生成 ExportOperation。
+- Condition 不进入 `app/export/operations/`。
+- ConditionPolicy 未来位于 `app/export/policies/`。
+- 当前只完成 Policy 设计，尚未创建目录或实现代码。
+
 # Export Execute Pipeline
 
 输入：
