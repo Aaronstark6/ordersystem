@@ -26,6 +26,7 @@ def validate_export_strategy(strategy: ExportStrategy) -> list[str]:
             "write_value",
             "write_table",
             "insert_image",
+            "set_choice",
         }:
             errors.append(
                 "导出操作（ExportOperation）不支持 operation_type: "
@@ -53,6 +54,32 @@ def validate_export_strategy(strategy: ExportStrategy) -> list[str]:
                 errors.append(
                     f"insert_image 导出操作缺少 value: {operation.field_key}"
                 )
+
+        if operation.operation_type == "set_choice":
+            if not operation.field_key:
+                errors.append("set_choice 导出操作缺少 field_key")
+            if not operation.value:
+                errors.append(
+                    f"set_choice 导出操作缺少 value: {operation.field_key}"
+                )
+            elif not isinstance(operation.value, dict):
+                errors.append(
+                    f"set_choice 导出操作 value 必须是 dict: {operation.field_key}"
+                )
+            else:
+                if not operation.value.get("choice_mode"):
+                    errors.append(
+                        "set_choice 导出操作缺少 value.choice_mode: "
+                        f"{operation.field_key}"
+                    )
+                if not isinstance(
+                    operation.value.get("final_selected_values"),
+                    list,
+                ):
+                    errors.append(
+                        "set_choice 导出操作 value.final_selected_values "
+                        f"必须是 list: {operation.field_key}"
+                    )
 
         if not operation.target:
             errors.append(

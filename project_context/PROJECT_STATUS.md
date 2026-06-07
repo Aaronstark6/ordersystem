@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_CONFIRMED_UPGRADE_01`
+- `STAGE3_CHOICE_EXPORT_STRATEGY_UPGRADE_01`
 
 当前状态：
-- 正在将 WorkspaceChoice 新能力传播到 ConfirmedChoice。
-- ConfirmedChoice 开始承载 final_selected_values 作为位置型选择的最终事实。
-- 本任务不修改 Export 或 Executor。
+- 正在将 ConfirmedChoice 接入 ExportStrategy。
+- Choice 使用独立 `ExportOperation(set_choice)` 生成导出计划。
+- 本任务不修改 Executor 或实现真实勾选。

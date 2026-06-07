@@ -131,7 +131,7 @@ ExportStrategy
 - ChoiceCandidate → ChoiceNode 已支持 `choice_mode` 与 `option_details`。
 - ChoiceNode → WorkspaceChoice 已支持 `choice_mode`、`option_details` 与 `selected_values`。
 - WorkspaceChoice → ConfirmedChoice 已传播 `choice_mode`、`option_details`、`selected_values` 与 `final_selected_values`。
-- Export 仍未接入 Choice。
+- ConfirmedChoice → ExportOperation(set_choice) 已接入。
 
 Choice 中层链路：
 
@@ -146,15 +146,14 @@ ExportStrategy
 职责转换：
 - ChoiceNode → WorkspaceChoice：将模板事实转换为可确认结构。
 - WorkspaceChoice → ConfirmedChoice：将可确认结构转换为人工确认后的最终事实。
-- ConfirmedChoice → ExportStrategy：后续根据 `choice_mode` 生成 `write_value` 或 `set_choice` 计划。
+- ConfirmedChoice → ExportStrategy：生成独立 `set_choice` 计划，并保留 `choice_mode` 供 Executor 后续解释。
 
 不同 `choice_mode` 的导出策略方向：
-- `value`：生成 `write_value` 或等价值写入计划。
-- `checkbox`、`radio`、`multiselect`：生成 `set_choice` 计划。
+- Choice 当前统一生成 `set_choice` 导出计划。
+- `set_choice.value` 同时承载 `final_value` 与 `final_selected_values`，供后续 Executor 按 `choice_mode` 解释。
 
 边界：
-- 当前内容是后续升级设计，不代表 `set_choice` 已实现。
-- 当前 ConfirmedChoice 已完成中层字段升级，Export 仍是后续步骤。
+- `set_choice` 导出计划已实现，但 Executor 真实勾选尚未实现。
 - Condition 不在本次 Choice Core 设计中处理。
 
 # Export Execute Pipeline

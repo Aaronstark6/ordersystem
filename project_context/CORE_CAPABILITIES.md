@@ -155,12 +155,14 @@
 - DocumentModel ChoiceNode 已承载 `choice_mode` 与 `option_details`。
 - WorkspaceChoice 已承载 `choice_mode`、`option_details` 与 `selected_values`。
 - ConfirmedChoice 已承载 `choice_mode`、`option_details`、`selected_values` 与 `final_selected_values`。
+- Choice 已传播到 ExportStrategy。
+- `set_choice` 已成为选择类导出计划操作。
 - 校验单选数量和非法选项值。
 - 生成带选中状态的选择结果。
 
 当前限制（Current Limitations）：
 - 已开始契约升级，但尚不自动识别 checkbox、radio 或 dropdown。
-- choice_mode 与位置型选择事实尚未传播到 Export。
+- Executor 尚未支持真实 checkbox、radio 或 multiselect 写入。
 - 尚未执行位置型选择导出。
 
 成熟度（Maturity）：
@@ -185,11 +187,12 @@
 - `ChoiceNode` 已具备 `choice_mode` 与 `option_details` 承载能力。
 - `WorkspaceChoice` 已具备 `choice_mode`、`option_details` 与 `selected_values` 承载能力。
 - `ConfirmedChoice` 已具备 `final_selected_values` 承载能力。
+- ConfirmedChoice 已可生成 `ExportOperation(set_choice)`。
 
 当前无法支持：
 - checkbox、radio、dropdown 的自动识别。
 - multiselect position choice 的自动识别。
-- choice_mode 与最终选择事实向 Export 的传播。
+- Executor 对位置型选择的真实写入。
 - 选项到导出目标的完整映射与执行。
 
 真实业务类型：
@@ -219,7 +222,7 @@
 3. 扩展 `ChoiceNode`。
 4. 同步 `WorkspaceChoice`。
 5. 同步 `ConfirmedChoice`。
-6. 扩展 ExportStrategy，支持 `set_choice`。
+6. 已扩展 ExportStrategy，支持 `set_choice`。
 7. Executor 的真实 checkbox / radio 写入单独处理。
 
 ### Choice Middle Layer Model Design

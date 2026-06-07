@@ -16,6 +16,7 @@ Stage3 当前步骤：
 6. Choice Middle Layer Model Design。
 7. Choice Workspace Upgrade。
 8. Choice Confirmed Upgrade。
+9. Choice Export Strategy Upgrade。
 
 后续：
 - Stage4 配置中心。

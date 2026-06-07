@@ -1,13 +1,13 @@
 # 当前任务
 
 当前任务：
-- `STAGE3_CHOICE_CONFIRMED_UPGRADE_01`
+- `STAGE3_CHOICE_EXPORT_STRATEGY_UPGRADE_01`
 
 目标：
-- 将 WorkspaceChoice 新能力传播到 ConfirmedChoice。
-- 保留 final_value 旧链路，并增加 final_selected_values 最终事实。
+- ConfirmedChoice → ExportOperation(set_choice)。
+- 生成独立选择类导出计划，不执行真实勾选。
 
 边界：
-- 只升级 Confirmed 层。
+- 只升级 ExportStrategy 层。
 - 不修改主链。
-- 不修改 Core、DocumentModel、Workspace、Export 或 Executor。
+- 不修改 Core、DocumentModel、Workspace、Confirmed 或 Executor。
