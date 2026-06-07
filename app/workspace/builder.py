@@ -1,15 +1,31 @@
 from dataclasses import asdict
+from typing import Any
 from uuid import uuid4
 
 from app.document_model.model import DocumentModel
-from app.document_model.nodes import FieldNode, SectionNode
-from app.workspace.model import WorkspaceField, WorkspaceSection, WorkspaceSnapshot
+from app.document_model.nodes import (
+    ChoiceNode,
+    ConditionNode,
+    FieldNode,
+    ImageNode,
+    SectionNode,
+    TableNode,
+)
+from app.workspace.model import (
+    WorkspaceChoice,
+    WorkspaceCondition,
+    WorkspaceField,
+    WorkspaceImage,
+    WorkspaceSection,
+    WorkspaceSnapshot,
+    WorkspaceTable,
+)
 
 
-def _coordinate_to_dict(field_node: FieldNode) -> dict:
-    if field_node.coordinate is None:
+def _coordinate_to_dict(node: Any) -> dict:
+    if node.coordinate is None:
         return {}
-    return asdict(field_node.coordinate)
+    return asdict(node.coordinate)
 
 
 def _build_workspace_field(field_node: FieldNode) -> WorkspaceField:
@@ -28,6 +44,57 @@ def _build_workspace_field(field_node: FieldNode) -> WorkspaceField:
     )
 
 
+def _build_workspace_table(table_node: TableNode) -> WorkspaceTable:
+    return WorkspaceTable(
+        table_key=table_node.table_key,
+        label=table_node.label,
+        node_id=table_node.node_id,
+        headers=list(table_node.headers),
+        row_count=table_node.row_count,
+        column_count=table_node.column_count,
+        coordinate=_coordinate_to_dict(table_node),
+        metadata=dict(table_node.metadata),
+    )
+
+
+def _build_workspace_image(image_node: ImageNode) -> WorkspaceImage:
+    return WorkspaceImage(
+        image_key=image_node.image_key,
+        label=image_node.label,
+        node_id=image_node.node_id,
+        image_role=image_node.image_role,
+        coordinate=_coordinate_to_dict(image_node),
+        metadata=dict(image_node.metadata),
+    )
+
+
+def _build_workspace_choice(choice_node: ChoiceNode) -> WorkspaceChoice:
+    return WorkspaceChoice(
+        choice_key=choice_node.choice_key,
+        label=choice_node.label,
+        node_id=choice_node.node_id,
+        options=list(choice_node.options),
+        allow_multiple=choice_node.allow_multiple,
+        default_option=choice_node.default_option,
+        value=choice_node.default_option or "",
+        coordinate=_coordinate_to_dict(choice_node),
+        metadata=dict(choice_node.metadata),
+    )
+
+
+def _build_workspace_condition(
+    condition_node: ConditionNode,
+) -> WorkspaceCondition:
+    return WorkspaceCondition(
+        condition_key=condition_node.condition_key,
+        label=condition_node.label,
+        node_id=condition_node.node_id,
+        expression=condition_node.expression,
+        controls_node_ids=list(condition_node.controls_node_ids),
+        metadata=dict(condition_node.metadata),
+    )
+
+
 def _build_workspace_section(
     section_node: SectionNode,
     document_model: DocumentModel,
@@ -43,9 +110,23 @@ def _build_workspace_section(
 
     for child_node_id in section_node.child_node_ids:
         field_node = document_model.fields.get(child_node_id)
-        if field_node is None:
+        if field_node is not None:
+            section.fields.append(_build_workspace_field(field_node))
             continue
-        section.fields.append(_build_workspace_field(field_node))
+
+        table_node = document_model.tables.get(child_node_id)
+        if table_node is not None:
+            section.tables.append(_build_workspace_table(table_node))
+            continue
+
+        image_node = document_model.images.get(child_node_id)
+        if image_node is not None:
+            section.images.append(_build_workspace_image(image_node))
+            continue
+
+        choice_node = document_model.choices.get(child_node_id)
+        if choice_node is not None:
+            section.choices.append(_build_workspace_choice(choice_node))
 
     return section
 
@@ -58,11 +139,20 @@ def build_workspace_snapshot(document_model: DocumentModel) -> WorkspaceSnapshot
     )
 
     assigned_field_ids: set[str] = set()
+    assigned_table_ids: set[str] = set()
+    assigned_image_ids: set[str] = set()
+    assigned_choice_ids: set[str] = set()
 
     for section_node in document_model.sections.values():
         section = _build_workspace_section(section_node, document_model)
         for field in section.fields:
             assigned_field_ids.add(field.node_id)
+        for table in section.tables:
+            assigned_table_ids.add(table.node_id)
+        for image in section.images:
+            assigned_image_ids.add(image.node_id)
+        for choice in section.choices:
+            assigned_choice_ids.add(choice.node_id)
         workspace.sections.append(section)
 
     for field_node in document_model.fields.values():
@@ -70,7 +160,37 @@ def build_workspace_snapshot(document_model: DocumentModel) -> WorkspaceSnapshot
             continue
         workspace.unsectioned_fields.append(_build_workspace_field(field_node))
 
-    if workspace.field_count() == 0:
-        workspace.warnings.append("工作区没有生成任何字段")
+    for table_node in document_model.tables.values():
+        if table_node.node_id in assigned_table_ids:
+            continue
+        workspace.unsectioned_tables.append(_build_workspace_table(table_node))
+
+    for image_node in document_model.images.values():
+        if image_node.node_id in assigned_image_ids:
+            continue
+        workspace.unsectioned_images.append(_build_workspace_image(image_node))
+
+    for choice_node in document_model.choices.values():
+        if choice_node.node_id in assigned_choice_ids:
+            continue
+        workspace.unsectioned_choices.append(_build_workspace_choice(choice_node))
+
+    for condition_node in document_model.conditions.values():
+        workspace.conditions.append(
+            _build_workspace_condition(condition_node)
+        )
+
+    content_count = (
+        workspace.field_count()
+        + sum(len(section.tables) for section in workspace.sections)
+        + sum(len(section.images) for section in workspace.sections)
+        + sum(len(section.choices) for section in workspace.sections)
+        + len(workspace.unsectioned_tables)
+        + len(workspace.unsectioned_images)
+        + len(workspace.unsectioned_choices)
+        + len(workspace.conditions)
+    )
+    if content_count == 0:
+        workspace.warnings.append("工作区没有生成任何可确认内容")
 
     return workspace

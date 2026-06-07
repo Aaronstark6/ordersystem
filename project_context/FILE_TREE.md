@@ -13,10 +13,10 @@
 - project_context：项目上下文和架构文档。
 
 app/workspace：
-- 工作区层。
-- model.py：定义 WorkspaceSnapshot、WorkspaceSection、WorkspaceField。
+- 中层工作区表达层，不是页面。
+- model.py：定义 WorkspaceSnapshot、WorkspaceSection、WorkspaceField、WorkspaceTable、WorkspaceImage、WorkspaceChoice、WorkspaceCondition。
 - builder.py：把 DocumentModel 转换为 WorkspaceSnapshot。
-- validators.py：校验 WorkspaceSnapshot。
+- validators.py：校验 WorkspaceSnapshot 标识和可确认内容。
 - serializer.py：将 WorkspaceSnapshot 转换为 dict。
 
 app/confirmed：

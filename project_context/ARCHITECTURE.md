@@ -31,7 +31,7 @@
 
 工作区（Workspace）层：
 - Workspace 负责把 DocumentModel 转换成人可以查看、编辑、确认的数据结构。
-- Workspace 不是页面，页面只展示 Workspace。
+- Workspace 是中层表达层，不是页面，页面只展示 Workspace。
 - Workspace 不负责导出。
 - Workspace 不负责状态推进。
 - Workspace 不负责模板分析。
@@ -84,20 +84,20 @@ Excel Executor
 
 ## 阶段三（Stage 3）
 
-文档模型冻结（DocumentModel Freeze）
+中层整合（Middle Layer Integration / Workspace Integration）
 
 ## 阶段四（Stage 4）
 
-工作区（Workspace）
+配置页（Config）
 
 ## 阶段五（Stage 5）
 
-配置页（Config）
+外层入口（Routes / UI）
 
 ## 阶段六（Stage 6）
 
 订单解析（AI Parser）与匹配（Matching）
 
-## 阶段七（Stage 7）
+## 后续
 
 PDF / Word

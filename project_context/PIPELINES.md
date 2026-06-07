@@ -39,6 +39,28 @@ Executor
 - Export Strategy Pipeline。
 - Export Execute Pipeline。
 
+# Workspace Pipeline
+
+输入：
+- DocumentModel。
+
+步骤：
+- 保留 SectionNode 的区域组织。
+- 将 FieldNode 转换为 WorkspaceField。
+- 将 TableNode 转换为 WorkspaceTable。
+- 将 ImageNode 转换为 WorkspaceImage。
+- 将 ChoiceNode 转换为 WorkspaceChoice。
+- 将 ConditionNode 转换为 WorkspaceCondition。
+
+输出：
+- WorkspaceSnapshot。
+- 承载字段、表格、图片、选择和条件表达。
+
+边界：
+- Workspace Pipeline 只组织 DocumentModel 到 WorkspaceSnapshot 的中层表达。
+- 不组织页面。
+- 不执行导出。
+
 # Export Strategy Pipeline
 
 输入：
