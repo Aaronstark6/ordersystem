@@ -12,6 +12,19 @@
 - app/ui：界面层。
 - project_context：项目上下文和架构文档。
 
+运行文件目录：
+- `data/`：业务运行文件的唯一根目录；按数据生命周期划分子目录。
+- `data/templates/`：长期模板，可保留，不属于常规清理范围。
+- `data/uploads/`：用户上传文件，可在确认无活动任务依赖后清理。
+- `data/runtime/`：运行状态和中间结果，可清理。
+- `data/cache/`：可重建缓存，可清理。
+- `data/exports/`：导出结果，可按保留策略清理或归档。
+- `data/samples/`：测试样本，可长期保留，不属于常规清理范围。
+- `audit_output/`：审计输出的唯一目录，可定期清理。
+- `app/` 与 `project_context/` 不属于运行文件目录，禁止写入缓存、日志、临时文件或导出结果。
+- 清理前必须核验解析后的绝对路径、目录用途和活动任务占用情况。
+- 本目录规范描述授权边界，不要求预先创建尚不存在的 `data/` 子目录。
+
 app/workspace：
 - 中层工作区表达层，不是页面。
 - model.py：定义 WorkspaceSnapshot、WorkspaceSection、WorkspaceField、WorkspaceTable、WorkspaceImage、WorkspaceChoice、WorkspaceCondition。

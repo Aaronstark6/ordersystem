@@ -20,6 +20,7 @@ Stage3 当前步骤：
 10. Choice Executor Upgrade。
 11. Condition Policy Design。
 12. Condition Policy Implementation。
+13. Storage Policy Design。
 
 后续：
 - Stage4 配置中心。

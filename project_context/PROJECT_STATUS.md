@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CONDITION_POLICY_IMPLEMENTATION_01`
+- `STAGE3_STORAGE_POLICY_DESIGN_01`
 
 当前状态：
-- 正在实现 ConditionPolicy V1。
-- ConfirmedCondition 可在 operation 生成前通过 export/skip_export 影响 ExportStrategy。
-- Condition 本身仍不生成 ExportOperation，Executor 保持不变。
+- 正在固化 Storage / Runtime Boundary。
+- 明确业务运行文件只能进入 `data/`，审计输出只能进入 `audit_output/`。
+- 本任务只同步文档，不创建目录，不修改代码或 `.gitignore`。

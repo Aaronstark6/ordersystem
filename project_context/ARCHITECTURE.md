@@ -22,6 +22,16 @@
 - Storage 不做业务判断。
 - State 不保存第二套事实。
 
+Storage / Runtime Boundary：
+- 系统运行产生的持久化文件只能写入 `data/` 或 `audit_output/`。
+- `app/` 只存放代码，禁止写入运行文件、缓存、导出结果和日志。
+- `project_context/` 只存放项目文档，禁止写入运行文件、缓存和导出结果。
+- `data/` 承载模板、上传、运行状态、缓存、导出结果和测试样本。
+- `audit_output/` 只承载审计输出，不承载业务运行数据。
+- Storage 只负责授权目录内的读写，不做业务判断。
+- 任何 `open(..., "w")`、`save`、`export`、`mkdir` 或缓存写入逻辑，在写入前必须确认解析后的目标路径属于授权目录。
+- 未确认写入归属时不得落盘。
+
 坐标标准（Coordinate Standard）：
 - Coordinate 是系统唯一坐标模型和标准坐标来源。
 - 当前 Coordinate 支持 Excel / PDF / Word 三类表达。
