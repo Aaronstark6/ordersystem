@@ -6,7 +6,10 @@
 
 当前：
 - Stage3 中层整合。
-- 当前小步：Image Export Integration。
+
+Stage3 当前步骤：
+1. Architecture Rules Hardening。
+2. Core Capability Review。
 
 后续：
 - Stage4 配置中心。

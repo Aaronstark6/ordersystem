@@ -1,15 +1,15 @@
 # 当前任务
 
 当前任务：
-- STAGE3_IMAGE_EXPORT_INTEGRATION_01。
+- `STAGE3_CORE_CAPABILITY_REVIEW_01`
 
 目标：
-- 补齐 ConfirmedImage → ExportOperation(insert_image)。
-- Section 与未分区图片都进入 ExportStrategy。
-- 保持 Field / Table 现有导出计划不变。
-- 本任务不处理 Choice / Condition。
+- 建立核心能力地图。
+- 确认各 Core 的职责、当前能力、限制和升级方向。
+- 按真实代码状态确认各 Core 的成熟度。
 
 边界：
-- insert_image 只表示导出计划。
-- 不读取图片文件，不执行真实图片写入。
-- 不修改 Core、DocumentModel、Workspace、Confirmed、Routes、UI 或 Executor。
+- 只记录真实能力状态。
+- 不修改代码或主链。
+- 不引入新的 Core 名称。
+- 不提前决定具体升级方案。

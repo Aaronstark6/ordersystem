@@ -1,208 +1,237 @@
-当前已建立：
-- Excel Template Core。
+# Core Capability Map
 
-已具备：
-- 读取 Excel 工作表。
-- 提取非空或有样式单元格。
-- 识别合并单元格信息。
-- 读取行高列宽。
-- 识别字段标签候选。
-- 识别基础表格候选。
-- 生成基础视觉区域。
-- 输出 TemplateAnalysisResult。
+本文件记录当前真实代码已经具备的 Core 能力、限制与成熟度。
 
-当前未实现：
-- PDF 深度解析。
-- Word 深度解析。
-- AI 订单解析。
-- 匹配能力。
-- 条件逻辑。
-- 选择逻辑。
-- 导出执行。
+成熟度定义：
+- `Stable`：能力边界已经稳定。
+- `Reviewing`：已有可用能力，但已发现限制，正在评估。
+- `Upgrade Candidate`：已有明确能力缺口，需要后续升级。
 
-Core 禁止：
-- 不写 Pipeline。
-- 不写 Route。
-- 不写 UI。
-- 不保存状态。
-- 不直接操作 Storage。
+## Template Reader Core
 
-Excel Template Core 修正：
-合并单元格识别已从字符串匹配改为真实坐标范围判断。
-避免 A1 与 A10 等坐标误判问题。
+职责（Responsibility）：
+- 识别模板文件类型并读取模板基础信息。
 
-导出执行能力（Executor Capability）：
-- 当前已建立 Excel 执行器（Excel Executor）。
-- 支持根据 ExportStrategy 中的 ExportOperation 把值写回 Excel 模板。
-- 当前不支持 PDF / Word。
+当前支持（Current Capabilities）：
+- 真实读取 Excel 工作表、非空或有样式单元格、合并区域、行高和列宽。
+- 使用真实行列范围判断 Excel 合并单元格。
+- 识别 `.xlsx`、`.xlsm`、`.pdf`、`.docx` 和 `.doc`。
+- 通过统一读取入口分发到 Excel、PDF 或 Word Reader。
 
-导出执行增强（Executor Enhancement）：
+当前限制（Current Limitations）：
+- PDF Reader 只校验文件并返回基础文件信息，不解析内容。
+- Word Reader 只校验文件并返回基础文件信息，不解析内容。
+- 尚未形成跨 Excel、PDF、Word 一致的深度模板读取结果。
 
-当前能力：
-- Excel 执行器（Excel Executor）。
-- write_value。
-- write_table。
-- insert_image 占位校验。
-- ExcelExportResult。
-- 操作结果统计。
+成熟度（Maturity）：
+- `Reviewing`
 
-当前未实现：
-- Excel 真正图片插入。
+升级方向（Upgrade Direction）：
+- 评估 PDF、Word 内容读取能力及跨格式读取结果的一致性。
 
-PDF / Word 执行器（PDF / Word Executor）：
+## Field Core
 
-当前能力：
-- Word Executor 支持 docx placeholder 替换。
-- PDF Executor 支持基础执行入口和结果记录。
-- 通用 ExportExecutionResult。
-- 通用 ExportOperationResult。
+职责（Responsibility）：
+- 识别字段标签候选，标准化字段名称，并提供基础字段匹配。
 
-当前未实现：
-- PDF 真实写入。
-- Word 复杂表格写入。
-- Word bookmark 真实定位。
-- 图片真实插入 PDF / Word。
+当前支持（Current Capabilities）：
+- 基于单元格文本、关键词和冒号规则识别字段标签候选。
+- 构造 `FieldCandidate`。
+- 对有限的常见中文字段执行标准 key 映射。
+- 提供完全相等、包含关系的简单字段匹配。
 
-# Stage 2 Core Completion
+当前限制（Current Limitations）：
+- 字段识别依赖简单文本启发式规则。
+- 标准化词表覆盖有限。
+- 未使用上下文、表格结构或语义信息判断字段。
+- 不提供 AI 语义匹配。
 
-待完成能力：
+成熟度（Maturity）：
+- `Reviewing`
 
-图片逻辑（Image Logic）：
+升级方向（Upgrade Direction）：
+- 基于真实模板审计扩展字段识别、标准化和上下文匹配能力。
 
-当前能力：
-- 定义图片区域候选（ImageAreaCandidate）。
-- 定义图片锚点候选（ImageAnchorCandidate）。
-- 为后续 Template Analysis 和 DocumentModel 接入图片能力做准备。
+## Table Core
 
-当前未实现：
-- 不读取真实图片文件。
-- 不插入图片。
-- 不执行图片导出。
+职责（Responsibility）：
+- 识别表格、表头、合并单元格及表格范围候选。
 
-条件逻辑（Condition Logic）：
+当前支持（Current Capabilities）：
+- 构造 `TableRangeCandidate`。
+- 识别同一行中至少三个非空文本单元格形成的表头候选。
+- 基于文本单元格分布生成基础表格候选。
+- 将 Excel 合并区域转换为 `MergedCellCandidate`。
 
-当前能力：
-- ConditionCandidate。
-- ConditionRule。
-- ConditionEvaluator。
+当前限制（Current Limitations）：
+- 表格边界和数据结束行仍使用简化规则。
+- 不支持复杂多行表头、跨行跨列表格及嵌套表格判断。
+- 不识别真实数据行语义。
+- 不负责表格数据自动填充。
 
-支持：
-- equals。
-- not_equals。
+成熟度（Maturity）：
+- `Upgrade Candidate`
 
-当前不支持：
-- 复杂表达式。
-- AND。
-- OR。
-- 嵌套条件。
+升级方向（Upgrade Direction）：
+- 基于真实复杂模板审计表格边界、表头层级和数据区域识别能力。
 
-选择逻辑（Choice Logic）：
+## Visual Core
 
-当前能力：
-- ChoiceCandidate。
-- ChoiceOption。
-- ChoiceGroup。
-- ChoiceResolver。
-- 单选校验。
-- 多选支持。
-- 非法选项拒绝。
+职责（Responsibility）：
+- 提供统一坐标模型，以及视觉区域、布局区域和锚点的结构化表达。
 
-当前未实现：
-- 自动识别选择区域。
-- 与 Condition Logic 自动联动。
-- 接入 Workspace。
-- 接入 ExportStrategy。
+当前支持（Current Capabilities）：
+- 统一使用 `Coordinate` 表达 Excel、PDF 和 Word 坐标。
+- 使用 `CoordinateGroup` 组织多个坐标。
+- 构造 `VisualRegionCandidate`、`LayoutRegionCandidate` 和 `AnchorCandidate`。
+- 提供 Excel 单元格坐标和 Word 结构坐标构造辅助函数。
 
-表格逻辑增强（Table Logic Enhancement）：
+当前限制（Current Limitations）：
+- 当前候选函数只结构化输入，不执行复杂视觉识别。
+- 尚未验证统一坐标对复杂 PDF、Word 布局的完整表达能力。
+- 不提供区域关系和布局语义推断。
 
-当前能力：
-- 表格候选识别（Table Candidate Detection）。
-- 表头候选识别（Header Candidate Detection）。
-- 合并单元格识别（Merged Cell Detection）。
-- 表格范围候选（TableRangeCandidate）。
+成熟度（Maturity）：
+- `Reviewing`
 
-当前未实现：
-- 表格数据自动填充。
-- 与 DocumentModel Builder 的完整接入。
-- 高级跨行跨列表格判断。
+升级方向（Upgrade Direction）：
+- 使用真实 PDF、Word 模板验证坐标表达范围，并评估视觉区域与锚点识别能力。
 
-视觉逻辑增强（Visual Logic Enhancement）：
+## Image Core
 
-当前能力：
-- Coordinate。
-- CoordinateGroup。
-- VisualRegionCandidate。
-- LayoutRegionCandidate。
-- AnchorCandidate。
+职责（Responsibility）：
+- 表达图片区域候选和图片锚点候选。
 
-唯一规则：
-- Coordinate 是唯一坐标标准。
-- 禁止建立第二套坐标体系。
+当前支持（Current Capabilities）：
+- 构造 `ImageAreaCandidate`。
+- 构造 `ImageAnchorCandidate`。
+- 使用现有 `Coordinate` 表达图片区域和锚点位置。
 
-统一坐标模型（Unified Coordinate Model）：
-- Coordinate 已扩展支持 Excel / PDF / Word。
-- Excel 使用单元格坐标。
-- PDF 使用页面绝对坐标。
-- Word 使用段落、表格、书签和占位符结构坐标。
+当前限制（Current Limitations）：
+- 不读取或分析真实图片文件。
+- 不从模板中自动检测图片区域或锚点。
+- 不验证图片内容、尺寸或格式。
+- 不执行图片插入。
 
-字段逻辑增强（Field Logic Enhancement）：
+成熟度（Maturity）：
+- `Upgrade Candidate`
 
-当前能力：
-- 字段候选（FieldCandidate）。
-- 字段标准化（Field Normalization）。
-- 字段匹配候选（FieldMatchCandidate）。
-- 简单字段匹配（Simple Field Matching）。
+升级方向（Upgrade Direction）：
+- 基于真实模板审计图片区域、锚点和图片输入的识别需求。
 
-当前未实现：
-- AI 语义匹配。
-- 与 AI Parser 完整接入。
-- 与 DocumentModel Builder 完整接入。
+## Condition Core
 
-订单解析器内核（AI Parser Core）：
+职责（Responsibility）：
+- 表达基础条件候选、条件规则并计算条件结果。
 
-当前能力：
-- OrderObject。
-- OrderField。
-- MissingField。
-- ParseResult。
-- parse_order_text_stub。
-- Prompt Builder。
+当前支持（Current Capabilities）：
+- 构造 `ConditionCandidate`。
+- 使用 `ConditionRule` 表达条件。
+- `evaluate_condition` 支持 `equals` 和 `not_equals`。
 
-当前未实现：
-- 真实 AI 调用。
-- API Key 管理。
-- 多模型适配。
-- 与 Matching 完整接入。
+当前限制（Current Limitations）：
+- 不支持 `AND`、`OR`、嵌套条件或复杂表达式。
+- 不负责自动发现条件关系。
+- 不负责流程编排或页面联动。
 
-匹配内核（Matching Core）：
+成熟度（Maturity）：
+- `Reviewing`
 
-当前能力：
-- 候选填充值对象（CandidateFillObject）。
-- 候选填充字段（CandidateFillField）。
-- 字段匹配评分（score_field_match）。
-- OrderObject 到 DocumentModel 的字段匹配。
+升级方向（Upgrade Direction）：
+- 根据真实条件模板评估现有操作符和条件组合能力是否足够。
 
-当前未实现：
-- AI 语义匹配。
-- 多候选排序。
-- 人工映射配置。
-- 表格数据匹配。
-- 与 Workspace 的完整接入。
+## Choice Core
 
-模板读取扩展（Template Reader Expansion）：
+职责（Responsibility）：
+- 表达选择候选、选择项和单选或多选结果。
 
-当前能力：
-- Excel 模板真实读取。
-- PDF 模板基础识别。
-- Word 模板基础识别。
-- 统一模板读取入口（Template Reader Dispatcher）。
+当前支持（Current Capabilities）：
+- `options`
+- `allow_multiple`
+- `default_option`
+- 校验单选数量和非法选项值。
+- 生成带选中状态的选择结果。
 
-当前未实现：
-- PDF 内容深度解析。
-- Word 内容深度解析。
-- PDF / Word 模板分析。
+当前限制（Current Limitations）：
+- 不支持 option coordinate。
+- 不支持 checkbox choice。
+- 不支持 radio choice。
+- 不支持位置型选择。
 
-Core 到 DocumentModel 的接入状态：
-- Image Logic 已通过 TemplateAnalysisResult 接入 DocumentModel。
-- Condition Logic 已通过 TemplateAnalysisResult 接入 DocumentModel。
-- Choice Logic 已通过 TemplateAnalysisResult 接入 DocumentModel。
+成熟度（Maturity）：
+- `Upgrade Candidate`
+
+升级方向（Upgrade Direction）：
+- 支持位置型选择能力。
+- 当前不决定最终实现方案或最终命名。
+
+## Matching Core
+
+职责（Responsibility）：
+- 将 `OrderObject` 中的字段与 `DocumentModel` 字段进行候选匹配。
+
+当前支持（Current Capabilities）：
+- 构造 `CandidateFillObject` 和 `CandidateFillField`。
+- 根据字段 key 完全相等或包含关系计算分数。
+- 按最低分数阈值选择字段候选。
+- 记录未匹配字段、警告和基础来源信息。
+
+当前限制（Current Limitations）：
+- 只匹配字段 key，不使用标签、上下文或语义信息。
+- 不支持多候选排序、冲突处理或人工映射配置。
+- 不处理表格、图片或选择对象。
+- 不提供 AI 语义匹配。
+
+成熟度（Maturity）：
+- `Upgrade Candidate`
+
+升级方向（Upgrade Direction）：
+- 基于真实订单和模板审计字段候选排序、上下文匹配及非字段对象匹配需求。
+
+## AI Parser Core
+
+职责（Responsibility）：
+- 表达结构化订单对象，并提供订单文本解析入口和提示词构造能力。
+
+当前支持（Current Capabilities）：
+- 定义 `OrderObject`、`OrderField`、`MissingField` 和 `ParseResult`。
+- 使用 stub 解析器处理按行排列的 `key:value` 文本。
+- 构造包含预期字段的订单解析提示词。
+
+当前限制（Current Limitations）：
+- 当前解析器是 stub，不调用真实 AI 模型。
+- 不处理复杂自然语言、表格、附件或图片订单。
+- 不包含模型调用、结构化响应校验或重试机制。
+- 提示词构造与真实 AI Runtime 尚未接通。
+
+成熟度（Maturity）：
+- `Upgrade Candidate`
+
+升级方向（Upgrade Direction）：
+- 在 AI Runtime 阶段基于真实订单样本评估解析、响应校验和错误处理需求。
+
+## Executor Core
+
+职责（Responsibility）：
+- 按 `ExportStrategy` 中的 `ExportOperation` 执行文件导出，并记录操作结果。
+
+当前支持（Current Capabilities）：
+- Excel Executor 支持 `write_value`。
+- Excel Executor 提供 `write_table` 写入能力。
+- Excel Executor 对 `insert_image` 执行目标校验并记录 skipped。
+- Word Executor 支持 `.docx` 中 `word/document.xml` 的 placeholder 替换。
+- PDF Executor 复制原 PDF，并为操作记录 skipped。
+- 提供执行成功、跳过和失败统计。
+
+当前限制（Current Limitations）：
+- 当前 `write_table` Executor 需要二维 list，但现有表格导出计划使用描述性 dict，接口尚未对齐。
+- Excel 不执行真实图片插入。
+- Word 不支持复杂表格、bookmark 真实定位或图片插入。
+- PDF 不执行真实写入。
+- Excel 使用独立结果对象，尚未完全统一到通用执行结果模型。
+
+成熟度（Maturity）：
+- `Upgrade Candidate`
+
+升级方向（Upgrade Direction）：
+- 优先审计并对齐 ExportOperation 与各 Executor 的输入契约，再评估真实图片、PDF 和 Word 写入能力。
