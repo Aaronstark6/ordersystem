@@ -16,7 +16,7 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- STAGE3_ARCHITECTURE_RULES_HARDENING_01。
+- STAGE3_IMAGE_EXPORT_INTEGRATION_01。
 
 当前状态：
-- 正在固化长期有效的架构、开发与协作规则。
+- 正在接入 ConfirmedImage 到 ExportOperation(insert_image)。

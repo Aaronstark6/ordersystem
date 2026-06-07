@@ -91,6 +91,7 @@ Executor
 - 读取最终事实（Final Truth）。
 - ConfirmedField → ExportOperation(write_value)。
 - ConfirmedTable → ExportOperation(write_table)。
+- ConfirmedImage → ExportOperation(insert_image)。
 - 生成 ExportStrategy。
 - 生成 ExportOperation。
 - 校验导出可执行性。
@@ -104,6 +105,8 @@ Executor
 - operations/ 拆分只改变内部组织，不改变主链。
 - 当前支持 ConfirmedField → write_value。
 - 当前支持 ConfirmedTable → write_table。
+- 当前支持 ConfirmedImage → insert_image。
+- insert_image 当前属于导出计划，不代表真实图片写入已完成。
 
 禁止：
 - 不直接写文件。

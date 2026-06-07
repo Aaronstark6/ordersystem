@@ -6,7 +6,7 @@
 
 当前：
 - Stage3 中层整合。
-- 当前小步：Architecture Rules Hardening。
+- 当前小步：Image Export Integration。
 
 后续：
 - Stage4 配置中心。

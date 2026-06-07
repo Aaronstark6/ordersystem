@@ -62,9 +62,10 @@
 - ExportStrategy builder.py 只负责总调度。
 - ExportOperation 具体构建逻辑进入 app/export/operations。
 - 禁止把具体操作构建继续堆入巨型 Export builder.py。
-- ExportStrategy 当前支持字段和表格导出计划。
+- ExportStrategy 当前支持字段、表格和图片导出计划。
 - 字段导出计划来自 ConfirmedField。
 - 表格导出计划来自 ConfirmedTable。
+- 图片导出计划来自 ConfirmedImage，并转换为 ExportOperation(insert_image)。
 - ExportStrategy 只生成写入计划，不直接写 Excel / PDF / Word 文件。
 - ConfirmedOrderObject 不得绕过 ExportStrategy 直接进入 Executor。
 

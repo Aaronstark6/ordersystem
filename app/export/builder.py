@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from app.confirmed.model import ConfirmedOrderObject
 from app.export.model import ExportStrategy
+from app.export.operations.image_operation import build_image_operation
 from app.export.operations.table_operation import build_table_operation
 from app.export.operations.value_operation import build_value_operation
 
@@ -23,12 +24,17 @@ def build_export_strategy(
             strategy.operations.append(build_value_operation(field))
         for table in section.tables:
             strategy.operations.append(build_table_operation(table))
+        for image in section.images:
+            strategy.operations.append(build_image_operation(image))
 
     for field in confirmed_order.unsectioned_fields:
         strategy.operations.append(build_value_operation(field))
 
     for table in confirmed_order.unsectioned_tables:
         strategy.operations.append(build_table_operation(table))
+
+    for image in confirmed_order.unsectioned_images:
+        strategy.operations.append(build_image_operation(image))
 
     if strategy.operation_count() == 0:
         strategy.warnings.append(

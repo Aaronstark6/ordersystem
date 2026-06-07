@@ -43,6 +43,7 @@ app/export：
 - builder.py：ExportStrategy 总调度入口。
 - operations/value_operation.py：ConfirmedField 转换为 write_value。
 - operations/table_operation.py：ConfirmedTable 转换为 write_table。
+- operations/image_operation.py：ConfirmedImage 转换为 insert_image。
 - operations/README.md：说明操作构建器职责、扩展位和禁止边界。
 - validators.py：校验 ExportStrategy。
 - serializer.py：将 ExportStrategy 转换为 dict。

@@ -1,14 +1,15 @@
 # 当前任务
 
 当前任务：
-- STAGE3_ARCHITECTURE_RULES_HARDENING_01。
+- STAGE3_IMAGE_EXPORT_INTEGRATION_01。
 
 目标：
-- 固化架构铁律。
-- 固化中层与 Builder 边界。
-- 固化协作流程和真实状态优先级。
-- 确保新聊天页读取文档后能够延续项目规则。
+- 补齐 ConfirmedImage → ExportOperation(insert_image)。
+- Section 与未分区图片都进入 ExportStrategy。
+- 保持 Field / Table 现有导出计划不变。
+- 本任务不处理 Choice / Condition。
 
 边界：
-- 只修改 project_context 文档。
-- 不修改代码、主链或功能。
+- insert_image 只表示导出计划。
+- 不读取图片文件，不执行真实图片写入。
+- 不修改 Core、DocumentModel、Workspace、Confirmed、Routes、UI 或 Executor。
