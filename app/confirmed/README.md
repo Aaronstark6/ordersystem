@@ -25,6 +25,16 @@ ConfirmedOrderObject 是人工确认后的最终填写事实层。
 下游：
 导出策略（ExportStrategy）。
 
+Builder 组织：
+- builder.py 是 build_confirmed_order_object 总调度入口。
+- builders/ 目录承载 Workspace 对象到 Confirmed 对象的具体转换器。
+- field_builder.py 负责 ConfirmedField。
+- table_builder.py 负责 ConfirmedTable。
+- image_builder.py 负责 ConfirmedImage。
+- choice_builder.py 负责 ConfirmedChoice。
+- condition_builder.py 负责 ConfirmedCondition。
+- 未来新增对象类型时，应新增独立 builder 文件，不应继续堆入 builder.py。
+
 禁止：
 不读取 Excel。
 不分析模板。

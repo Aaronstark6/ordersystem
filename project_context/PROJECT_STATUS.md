@@ -14,7 +14,7 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- STAGE3_EXPORT_STRATEGY_TABLE_INTEGRATION_01。
+- STAGE3_MIDDLE_LAYER_BUILDER_SPLIT_01。
 
 当前状态：
-- 正在补齐 ConfirmedTable 到 ExportOperation(write_table) 的接线。
+- Stage3 中层整合正在拆分 Workspace / Confirmed Builder 架构。

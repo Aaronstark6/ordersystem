@@ -15,14 +15,24 @@
 app/workspace：
 - 中层工作区表达层，不是页面。
 - model.py：定义 WorkspaceSnapshot、WorkspaceSection、WorkspaceField、WorkspaceTable、WorkspaceImage、WorkspaceChoice、WorkspaceCondition。
-- builder.py：把 DocumentModel 转换为 WorkspaceSnapshot。
+- builder.py：DocumentModel 转换为 WorkspaceSnapshot 的总调度入口。
+- builders/field_builder.py：FieldNode 转换为 WorkspaceField。
+- builders/table_builder.py：TableNode 转换为 WorkspaceTable。
+- builders/image_builder.py：ImageNode 转换为 WorkspaceImage。
+- builders/choice_builder.py：ChoiceNode 转换为 WorkspaceChoice。
+- builders/condition_builder.py：ConditionNode 转换为 WorkspaceCondition。
 - validators.py：校验 WorkspaceSnapshot 标识和可确认内容。
 - serializer.py：将 WorkspaceSnapshot 转换为 dict。
 
 app/confirmed：
 - 人工确认后的最终填写事实层。
 - model.py：定义 ConfirmedField、ConfirmedTable、ConfirmedImage、ConfirmedChoice、ConfirmedCondition、ConfirmedSection、ConfirmedOrderObject。
-- builder.py：把 WorkspaceSnapshot 转换为 ConfirmedOrderObject。
+- builder.py：WorkspaceSnapshot 转换为 ConfirmedOrderObject 的总调度入口。
+- builders/field_builder.py：WorkspaceField 转换为 ConfirmedField。
+- builders/table_builder.py：WorkspaceTable 转换为 ConfirmedTable。
+- builders/image_builder.py：WorkspaceImage 转换为 ConfirmedImage。
+- builders/choice_builder.py：WorkspaceChoice 转换为 ConfirmedChoice。
+- builders/condition_builder.py：WorkspaceCondition 转换为 ConfirmedCondition。
 - validators.py：校验 ConfirmedOrderObject 标识和可确认对象。
 - serializer.py：将 ConfirmedOrderObject 转换为 dict。
 - README.md：说明人工确认层职责和边界。

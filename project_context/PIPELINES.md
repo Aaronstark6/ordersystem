@@ -61,6 +61,22 @@ Executor
 - 不组织页面。
 - 不执行导出。
 
+内部组织：
+- build_workspace_snapshot 仍是 Workspace Pipeline 原主链入口。
+- Workspace builders/ 拆分不改变主链，只改变内部对象转换组织。
+
+# Confirmed Pipeline
+
+输入：
+- WorkspaceSnapshot。
+
+输出：
+- ConfirmedOrderObject。
+
+内部组织：
+- build_confirmed_order_object 仍是 Confirmed Pipeline 原主链入口。
+- Confirmed builders/ 拆分不改变主链，只改变内部对象转换组织。
+
 # Export Strategy Pipeline
 
 事实链：

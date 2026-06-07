@@ -43,6 +43,12 @@
 - ConfirmedOrderObject 位于 Workspace 之后、ExportStrategy 之前。
 - 导出链路不得绕过 ConfirmedOrderObject。
 
+中层 Builder 组织：
+- Workspace 与 Confirmed 都属于中层（Middle Layer）。
+- 各层 builder.py 只负责总调度和对象归属组装。
+- 具体对象转换逻辑进入各自 builders/ 子目录。
+- 禁止把所有对象转换继续堆入一个巨型 builder.py。
+
 导出策略（ExportStrategy）层：
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
 - ExportStrategy 当前支持字段和表格导出计划。
