@@ -22,14 +22,20 @@
 - Storage 不做业务判断。
 - State 不保存第二套事实。
 
-Storage / Runtime Boundary：
-- 系统运行产生的持久化文件只能写入 `data/` 或 `audit_output/`。
+Storage / Cache / Runtime Boundary：
+- 系统运行产生的持久化文件只能写入 `data/`。
 - `app/` 只存放代码，禁止写入运行文件、缓存、导出结果和日志。
 - `project_context/` 只存放项目文档，禁止写入运行文件、缓存和导出结果。
-- `data/` 承载模板、上传、运行状态、缓存、导出结果和测试样本。
-- `audit_output/` 只承载审计输出，不承载业务运行数据。
-- Storage 只负责授权目录内的读写，不做业务判断。
-- 任何 `open(..., "w")`、`save`、`export`、`mkdir` 或缓存写入逻辑，在写入前必须确认解析后的目标路径属于授权目录。
+- 仓库根目录禁止生成运行文件、缓存、导出结果和日志。
+- `data/templates/` 长期保存正式模板；小型非敏感样本模板可按需进入 Git，真实业务大模板默认不进入 Git。
+- `data/uploads/` 保存用户上传的临时文件，可清理，默认不进入 Git。
+- `data/runtime/` 保存当前模板分析结果、Workspace、Confirmed 等运行中间状态，可清理，默认不进入 Git。
+- `data/cache/` 保存可重新生成的模板分析、AI 解析和匹配缓存，可清理，默认不进入 Git。
+- `data/exports/` 保存导出结果，可清理或归档，默认不进入 Git。
+- `data/samples/` 保存小型测试样本和验证模板，可长期保留并允许进入 Git，但必须控制大小和敏感性。
+- `audit_output/` 是开发审计临时目录，不属于系统运行存储体系，不参与系统架构设计，由 Owner 定期手动清理。
+- 未来 `app/storage/` 只负责路径管理、授权目录创建、清理策略和文件命名，不做业务判断。
+- 业务模块不得自行拼接持久化路径；任何 `open(..., "w")`、`save`、`export`、`mkdir` 或缓存写入逻辑必须遵守 Storage 规则。
 - 未确认写入归属时不得落盘。
 
 坐标标准（Coordinate Standard）：

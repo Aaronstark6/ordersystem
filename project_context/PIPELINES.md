@@ -26,6 +26,20 @@ Executor
 - Pipeline 不实现核心能力。
 - Pipeline 不直接写页面。
 - Pipeline 不直接做存储细节。
+- Pipeline 需要持久化时，通过未来 Storage 层使用 `data/`，不得自行拼接路径写文件。
+
+# 主链存储边界
+
+- Template Intake Pipeline：读取 `data/templates/` 中的正式模板，或接收并登记 `data/uploads/` 中的用户上传文件。
+- Template Analysis Pipeline：读取模板；可通过 Storage 读取或写入 `data/cache/` 中可重新生成的分析缓存，并把当前分析状态写入 `data/runtime/`。
+- DocumentModel Pipeline：可通过 Storage 把当前 DocumentModel 运行状态写入 `data/runtime/`。
+- Order Parse Pipeline 与 Matching Pipeline：可通过 Storage 使用 `data/cache/` 中可重新生成的 AI 解析和匹配缓存。
+- Workspace Pipeline：可通过 Storage 把当前 WorkspaceSnapshot 写入 `data/runtime/`。
+- Human Confirm Pipeline：可通过 Storage 把当前 ConfirmedOrderObject 写入 `data/runtime/`。
+- Export Strategy Pipeline：只生成导出计划；如需保存当前策略，只能通过 Storage 写入 `data/runtime/`。
+- Export Execute Pipeline：读取 `data/templates/` 或已登记上传模板，并把最终结果写入 `data/exports/`。
+- `data/samples/` 只作为测试和验证输入，不是生产主链运行状态目录。
+- `audit_output/` 不参与任何系统 Pipeline，只用于开发审计临时输出。
 
 # Pipeline 组成
 

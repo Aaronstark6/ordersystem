@@ -1,11 +1,12 @@
 # 当前任务
 
 当前任务：
-- `STAGE3_STORAGE_POLICY_DESIGN_01`
+- `STAGE3_STORAGE_CACHE_RUNTIME_DESIGN_01`
 
 目标：
-- 固化存储、缓存、运行时、导出和审计输出边界。
-- 明确授权写入目录及长期保留、可清理策略。
+- 设计存储、缓存、运行时、导出和样本目录体系。
+- 明确 `data/` 子目录职责、Git 策略、清理策略及 Pipeline 读写边界。
+- 明确 `audit_output/` 只是开发审计临时目录，不属于系统运行存储体系。
 
 边界：
 - 只修改 `project_context/` 文档。
