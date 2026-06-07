@@ -157,13 +157,14 @@
 - ConfirmedChoice 已承载 `choice_mode`、`option_details`、`selected_values` 与 `final_selected_values`。
 - Choice 已传播到 ExportStrategy。
 - `set_choice` 已成为选择类导出计划操作。
+- `set_choice` 已进入 Excel Executor 第一版。
 - 校验单选数量和非法选项值。
 - 生成带选中状态的选择结果。
 
 当前限制（Current Limitations）：
 - 已开始契约升级，但尚不自动识别 checkbox、radio 或 dropdown。
-- Executor 尚未支持真实 checkbox、radio 或 multiselect 写入。
-- 尚未执行位置型选择导出。
+- Excel Executor 已支持 checkbox、radio 和 multiselect 的坐标型勾选写入。
+- Word / PDF Executor 尚未支持 `set_choice`。
 
 成熟度（Maturity）：
 - `Upgrade Candidate`
@@ -188,11 +189,12 @@
 - `WorkspaceChoice` 已具备 `choice_mode`、`option_details` 与 `selected_values` 承载能力。
 - `ConfirmedChoice` 已具备 `final_selected_values` 承载能力。
 - ConfirmedChoice 已可生成 `ExportOperation(set_choice)`。
+- Excel Executor 已可执行第一版 `set_choice`。
 
 当前无法支持：
 - checkbox、radio、dropdown 的自动识别。
 - multiselect position choice 的自动识别。
-- Executor 对位置型选择的真实写入。
+- Word / PDF Executor 对位置型选择的真实写入。
 - 选项到导出目标的完整映射与执行。
 
 真实业务类型：
@@ -223,7 +225,8 @@
 4. 同步 `WorkspaceChoice`。
 5. 同步 `ConfirmedChoice`。
 6. 已扩展 ExportStrategy，支持 `set_choice`。
-7. Executor 的真实 checkbox / radio 写入单独处理。
+7. Excel Executor 已支持第一版 checkbox / radio / multiselect 坐标写入。
+8. Word / PDF Executor 的真实选择写入仍需单独处理。
 
 ### Choice Middle Layer Model Design
 
@@ -351,6 +354,7 @@ ConfirmedChoice 字段设计建议：
 - Excel Executor 支持 `write_value`。
 - Excel Executor 提供 `write_table` 写入能力。
 - Excel Executor 对 `insert_image` 执行目标校验并记录 skipped。
+- Excel Executor 支持第一版 `set_choice`。
 - Word Executor 支持 `.docx` 中 `word/document.xml` 的 placeholder 替换。
 - PDF Executor 复制原 PDF，并为操作记录 skipped。
 - 提供执行成功、跳过和失败统计。
@@ -358,6 +362,7 @@ ConfirmedChoice 字段设计建议：
 当前限制（Current Limitations）：
 - 当前 `write_table` Executor 需要二维 list，但现有表格导出计划使用描述性 dict，接口尚未对齐。
 - Excel 不执行真实图片插入。
+- Word / PDF 不执行 `set_choice`。
 - Word 不支持复杂表格、bookmark 真实定位或图片插入。
 - PDF 不执行真实写入。
 - Excel 使用独立结果对象，尚未完全统一到通用执行结果模型。

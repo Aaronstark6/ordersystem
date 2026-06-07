@@ -132,6 +132,7 @@ ExportStrategy
 - ChoiceNode → WorkspaceChoice 已支持 `choice_mode`、`option_details` 与 `selected_values`。
 - WorkspaceChoice → ConfirmedChoice 已传播 `choice_mode`、`option_details`、`selected_values` 与 `final_selected_values`。
 - ConfirmedChoice → ExportOperation(set_choice) 已接入。
+- ConfirmedChoice → ExportOperation(set_choice) → Excel Executor 已打通。
 
 Choice 中层链路：
 
@@ -153,7 +154,8 @@ ExportStrategy
 - `set_choice.value` 同时承载 `final_value` 与 `final_selected_values`，供后续 Executor 按 `choice_mode` 解释。
 
 边界：
-- `set_choice` 导出计划已实现，但 Executor 真实勾选尚未实现。
+- Excel Executor 已实现第一版 `set_choice` 坐标型勾选。
+- Word / PDF Executor 尚未实现 `set_choice`。
 - Condition 不在本次 Choice Core 设计中处理。
 
 # Export Execute Pipeline
@@ -168,7 +170,7 @@ ExportStrategy
 - 生成最终输出文件。
 
 当前执行器支持：
-- Excel Executor：write_value、write_table、insert_image 占位校验。
+- Excel Executor：write_value、write_table、insert_image 占位校验、set_choice 第一版。
 - Word Executor：docx placeholder 替换。
 - PDF Executor：基础执行入口和 skipped 结果。
 

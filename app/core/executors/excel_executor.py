@@ -83,6 +83,95 @@ def _validate_insert_image(
         raise ExcelExecutionError("insert_image 缺少图片值")
 
 
+def _write_choice_mark(
+    workbook: Any,
+    coordinate: Dict[str, Any],
+    fallback_target: Dict[str, Any],
+) -> None:
+    sheet_name = coordinate.get("sheet_name") or fallback_target.get("sheet_name")
+    if not sheet_name:
+        raise ExcelExecutionError("选择项坐标缺少 sheet_name")
+
+    worksheet = _get_worksheet(workbook, sheet_name)
+    cell = coordinate.get("cell")
+    if cell:
+        worksheet[cell] = "✓"
+        return
+
+    row = coordinate.get("row")
+    column = coordinate.get("column")
+    if row is None or column is None:
+        raise ExcelExecutionError("选择项坐标缺少 cell 或 row/column")
+
+    worksheet.cell(row=row, column=column, value="✓")
+
+
+def _apply_set_choice_operation(
+    workbook: Any,
+    target: Dict[str, Any],
+    value: Any,
+) -> tuple[int, List[str]]:
+    if not isinstance(value, dict):
+        raise ExcelExecutionError("set_choice 的 value 必须是 dict")
+
+    choice_mode = value.get("choice_mode")
+    final_value = value.get("final_value")
+
+    if choice_mode == "value":
+        _write_value(workbook, target, final_value)
+        return 1, []
+
+    if choice_mode == "dropdown":
+        if target and final_value is not None and final_value != "":
+            _write_value(workbook, target, final_value)
+            return 1, []
+        return 0, ["dropdown 缺少可写 target 或 final_value"]
+
+    if choice_mode not in {
+        "checkbox_group",
+        "radio_group",
+        "multiselect",
+    }:
+        return 0, [f"暂不支持 choice_mode: {choice_mode}"]
+
+    final_selected_values = value.get("final_selected_values", [])
+    option_details = value.get("option_details", [])
+    if not isinstance(final_selected_values, list):
+        raise ExcelExecutionError("set_choice 的 final_selected_values 必须是 list")
+    if not isinstance(option_details, list):
+        raise ExcelExecutionError("set_choice 的 option_details 必须是 list")
+
+    write_count = 0
+    warnings: List[str] = []
+    for option in option_details:
+        if not isinstance(option, dict):
+            warnings.append("跳过无法解析的选择项")
+            continue
+
+        option_key = option.get("option_key")
+        option_value = option.get("value")
+        is_selected = any(
+            selected == option_key or selected == option_value
+            for selected in final_selected_values
+        )
+        if not is_selected:
+            # Preserve unselected template content in the first implementation.
+            continue
+
+        coordinate = option.get("coordinate")
+        if not isinstance(coordinate, dict):
+            warnings.append(f"选择项缺少可用坐标: {option_key or option_value}")
+            continue
+
+        try:
+            _write_choice_mark(workbook, coordinate, target)
+            write_count += 1
+        except ExcelExecutionError as exc:
+            warnings.append(f"{option_key or option_value}: {exc}")
+
+    return write_count, warnings
+
+
 def execute_excel_export(
     template_file_path: str,
     output_file_path: str,
@@ -127,6 +216,30 @@ def execute_excel_export(
                 operation_result.status = "skipped"
                 operation_result.message = "图片插入尚未实现，已完成占位校验"
                 result.skipped_count += 1
+            elif operation.operation_type == "set_choice":
+                write_count, warnings = _apply_set_choice_operation(
+                    workbook,
+                    operation.target,
+                    operation.value,
+                )
+                if warnings:
+                    operation_result.metadata["warnings"] = warnings
+                if write_count > 0:
+                    operation_result.status = "success"
+                    operation_result.message = (
+                        f"选择写入成功，共写入 {write_count} 项"
+                    )
+                    if warnings:
+                        operation_result.message += (
+                            f"，跳过 {len(warnings)} 项"
+                        )
+                    result.success_count += 1
+                else:
+                    operation_result.status = "skipped"
+                    operation_result.message = (
+                        warnings[0] if warnings else "没有可写的选择项"
+                    )
+                    result.skipped_count += 1
             else:
                 operation_result.status = "skipped"
                 operation_result.message = (

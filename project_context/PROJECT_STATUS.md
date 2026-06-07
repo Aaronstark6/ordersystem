@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_EXPORT_STRATEGY_UPGRADE_01`
+- `STAGE3_CHOICE_EXECUTOR_UPGRADE_01`
 
 当前状态：
-- 正在将 ConfirmedChoice 接入 ExportStrategy。
-- Choice 使用独立 `ExportOperation(set_choice)` 生成导出计划。
-- 本任务不修改 Executor 或实现真实勾选。
+- 正在为 Excel Executor 增加第一版 set_choice 执行能力。
+- Choice 主链将打通至 Excel 坐标型勾选写入。
+- 本任务不修改 Word / PDF Executor。

@@ -11,6 +11,7 @@ app/core/executors
 - write_value。
 - write_table。
 - insert_image 占位校验。
+- set_choice 第一版。
 - 导出操作结果（ExportOperationResult）。
 - Excel 导出结果（ExcelExportResult）。
 - 通用导出执行结果（ExportExecutionResult）。
@@ -51,6 +52,14 @@ Excel 模板文件路径。
 当前不做：
 - 不真正插入图片。
 - 不自行决定写入位置。
+- Word / PDF set_choice。
+
+set_choice：
+- value 模式写入 final_value。
+- checkbox_group、radio_group、multiselect 根据选项坐标写入 `✓`。
+- 未选中项不覆盖模板原内容。
+- dropdown 第一版在 target 和 final_value 可用时按普通值写入。
+- Word / PDF 尚未实现 set_choice。
 
 样式原则：
 执行器只写单元格值，不主动修改模板样式。
