@@ -49,6 +49,14 @@
 - 具体对象转换逻辑进入各自 builders/ 子目录。
 - 禁止把所有对象转换继续堆入一个巨型 builder.py。
 
+当前已建立：
+- Workspace Builders。
+- Confirmed Builders。
+- Export Operations。
+
+提前拆分属于架构策略，不是功能需求。
+其目标是保持职责清晰并预防持续增长的 Builder 巨文件化。
+
 导出策略（ExportStrategy）层：
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
 - ExportStrategy builder.py 只负责总调度。

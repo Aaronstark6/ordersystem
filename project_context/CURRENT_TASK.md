@@ -1,15 +1,14 @@
 # 当前任务
 
 当前任务：
-- STAGE3_EXPORT_OPERATION_ARCHITECTURE_PREPARE_01。
+- STAGE3_ARCHITECTURE_RULES_HARDENING_01。
 
 目标：
-- 拆分 ExportOperation 构建逻辑。
-- 预留 operations/ 扩展位。
-- 保持 build_export_strategy 公开入口和行为不变。
-- 预防 app/export/builder.py 继续增长为巨型文件。
+- 固化架构铁律。
+- 固化中层与 Builder 边界。
+- 固化协作流程和真实状态优先级。
+- 确保新聊天页读取文档后能够延续项目规则。
 
 边界：
-- 只调整 ExportStrategy 内部组织结构。
-- 不改变 ExportStrategy / ExportOperation 数据结构。
-- 不新增 operation_type 或业务能力。
+- 只修改 project_context 文档。
+- 不修改代码、主链或功能。

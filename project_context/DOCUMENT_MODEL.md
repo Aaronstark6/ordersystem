@@ -1,5 +1,27 @@
 DocumentModel 是唯一事实中心。
 
+# DocumentModel 边界规则
+
+DocumentModel 只表达文档事实。
+
+允许内容：
+- FieldNode。
+- TableNode。
+- SectionNode。
+- ImageNode。
+- ChoiceNode。
+- ConditionNode。
+- Coordinate。
+- Relationship。
+
+禁止内容：
+- Workspace、UI、Config 状态。
+- 导出、AI、Runtime 状态。
+- Prompt、日志。
+- 用户确认状态。
+
+完整边界规则以 `ARCHITECTURE_RULES.md` 为准。
+
 # CORE_COMPLETION_V1
 
 以下文档模型能力已进入 `CORE_COMPLETION_V1`：

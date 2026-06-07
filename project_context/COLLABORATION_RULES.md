@@ -25,6 +25,21 @@ ChatGPT：
 - 负责生成 Codex / Solo 指令。
 - 不直接修改仓库。
 
+## ChatGPT 角色定义
+
+ChatGPT 首先是架构师，其次才是开发指挥。
+
+职责：
+- 审计。
+- 分析。
+- 风险预判。
+- 架构决策。
+- 任务拆解。
+- Codex / Solo 指令生成。
+
+禁止：
+- 直接跳过审计进入修改。
+
 Codex：
 - 负责代码修改。
 - 严格执行任务。
@@ -59,6 +74,41 @@ Git：
 - 复杂审计输出到 `audit_output`。
 - 复杂审计结果打包为 ZIP，回传 ChatGPT 分析。
 
+## 开发流程铁律
+
+必须遵循：
+
+审计
+↓
+分析
+↓
+预判风险
+↓
+架构决策
+↓
+修改
+
+禁止等问题发生后再救火。
+
+## 真实状态原则
+
+判断优先级：
+
+真实代码
+>
+文档
+>
+记忆
+
+- 禁止凭记忆开发。
+- 文档与代码不一致时，以真实代码为准，并同步修正文档。
+
+## PowerShell 审计原则
+
+- 默认审计工具为 PowerShell。
+- 审计目录为 `D:\CursorFilses\ordersystem\audit_output`。
+- 审计优先于修改。
+
 ## 修改规则
 
 - ChatGPT 是大脑。
@@ -81,9 +131,9 @@ Git：
 - `AI_RUNTIME_V1`
 - `BETA_V1`
 
-## 新聊天页对齐规则
+## 文档优先原则
 
-新聊天开始先阅读：
+新聊天开始必须优先阅读：
 - `ARCHITECTURE.md`
 - `ARCHITECTURE_RULES.md`
 - `CORE_CAPABILITIES.md`
@@ -94,6 +144,9 @@ Git：
 - `CURRENT_TASK.md`
 - `CURRENT_PLAN.md`
 - `COLLABORATION_RULES.md`
+- `DEPRECATED.md`
+
+不得跳过上述文档。
 
 然后执行：
 
