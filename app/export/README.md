@@ -2,7 +2,11 @@
 app/export
 
 职责：
-负责把人工确认对象（ConfirmedOrderObject）转换为导出策略（ExportStrategy）和导出操作（ExportOperation）。
+ExportStrategy 负责把 ConfirmedOrderObject 的最终事实转换为可执行导出计划。
+
+当前支持：
+- ConfirmedField → write_value。
+- ConfirmedTable → write_table。
 
 输入：
 人工确认对象（ConfirmedOrderObject）。

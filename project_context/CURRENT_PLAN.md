@@ -6,7 +6,7 @@
 
 当前：
 - Stage3 中层整合。
-- 当前小步：ConfirmedObject Integration。
+- 当前小步：ExportStrategy Table Integration。
 
 后续：
 - Stage4 配置中心。

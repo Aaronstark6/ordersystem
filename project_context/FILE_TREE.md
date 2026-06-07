@@ -30,7 +30,7 @@ app/confirmed：
 app/export：
 - 导出策略层。
 - model.py：定义 ExportStrategy 和 ExportOperation。
-- builder.py：把 ConfirmedOrderObject 转换为 ExportStrategy。
+- builder.py：支持 ConfirmedField → write_value 和 ConfirmedTable → write_table。
 - validators.py：校验 ExportStrategy。
 - serializer.py：将 ExportStrategy 转换为 dict。
 - README.md：说明导出策略层职责和边界。

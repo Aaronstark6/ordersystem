@@ -14,7 +14,7 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- STAGE3_CONFIRMED_OBJECT_NODE_INTEGRATION_01。
+- STAGE3_EXPORT_STRATEGY_TABLE_INTEGRATION_01。
 
 当前状态：
-- 正在补齐 WorkspaceSnapshot 到 ConfirmedOrderObject 的节点接线。
+- 正在补齐 ConfirmedTable 到 ExportOperation(write_table) 的接线。

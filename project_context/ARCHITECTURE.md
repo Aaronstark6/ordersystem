@@ -45,6 +45,9 @@
 
 导出策略（ExportStrategy）层：
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
+- ExportStrategy 当前支持字段和表格导出计划。
+- 字段导出计划来自 ConfirmedField。
+- 表格导出计划来自 ConfirmedTable。
 - ExportStrategy 只生成写入计划，不直接写 Excel / PDF / Word 文件。
 - ConfirmedOrderObject 不得绕过 ExportStrategy 直接进入 Executor。
 

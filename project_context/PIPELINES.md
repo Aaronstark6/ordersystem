@@ -73,6 +73,8 @@ Executor
 
 步骤：
 - 读取最终事实（Final Truth）。
+- ConfirmedField → ExportOperation(write_value)。
+- ConfirmedTable → ExportOperation(write_table)。
 - 生成 ExportStrategy。
 - 生成 ExportOperation。
 - 校验导出可执行性。

@@ -1,14 +1,14 @@
 # 当前任务
 
 当前任务：
-- STAGE3_CONFIRMED_OBJECT_NODE_INTEGRATION_01。
+- STAGE3_EXPORT_STRATEGY_TABLE_INTEGRATION_01。
 
 目标：
-- 补齐 WorkspaceSnapshot → ConfirmedOrderObject。
-- 承载 Field、Table、Image、Choice、Condition。
-- 允许人工修正 Field 和 Choice。
-- 保持 ConfirmedOrderObject 为 ExportStrategy 唯一事实输入。
+- 补齐 ConfirmedTable → ExportOperation(write_table)。
+- 保留 ConfirmedField → ExportOperation(write_value)。
+- Section 和未分区表格都进入 ExportStrategy。
+- 本任务不处理 Image、Choice、Condition。
 
 边界：
-- 只处理 WorkspaceSnapshot → ConfirmedOrderObject。
-- 不修改 Core、DocumentModel、Workspace、Routes、UI、Executor 或 Export。
+- ExportStrategy 只生成写入计划，不直接写文件。
+- 不修改 Core、DocumentModel、Workspace、Confirmed、Routes、UI 或 Executor。
