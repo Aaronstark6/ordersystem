@@ -10,6 +10,7 @@
 Stage3 当前步骤：
 1. Architecture Rules Hardening。
 2. Core Capability Review。
+3. Choice Core Design。
 
 后续：
 - Stage4 配置中心。

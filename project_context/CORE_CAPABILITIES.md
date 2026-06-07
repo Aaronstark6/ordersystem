@@ -165,6 +165,55 @@
 - 支持位置型选择能力。
 - 当前不决定最终实现方案或最终命名。
 
+### Choice Core Upgrade Design
+
+当前 Choice Core 职责：
+- 表达模板中的选择类业务。
+
+当前已支持：
+- `options`。
+- `allow_multiple`。
+- `default_option`。
+- 简单值选择。
+
+当前无法支持：
+- option coordinate。
+- checkbox choice。
+- radio choice。
+- dropdown choice。
+- multiselect position choice。
+- 选项到模板坐标的映射。
+
+真实业务类型：
+- Value Choice：选择后写入一个普通值。
+- Checkbox Choice：选项对应可勾选位置。
+- Radio Choice：多个选项互斥，选项对应位置。
+- Dropdown Choice：模板中存在下拉或等价选择结构。
+- MultiSelect Choice：允许多个选项同时选中。
+
+设计原则：
+- Choice Core 的判断标准是能力，不是名字。
+- 不因名字不专业而重命名。
+- 只有当真实能力边界要求时，才升级结构。
+- Choice Core 可以作为选择类业务核心继续存在。
+- 是否升级为更大概念，后续根据真实业务和代码成本决定。
+
+建议数据能力：
+- `choice_mode`。
+- `options` 使用结构化 option objects。
+- option object 可表达 `option_key`、`label`、`value`、`coordinate`、`selected` 和 `metadata`。
+- `selected_values`。
+- `option_targets`。
+
+后续升级路线：
+1. 扩展 `ChoiceCandidate` / `ChoiceOption`。
+2. 扩展 `TemplateAnalysisResult`。
+3. 扩展 `ChoiceNode`。
+4. 同步 `WorkspaceChoice`。
+5. 同步 `ConfirmedChoice`。
+6. 扩展 ExportStrategy，支持 `set_choice`。
+7. Executor 的真实 checkbox / radio 写入单独处理。
+
 ## Matching Core
 
 职责（Responsibility）：

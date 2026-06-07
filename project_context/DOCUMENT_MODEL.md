@@ -85,6 +85,27 @@ ChoiceNode：
 - ChoiceNode 表达单选、多选、互斥选项和默认选项。
 - 当前已通过 TemplateAnalysisResult.choices 接入 DocumentModel Builder。
 
+# ChoiceNode 设计说明
+
+当前 ChoiceNode 保存：
+- `choice_key`。
+- `options: List[str]`。
+- `allow_multiple`。
+- `default_option`。
+
+未来 ChoiceNode 应能表达：
+- `choice_mode`。
+- structured options。
+- option coordinate。
+- 模板声明的 selected/default state。
+- option metadata。
+
+边界：
+- ChoiceNode 仍属于文档事实层。
+- ChoiceNode 可以保存模板中有哪些选择项，以及每个选项在哪里。
+- ChoiceNode 不保存用户确认结果。
+- 用户最终选择结果属于 ConfirmedChoice。
+
 # DocumentModel V1 冻结条件
 
 以下节点全部完成并验证通过：

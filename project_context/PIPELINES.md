@@ -113,6 +113,28 @@ Executor
 - 不绕过 ConfirmedOrderObject。
 - 不直接读取 WorkspaceSnapshot。
 
+# Choice 链路设计
+
+设计链路：
+
+ChoiceCandidate
+↓
+ChoiceNode
+↓
+WorkspaceChoice
+↓
+ConfirmedChoice
+↓
+ExportStrategy
+
+不同 `choice_mode` 的导出策略方向：
+- `value`：生成 `write_value` 或等价值写入计划。
+- `checkbox`、`radio`、`multiselect`：生成 `set_choice` 计划。
+
+边界：
+- 当前内容是后续升级设计，不代表 `set_choice` 已实现。
+- Condition 不在本次 Choice Core 设计中处理。
+
 # Export Execute Pipeline
 
 输入：

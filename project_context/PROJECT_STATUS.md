@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CORE_CAPABILITY_REVIEW_01`
+- `STAGE3_CHOICE_CORE_DESIGN_01`
 
 当前状态：
-- 正在建立核心能力地图并评估各 Core 的职责、边界、成熟度和限制。
-- 已发现 Choice Core 不支持 option coordinate、checkbox choice、radio choice 和位置型选择。
-- 当前进入能力评估阶段，不在本任务中决定升级方案。
+- Choice Core 进入设计评估阶段。
+- 正在定义位置型选择业务、数据表达边界和分阶段升级路线。
+- 当前只形成设计结论，不修改代码。
