@@ -18,10 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_CONTRACT_UPGRADE_01`
+- `STAGE3_CHOICE_DOCUMENTMODEL_UPGRADE_01`
 
 当前状态：
-- Choice Core 已开始契约升级。
-- ChoiceOption 正在增加选项坐标承载能力。
-- ChoiceCandidate 正在增加 choice_mode 承载能力。
-- 本任务不向 DocumentModel、Workspace、Confirmed、Export 或 Executor 传播。
+- 正在将 Choice Contract 新能力传播到 ChoiceNode。
+- ChoiceNode 保留旧 `options: List[str]`，并新增结构化选项承载。
+- 本任务不向 Workspace、Confirmed、Export 或 Executor 传播。

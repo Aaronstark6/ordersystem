@@ -1,14 +1,13 @@
 # 当前任务
 
 当前任务：
-- `STAGE3_CHOICE_CONTRACT_UPGRADE_01`
+- `STAGE3_CHOICE_DOCUMENTMODEL_UPGRADE_01`
 
 目标：
-- 升级 ChoiceOption / ChoiceCandidate 契约承载能力。
-- 让 Choice Core 能记录 option coordinate 和 choice_mode。
+- 将 Choice Contract 新能力传播到 ChoiceNode。
+- 保留旧 options 字符串链路，同时承载 choice_mode 与 option_details。
 
 边界：
-- 只升级 Choice Core 的前端契约承载。
+- 只升级 ChoiceNode 与 DocumentModel Builder。
 - 不修改主链。
-- 不向 DocumentModel、Workspace、Confirmed、Export 或 Executor 传播。
-- 不新增 checkbox、radio 或 dropdown 自动识别。
+- 不向 Workspace、Confirmed、Export 或 Executor 传播。

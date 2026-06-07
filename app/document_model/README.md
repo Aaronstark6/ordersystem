@@ -36,4 +36,16 @@ ChoiceNode：
 
 ChoiceNode 用于表达单选、多选、互斥选项和默认选项等选择结构。
 
-当前 Choice Logic 已建立内核能力，但尚未接入 DocumentModel Builder。
+当前已通过 DocumentModel Builder 接入 Choice Logic 契约。
+
+ChoiceNode 当前兼容两层表达：
+1. `options: List[str]`：保留旧链路兼容。
+2. `option_details: List[dict]`：承载结构化选项信息。
+
+ChoiceNode 保存的模板事实：
+- 选项有哪些。
+- 选项模式是什么。
+- 选项在模板中的位置是什么。
+
+ChoiceNode 不保存用户最终选择结果。
+用户最终选择结果属于 ConfirmedChoice。

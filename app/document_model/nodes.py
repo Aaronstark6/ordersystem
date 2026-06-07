@@ -44,6 +44,8 @@ class ChoiceNode(BaseNode):
     options: List[str] = field(default_factory=list)
     allow_multiple: bool = False
     default_option: Optional[str] = None
+    choice_mode: str = "value"
+    option_details: List[Dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass

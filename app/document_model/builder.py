@@ -1,3 +1,4 @@
+from dataclasses import asdict, is_dataclass
 from uuid import uuid4
 
 from app.contracts.template_analysis_result import (
@@ -62,6 +63,16 @@ def _candidate_coordinate(candidate: object, document_type: str) -> Coordinate:
         row=getattr(candidate, "row", None),
         column=getattr(candidate, "column", None),
     )
+
+
+def _option_coordinate_to_dict(coordinate: object) -> dict | None:
+    if coordinate is None:
+        return None
+    if is_dataclass(coordinate) and not isinstance(coordinate, type):
+        return asdict(coordinate)
+    if isinstance(coordinate, dict):
+        return dict(coordinate)
+    raise TypeError("Choice option coordinate must be a dataclass, dict, or None")
 
 
 def build_document_model(analysis_result: TemplateAnalysisResult) -> DocumentModel:
@@ -164,9 +175,22 @@ def build_document_model(analysis_result: TemplateAnalysisResult) -> DocumentMod
         node_id = f"choice:{index}"
         choice_key = getattr(candidate, "choice_key", node_id)
         options = []
+        option_details = []
         for option in getattr(candidate, "options", []):
             option_value = getattr(option, "value", option)
             options.append(str(option_value))
+            option_details.append(
+                {
+                    "option_key": getattr(option, "option_key", ""),
+                    "label": getattr(option, "label", str(option_value)),
+                    "value": option_value,
+                    "coordinate": _option_coordinate_to_dict(
+                        getattr(option, "coordinate", None)
+                    ),
+                    "selected": bool(getattr(option, "selected", False)),
+                    "metadata": dict(getattr(option, "metadata", {}) or {}),
+                }
+            )
 
         document_model.choices[node_id] = ChoiceNode(
             node_id=node_id,
@@ -178,6 +202,8 @@ def build_document_model(analysis_result: TemplateAnalysisResult) -> DocumentMod
                 getattr(candidate, "allow_multiple", False)
             ),
             default_option=getattr(candidate, "default_option", None),
+            choice_mode=getattr(candidate, "choice_mode", "value") or "value",
+            option_details=option_details,
             metadata={
                 "source_candidate": type(candidate).__name__,
             },

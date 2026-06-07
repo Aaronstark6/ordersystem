@@ -92,13 +92,13 @@ ChoiceNode：
 - `options: List[str]`。
 - `allow_multiple`。
 - `default_option`。
-
-未来 ChoiceNode 应能表达：
 - `choice_mode`。
-- structured options。
-- option coordinate。
-- 模板声明的 selected/default state。
-- option metadata。
+- `option_details: List[dict]`。
+
+当前兼容规则：
+- `options: List[str]` 暂时保留，用于旧链路兼容。
+- `option_details` 承载 structured options。
+- `option_details` 可保存 option coordinate、模板声明的 selected state 和 option metadata。
 
 边界：
 - ChoiceNode 仍属于文档事实层。

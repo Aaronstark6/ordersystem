@@ -151,13 +151,14 @@
 - `default_option`
 - `ChoiceCandidate.choice_mode`
 - `ChoiceOption.coordinate`
+- Choice Contract 已升级。
+- DocumentModel ChoiceNode 已承载 `choice_mode` 与 `option_details`。
 - 校验单选数量和非法选项值。
 - 生成带选中状态的选择结果。
 
 当前限制（Current Limitations）：
 - 已开始契约升级，但尚不自动识别 checkbox、radio 或 dropdown。
-- choice_mode 与 option coordinate 尚未传播到 DocumentModel。
-- 尚未传播到 Workspace、Confirmed 和 Export。
+- choice_mode 与 option coordinate 尚未传播到 Workspace、Confirmed 和 Export。
 - 尚未执行位置型选择导出。
 
 成熟度（Maturity）：
@@ -179,11 +180,12 @@
 - 简单值选择。
 - `ChoiceCandidate` 已具备 `choice_mode` 承载能力。
 - `ChoiceOption` 已具备 option coordinate 承载能力。
+- `ChoiceNode` 已具备 `choice_mode` 与 `option_details` 承载能力。
 
 当前无法支持：
 - checkbox、radio、dropdown 的自动识别。
 - multiselect position choice 的自动识别。
-- choice_mode 与 option coordinate 的完整下游传播。
+- choice_mode 与 option coordinate 向 Workspace、Confirmed 和 Export 的传播。
 - 选项到导出目标的完整映射与执行。
 
 真实业务类型：

@@ -127,6 +127,10 @@ ConfirmedChoice
 ↓
 ExportStrategy
 
+当前接入状态：
+- ChoiceCandidate → ChoiceNode 已支持 `choice_mode` 与 `option_details`。
+- Workspace、Confirmed 和 Export 仍是后续传播步骤。
+
 不同 `choice_mode` 的导出策略方向：
 - `value`：生成 `write_value` 或等价值写入计划。
 - `checkbox`、`radio`、`multiselect`：生成 `set_choice` 计划。
