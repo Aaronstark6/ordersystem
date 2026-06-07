@@ -40,7 +40,10 @@ app/confirmed：
 app/export：
 - 导出策略层。
 - model.py：定义 ExportStrategy 和 ExportOperation。
-- builder.py：支持 ConfirmedField → write_value 和 ConfirmedTable → write_table。
+- builder.py：ExportStrategy 总调度入口。
+- operations/value_operation.py：ConfirmedField 转换为 write_value。
+- operations/table_operation.py：ConfirmedTable 转换为 write_table。
+- operations/README.md：说明操作构建器职责、扩展位和禁止边界。
 - validators.py：校验 ExportStrategy。
 - serializer.py：将 ExportStrategy 转换为 dict。
 - README.md：说明导出策略层职责和边界。

@@ -51,6 +51,9 @@
 
 导出策略（ExportStrategy）层：
 - ExportStrategy 负责把 ConfirmedOrderObject 转换为 ExportOperation。
+- ExportStrategy builder.py 只负责总调度。
+- ExportOperation 具体构建逻辑进入 app/export/operations。
+- 禁止把具体操作构建继续堆入巨型 Export builder.py。
 - ExportStrategy 当前支持字段和表格导出计划。
 - 字段导出计划来自 ConfirmedField。
 - 表格导出计划来自 ConfirmedTable。

@@ -99,6 +99,12 @@ Executor
 - ExportStrategy。
 - ExportOperation。
 
+内部组织：
+- build_export_strategy 仍是 ExportStrategy Pipeline 主入口。
+- operations/ 拆分只改变内部组织，不改变主链。
+- 当前支持 ConfirmedField → write_value。
+- 当前支持 ConfirmedTable → write_table。
+
 禁止：
 - 不直接写文件。
 - 不绕过 ConfirmedOrderObject。
