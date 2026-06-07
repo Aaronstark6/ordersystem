@@ -19,6 +19,7 @@ Stage3 当前步骤：
 9. Choice Export Strategy Upgrade。
 10. Choice Executor Upgrade。
 11. Condition Policy Design。
+12. Condition Policy Implementation。
 
 后续：
 - Stage4 配置中心。

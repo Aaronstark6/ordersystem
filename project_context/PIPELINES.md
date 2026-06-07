@@ -182,8 +182,10 @@ ExportStrategy
 边界：
 - Condition 不直接生成 ExportOperation。
 - Condition 不进入 `app/export/operations/`。
-- ConditionPolicy 未来位于 `app/export/policies/`。
-- 当前只完成 Policy 设计，尚未创建目录或实现代码。
+- ConditionPolicy 位于 `app/export/policies/`。
+- ConditionPolicy V1 已支持 `export` 与 `skip_export`。
+- ConditionPolicy 使用 ConfirmedField / ConfirmedChoice 最终事实解析 `source_field`。
+- 条件无法判断时记录 warning，并保守跳过受控节点。
 
 # Export Execute Pipeline
 

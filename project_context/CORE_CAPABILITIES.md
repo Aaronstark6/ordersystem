@@ -128,24 +128,29 @@
 - 构造 `ConditionCandidate`。
 - 使用 `ConditionRule` 表达条件。
 - `evaluate_condition` 支持 `equals` 和 `not_equals`。
+- ConditionPolicy V1 支持 `equals`、`not_equals`、`is_empty`、`not_empty` 和 `contains`。
+- ConditionPolicy V1 支持 `export` 和 `skip_export`。
+- ConditionPolicy V1 可在 operation 生成前跳过受控节点。
+- ConditionPolicy V1 可从 ConfirmedField / ConfirmedChoice 最终事实解析条件实际值。
 
 当前限制（Current Limitations）：
-- `is_empty`、`not_empty` 和 `contains` 尚未实现。
+- Core ConditionEvaluator 仍只支持 `equals` 和 `not_equals`。
 - 不支持 `AND`、`OR`、嵌套条件或复杂表达式。
 - 不负责自动发现条件关系。
 - 不负责流程编排或页面联动。
-- Condition 尚未接入 ExportPolicy。
+- `show`、`hide`、`enable` 和 `disable` 尚未实现。
 
 成熟度（Maturity）：
 - `Upgrade Candidate`
 
 升级方向（Upgrade Direction）：
-- 完成 Condition V1 常规操作符，并建立 ConditionPolicy 对 ExportStrategy 的影响链。
+- 统一 Core ConditionEvaluator 与 ConditionPolicy 的操作符能力，并补齐非导出联动行为。
 
 Condition V1 定位：
 - Condition 表达条件规则、业务规则和联动规则。
 - Condition 不直接生成 ExportOperation。
 - Condition 通过 ExportPolicy 影响 ExportStrategy 中导出动作的生成。
+- ConditionPolicy V1 已实现 `export` 与 `skip_export`。
 - Condition V1 范围只包含 `equals`、`not_equals`、`is_empty`、`not_empty` 和 `contains`。
 - Condition V1 不包含 `AND`、`OR`、嵌套条件或复杂表达式。
 
