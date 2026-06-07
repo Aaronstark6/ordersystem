@@ -14,7 +14,7 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- STAGE3_WORKSPACE_NODE_INTEGRATION_01。
+- STAGE3_CONFIRMED_OBJECT_NODE_INTEGRATION_01。
 
 当前状态：
-- 正在将 TableNode、ImageNode、ChoiceNode、ConditionNode 接入 WorkspaceSnapshot。
+- 正在补齐 WorkspaceSnapshot 到 ConfirmedOrderObject 的节点接线。

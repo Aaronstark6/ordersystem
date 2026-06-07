@@ -63,6 +63,11 @@ Executor
 
 # Export Strategy Pipeline
 
+事实链：
+- WorkspaceSnapshot → ConfirmedOrderObject → ExportStrategy。
+- ConfirmedOrderObject 承载人工修正和补齐后的最终填写事实。
+- ExportStrategy 不得直接读取 WorkspaceSnapshot。
+
 输入：
 - ConfirmedOrderObject。
 

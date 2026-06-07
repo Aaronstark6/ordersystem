@@ -2,7 +2,9 @@
 app/confirmed
 
 职责：
-负责把工作区快照（WorkspaceSnapshot）中用户确认后的内容转换为人工确认对象（ConfirmedOrderObject）。
+ConfirmedOrderObject 是人工确认后的最终填写事实层。
+它以 WorkspaceSnapshot 为基础，承载人工修正和补齐后的最终内容。
+它用于修正 AI 错误内容、补齐 AI 缺失内容。
 
 输入：
 工作区快照（WorkspaceSnapshot）。
@@ -11,6 +13,10 @@ app/confirmed
 输出：
 人工确认对象（ConfirmedOrderObject）。
 确认字段（ConfirmedField）。
+确认表格（ConfirmedTable）。
+确认图片（ConfirmedImage）。
+确认选择（ConfirmedChoice）。
+确认条件（ConfirmedCondition）。
 确认区域（ConfirmedSection）。
 
 上游：
@@ -31,4 +37,5 @@ app/confirmed
 
 关键规则：
 ConfirmedOrderObject 是导出前的最终事实（Final Truth）。
+ConfirmedOrderObject 是 ExportStrategy 的唯一输入事实来源。
 ExportStrategy 必须读取 ConfirmedOrderObject，不能绕过人工确认直接读取 WorkspaceSnapshot。

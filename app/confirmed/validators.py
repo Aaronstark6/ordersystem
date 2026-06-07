@@ -21,4 +21,7 @@ def validate_confirmed_order_object(confirmed_order: ConfirmedOrderObject) -> li
     if not confirmed_order.confirmed_at:
         errors.append("人工确认对象（ConfirmedOrderObject）缺少 confirmed_at")
 
+    if confirmed_order.total_object_count() == 0:
+        errors.append("人工确认对象（ConfirmedOrderObject）没有可确认对象")
+
     return errors

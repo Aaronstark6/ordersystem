@@ -37,7 +37,9 @@
 - Workspace 不负责模板分析。
 
 人工确认对象（ConfirmedOrderObject）层：
-- ConfirmedOrderObject 负责保存用户确认后的最终事实（Final Truth）。
+- ConfirmedOrderObject 是人工确认后的最终填写事实层，不是 Workspace 的简单复制。
+- ConfirmedOrderObject 用于修正 AI 错误、补齐 AI 缺失内容。
+- ConfirmedOrderObject 形成最终写入 Excel / Word / PDF 的事实对象。
 - ConfirmedOrderObject 位于 Workspace 之后、ExportStrategy 之前。
 - 导出链路不得绕过 ConfirmedOrderObject。
 

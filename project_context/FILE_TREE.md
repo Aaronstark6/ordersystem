@@ -20,10 +20,10 @@ app/workspace：
 - serializer.py：将 WorkspaceSnapshot 转换为 dict。
 
 app/confirmed：
-- 人工确认层。
-- model.py：定义 ConfirmedOrderObject、ConfirmedSection、ConfirmedField。
+- 人工确认后的最终填写事实层。
+- model.py：定义 ConfirmedField、ConfirmedTable、ConfirmedImage、ConfirmedChoice、ConfirmedCondition、ConfirmedSection、ConfirmedOrderObject。
 - builder.py：把 WorkspaceSnapshot 转换为 ConfirmedOrderObject。
-- validators.py：校验 ConfirmedOrderObject。
+- validators.py：校验 ConfirmedOrderObject 标识和可确认对象。
 - serializer.py：将 ConfirmedOrderObject 转换为 dict。
 - README.md：说明人工确认层职责和边界。
 

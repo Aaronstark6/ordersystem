@@ -1,18 +1,14 @@
 # 当前任务
 
-# 当前任务
-
 当前任务：
-- STAGE3_WORKSPACE_NODE_INTEGRATION_01。
+- STAGE3_CONFIRMED_OBJECT_NODE_INTEGRATION_01。
 
 目标：
-- 将 TableNode 接入 WorkspaceSnapshot。
-- 将 ImageNode 接入 WorkspaceSnapshot。
-- 将 ChoiceNode 接入 WorkspaceSnapshot。
-- 将 ConditionNode 接入 WorkspaceSnapshot。
-- 保持现有 FieldNode / SectionNode 接线。
+- 补齐 WorkspaceSnapshot → ConfirmedOrderObject。
+- 承载 Field、Table、Image、Choice、Condition。
+- 允许人工修正 Field 和 Choice。
+- 保持 ConfirmedOrderObject 为 ExportStrategy 唯一事实输入。
 
 边界：
-- 只处理 DocumentModel → WorkspaceSnapshot。
-- Workspace 是中层表达层，不是页面。
-- 不修改 Core、Routes、UI、Executor 或 Export。
+- 只处理 WorkspaceSnapshot → ConfirmedOrderObject。
+- 不修改 Core、DocumentModel、Workspace、Routes、UI、Executor 或 Export。
