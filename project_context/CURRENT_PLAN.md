@@ -13,6 +13,7 @@ Stage3 当前步骤：
 3. Choice Core Design。
 4. Choice Contract Upgrade。
 5. Choice DocumentModel Upgrade。
+6. Choice Middle Layer Model Design。
 
 后续：
 - Stage4 配置中心。

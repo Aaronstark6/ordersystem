@@ -218,6 +218,78 @@
 6. 扩展 ExportStrategy，支持 `set_choice`。
 7. Executor 的真实 checkbox / radio 写入单独处理。
 
+### Choice Middle Layer Model Design
+
+ChoiceNode 职责：
+- 保存模板事实。
+- 保存 `choice_mode`。
+- 保存 `option_details`。
+- 保存选项坐标。
+- 不保存用户最终确认结果。
+
+WorkspaceChoice 职责：
+- 保存用户确认前的中层表达。
+- 面向用户确认。
+- 可以保存 AI 或系统建议选择。
+- 可以使用 `selected_values` 表达建议选择或当前工作区选择。
+- 不保存最终确认事实。
+- 不生成导出操作。
+
+ConfirmedChoice 职责：
+- 保存人工确认后的最终选择事实。
+- 对 value choice 可以继续保留 `final_value`。
+- 对 checkbox_group、radio_group 和 multiselect 应支持 `final_selected_values`。
+- 是 ExportStrategy 的选择事实来源。
+
+WorkspaceChoice 字段设计建议：
+- `choice_key`。
+- `label`。
+- `node_id`。
+- `choice_mode`。
+- `options`。
+- `option_details`。
+- `allow_multiple`。
+- `default_option`。
+- `value`。
+- `selected_values`。
+- `coordinate`。
+- `metadata`。
+- `editable`。
+- `required`。
+- `warnings`。
+- `errors`。
+
+ConfirmedChoice 字段设计建议：
+- `choice_key`。
+- `label`。
+- `node_id`。
+- `choice_mode`。
+- `options`。
+- `option_details`。
+- `original_value`。
+- `user_value`。
+- `final_value`。
+- `selected_values`。
+- `final_selected_values`。
+- `confirmed`。
+- `coordinate`。
+- `metadata`。
+
+`value` 与 `selected_values` 的关系：
+- `value` / `final_value` 适合 value choice。
+- `selected_values` / `final_selected_values` 适合 checkbox_group、radio_group 和 multiselect。
+- 过渡期可以同时保留两类字段，避免破坏旧链路。
+- 后续生成导出计划时，由 `choice_mode` 决定使用 `final_value` 还是 `final_selected_values`。
+
+中层升级顺序：
+1. 升级 WorkspaceChoice 数据表达。
+2. 同步 ChoiceNode → WorkspaceChoice Builder。
+3. 升级 ConfirmedChoice 数据表达。
+4. 同步 WorkspaceChoice → ConfirmedChoice Builder。
+5. 验证 value choice 旧链路兼容。
+6. 后续单独升级 ExportStrategy 的选择计划。
+7. Executor 的真实位置型选择写入不在中层模型升级中处理。
+
 ## Matching Core
 
 职责（Responsibility）：

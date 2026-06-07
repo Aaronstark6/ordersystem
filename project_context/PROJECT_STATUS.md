@@ -18,9 +18,9 @@
 - Stage3 Middle Layer Integration。
 
 当前任务：
-- `STAGE3_CHOICE_DOCUMENTMODEL_UPGRADE_01`
+- `STAGE3_CHOICE_MIDDLE_LAYER_MODEL_DESIGN_01`
 
 当前状态：
-- 正在将 Choice Contract 新能力传播到 ChoiceNode。
-- ChoiceNode 保留旧 `options: List[str]`，并新增结构化选项承载。
-- 本任务不向 Workspace、Confirmed、Export 或 Executor 传播。
+- 正在设计 Choice 的中层表达。
+- 正在明确 WorkspaceChoice 与 ConfirmedChoice 的职责、字段边界和升级顺序。
+- 当前只修改设计文档，不升级中层代码。

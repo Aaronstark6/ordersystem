@@ -1,13 +1,14 @@
 # 当前任务
 
 当前任务：
-- `STAGE3_CHOICE_DOCUMENTMODEL_UPGRADE_01`
+- `STAGE3_CHOICE_MIDDLE_LAYER_MODEL_DESIGN_01`
 
 目标：
-- 将 Choice Contract 新能力传播到 ChoiceNode。
-- 保留旧 options 字符串链路，同时承载 choice_mode 与 option_details。
+- 设计 WorkspaceChoice / ConfirmedChoice 的中层模型。
+- 明确 value、selected_values 与 final_selected_values 的适用边界。
 
 边界：
-- 只升级 ChoiceNode 与 DocumentModel Builder。
+- 只输出中层模型设计结论。
 - 不修改主链。
-- 不向 Workspace、Confirmed、Export 或 Executor 传播。
+- 不修改 WorkspaceChoice 或 ConfirmedChoice 代码。
+- 不实现 ExportOperation 或 Executor 行为。

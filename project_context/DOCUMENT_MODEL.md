@@ -106,6 +106,14 @@ ChoiceNode：
 - ChoiceNode 不保存用户确认结果。
 - 用户最终选择结果属于 ConfirmedChoice。
 
+# Choice 中层职责边界
+
+- ChoiceNode：保存模板事实，包括选择模式、选项结构和选项位置。
+- WorkspaceChoice：保存面向用户确认的中层表达，可以承载系统建议或当前工作区选择。
+- ConfirmedChoice：保存人工确认后的最终选择事实。
+
+用户最终选择结果不属于 ChoiceNode。
+
 # DocumentModel V1 冻结条件
 
 以下节点全部完成并验证通过：
