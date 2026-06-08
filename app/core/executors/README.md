@@ -61,6 +61,13 @@ set_choice：
 - dropdown 第一版在 target 和 final_value 可用时按普通值写入。
 - Word / PDF 尚未实现 set_choice。
 
+write_table：
+- 使用 ExportStrategy 提供的 `target.start_cell` 和二维 `value` 写入。
+- 写入前检测 openpyxl `MergedCell`。
+- 命中合并单元格时写入所属合并区域左上角。
+- 无法定位合并区域时跳过该单元格并在 operation metadata 记录 warning。
+- 不改变 table operation contract。
+
 样式原则：
 执行器只写单元格值，不主动修改模板样式。
 

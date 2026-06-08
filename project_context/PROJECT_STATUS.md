@@ -90,3 +90,12 @@ Contract Gap：
 - V1 只产出 ChoiceCandidate，不修改下游主链。
 - 支持 Checkbox、Radio、Yes/No 与常见二选一。
 - Dropdown、复杂 MultiSelect、跨区域复杂分组仍留后续。
+# Table Merged Cell Write Guard 状态
+当前任务：
+- `STAGE3_TABLE_MERGED_CELL_WRITE_GUARD_01`
+
+当前状态：
+- RUN_03 已验证 `write_value 10/10` 与 `set_choice 1/1` 成功。
+- `write_table` 剩余失败点为 Excel Executor 写入 merged cell 时触发 openpyxl read-only 异常。
+- 本小步只在 Excel Executor 的 table 写入层增加 MergedCell 防护。
+- 不修改 Field / Choice / Condition / Image / Template Analysis / ExportStrategy / table operation contract。

@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from openpyxl import load_workbook
+from openpyxl.cell.cell import MergedCell
 from openpyxl.utils.cell import coordinate_from_string, column_index_from_string
 
 from app.export.model import ExportStrategy
@@ -51,7 +52,39 @@ def _write_value(workbook: Any, target: Dict[str, Any], value: Any) -> None:
     worksheet[cell] = value
 
 
-def _write_table(workbook: Any, target: Dict[str, Any], value: Any) -> None:
+def _resolve_table_write_cell(
+    worksheet: Any,
+    row: int,
+    column: int,
+) -> tuple[Any | None, str | None, bool]:
+    target_cell = worksheet.cell(row=row, column=column)
+    if not isinstance(target_cell, MergedCell):
+        return target_cell, None, False
+
+    for merged_range in worksheet.merged_cells.ranges:
+        if target_cell.coordinate not in merged_range:
+            continue
+        writable_cell = worksheet.cell(
+            row=merged_range.min_row,
+            column=merged_range.min_col,
+        )
+        return (
+            writable_cell,
+            (
+                f"write_table redirected merged cell {target_cell.coordinate} "
+                f"to {writable_cell.coordinate}"
+            ),
+            True,
+        )
+
+    return (
+        None,
+        f"write_table skipped merged cell {target_cell.coordinate}: range not found",
+        True,
+    )
+
+
+def _write_table(workbook: Any, target: Dict[str, Any], value: Any) -> tuple[int, int, List[str]]:
     sheet_name = _get_target_value(target, "sheet_name")
     start_cell = _get_target_value(target, "start_cell")
     if not isinstance(value, list):
@@ -60,15 +93,37 @@ def _write_table(workbook: Any, target: Dict[str, Any], value: Any) -> None:
     worksheet = _get_worksheet(workbook, sheet_name)
     column_letters, start_row = coordinate_from_string(start_cell)
     start_column = column_index_from_string(column_letters)
+    written_count = 0
+    skipped_count = 0
+    warnings: List[str] = []
+    redirected_targets: set[str] = set()
 
     for row_offset, row_values in enumerate(value):
         values = row_values if isinstance(row_values, (list, tuple)) else [row_values]
         for column_offset, cell_value in enumerate(values):
-            worksheet.cell(
+            writable_cell, warning, redirected = _resolve_table_write_cell(
+                worksheet,
                 row=start_row + row_offset,
                 column=start_column + column_offset,
-                value=cell_value,
             )
+            if warning:
+                warnings.append(warning)
+            if writable_cell is None:
+                skipped_count += 1
+                continue
+
+            if redirected and writable_cell.coordinate in redirected_targets:
+                skipped_count += 1
+                warnings.append(
+                    f"write_table skipped duplicate merged target {writable_cell.coordinate}"
+                )
+                continue
+
+            writable_cell.value = cell_value
+            written_count += 1
+            redirected_targets.add(writable_cell.coordinate)
+
+    return written_count, skipped_count, warnings
 
 
 def _validate_insert_image(
@@ -203,10 +258,32 @@ def execute_excel_export(
                 operation_result.message = "单元格值写入成功"
                 result.success_count += 1
             elif operation.operation_type == "write_table":
-                _write_table(workbook, operation.target, operation.value)
-                operation_result.status = "success"
-                operation_result.message = "表格值写入成功"
-                result.success_count += 1
+                write_count, skipped_count, warnings = _write_table(
+                    workbook,
+                    operation.target,
+                    operation.value,
+                )
+                if warnings:
+                    operation_result.metadata["warnings"] = warnings
+                if skipped_count:
+                    operation_result.metadata["skipped_cell_count"] = skipped_count
+                operation_result.metadata["written_cell_count"] = write_count
+                if write_count > 0:
+                    operation_result.status = "success"
+                    operation_result.message = (
+                        f"table values written: {write_count}"
+                    )
+                    if skipped_count:
+                        operation_result.message += (
+                            f", skipped cells: {skipped_count}"
+                        )
+                    result.success_count += 1
+                else:
+                    operation_result.status = "skipped"
+                    operation_result.message = (
+                        warnings[0] if warnings else "no writable table cells"
+                    )
+                    result.skipped_count += 1
             elif operation.operation_type == "insert_image":
                 _validate_insert_image(
                     workbook,

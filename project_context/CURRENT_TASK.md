@@ -98,3 +98,17 @@ Contract Gap：
 - 不修改 Field / Table / Condition / Image。
 - 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
 - 不新增复杂规则引擎。
+# 当前任务：Table Merged Cell Write Guard
+
+当前任务：
+- `STAGE3_TABLE_MERGED_CELL_WRITE_GUARD_01`
+
+目标：
+- 修复 Excel Executor 执行 `write_table` 时遇到 merged cell 的 read-only 报错。
+- 命中 openpyxl `MergedCell` 时优先写入所属合并区域左上角。
+- 无法安全定位合并区域时跳过该单元格并记录 warning。
+
+边界：
+- 只修改 Excel Executor 的 table 写入保护。
+- 不修改 Field / Choice / Condition / Image / Template Analysis / ExportStrategy。
+- 不修改 table operation contract。
