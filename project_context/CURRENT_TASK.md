@@ -84,3 +84,17 @@
 Contract Gap：
 - `write_table.target` 缺少 `start_cell`。
 - `write_table.value` 不是 Executor 所需的 row-list。
+# 当前任务：Choice Detection V1
+
+当前任务：
+- `STAGE3_CHOICE_DETECTION_V1_01`
+
+目标：
+- 实现 Choice Detection V1。
+- 让真实模板首次产生 `choice_count > 0` 与 `set_choice > 0`。
+
+边界：
+- 只实现 Choice Detection。
+- 不修改 Field / Table / Condition / Image。
+- 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
+- 不新增复杂规则引擎。

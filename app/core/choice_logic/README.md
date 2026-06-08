@@ -59,3 +59,27 @@ app/core/choice_logic
 - 不保存状态。
 - 不执行导出。
 - 不修改 ConfirmedOrderObject。
+# Choice Detection V1
+
+Choice Detection V1 turns simple template choice patterns into existing `ChoiceCandidate` objects.
+
+Supported in V1:
+- Checkbox markers: `□`, `☐`, `☑`, `✓`, `✔`.
+- Radio markers: `○`, `●`, `◯`, `◉`.
+- Split marker/label rows, for example marker cell followed by `Softgel`.
+- Inline marker text, for example `□ Softgel`.
+- `Yes / No`.
+- Common binary pairs: `Male / Female`, `Domestic / Export`, `Sample / Production`.
+
+Contract:
+- Reuses existing `ChoiceCandidate`.
+- Reuses existing `ChoiceOption`.
+- Preserves option coordinates.
+- Sets `choice_mode` to `checkbox_group` or `radio_group`.
+- Does not add a second Choice contract.
+
+Current limits:
+- Does not support dropdown detection.
+- Does not support complex MultiSelect grouping beyond simple checkbox groups.
+- Does not support complex grouped choices across distant regions.
+- Does not modify DocumentModel, Workspace, Confirmed, ExportStrategy, or Executor.

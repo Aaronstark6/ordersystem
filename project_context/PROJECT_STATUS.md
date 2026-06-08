@@ -80,3 +80,13 @@ Contract Gap：
 - 原 headers / row_count / column_count 保留在 operation metadata。
 - 未修改 Excel Executor。
 - 未新增第二套 table 坐标模型。
+# Choice Detection V1 状态
+
+当前任务：
+- `STAGE3_CHOICE_DETECTION_V1_01`
+
+当前状态：
+- Choice Pipeline 已存在，本小步补齐 Choice Detection V1。
+- V1 只产出 ChoiceCandidate，不修改下游主链。
+- 支持 Checkbox、Radio、Yes/No 与常见二选一。
+- Dropdown、复杂 MultiSelect、跨区域复杂分组仍留后续。

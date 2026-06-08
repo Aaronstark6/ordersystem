@@ -459,3 +459,21 @@ ConfirmedChoice 字段设计建议：
 - 不直接重写 Template Analysis。
 - 不把 Field / Choice / Condition / Image / Table 识别规则塞进 `app/core/template_analysis/analyzer.py`。
 - detector 文件保持小职责；超过约 200 到 300 行再评估拆分。
+# Choice Detection V1
+
+状态：
+- Choice Detector 已进入 V1。
+- Choice Detector 仍是 `Upgrade Candidate`，不标记为 `Stable`。
+
+已支持：
+- Checkbox marker 识别。
+- Radio marker 识别。
+- Yes / No 识别。
+- 常见二选一识别：Male / Female、Domestic / Export、Sample / Production。
+- 产出既有 `ChoiceCandidate`，并保留 option coordinate 与 `choice_mode`。
+
+当前边界：
+- 不新增第二套 Choice Contract。
+- 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
+- 不支持 Dropdown。
+- 不支持复杂 MultiSelect 或跨区域复杂分组。

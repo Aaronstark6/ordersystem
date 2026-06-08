@@ -288,3 +288,20 @@ DocumentModel
 - Pipeline 只组织流程。
 - Detector 负责识别能力。
 - Pipeline 已完成不等于 Detection 已完成。
+# Choice Detection V1
+
+Template Analysis Reality Gap 修复新增 Choice Detection V1。
+
+目标链：
+- Excel Reader
+- Choice Detector
+- TemplateAnalysisResult.choices
+- DocumentModel ChoiceNode
+- WorkspaceChoice
+- ConfirmedChoice
+- ExportStrategy `set_choice`
+
+边界：
+- Choice Detector 只产出 ChoiceCandidate。
+- 后续传播继续复用现有主链。
+- Pipeline 已完成不等于 Detection 已完成；本小步只补齐 Detection V1。
