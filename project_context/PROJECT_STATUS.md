@@ -109,3 +109,12 @@ Contract Gap：
 - Image Detector V1 只识别图片占位文字，并推断基础 `image_role`。
 - 不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
 - 不处理真实图片插入、嵌入图片扫描、图片尺寸或复杂锚点。
+# Table Detection Guardrail 状态
+当前任务：
+- `STAGE3_TABLE_DETECTION_GUARDRAIL_01`
+
+当前状态：
+- RUN_04 发现 Table Detector V1 识别范围过宽，可能覆盖 Field 写入结果。
+- 当前小步只收紧 Table Detection，不修改 Field / Choice / Image / Condition。
+- 已加入 guardrail，减少字段布局、choice、image placeholder 和 validation/control mapping 行误判。
+- 目标是减少误判，不是增强复杂表格能力。

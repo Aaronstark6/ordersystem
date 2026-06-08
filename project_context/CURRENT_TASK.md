@@ -126,3 +126,17 @@ Contract Gap：
 - 不修改 Field / Choice / Table / Condition。
 - 不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
 - 不处理真实图片文件、嵌入图片对象、图片尺寸或复杂锚点。
+# 当前任务：Table Detection Guardrail
+
+当前任务：
+- `STAGE3_TABLE_DETECTION_GUARDRAIL_01`
+
+目标：
+- 收紧 Table Detector V1。
+- 减少普通字段布局、choice、image placeholder 和 validation/control mapping 行被误判为 table。
+
+边界：
+- 只修改 Table Logic。
+- 不修改 Field / Choice / Image / Condition。
+- 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
+- 不修改 table export contract。

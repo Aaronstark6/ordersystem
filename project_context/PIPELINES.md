@@ -326,3 +326,24 @@ ConfirmedImage
 ExportStrategy insert_image
 
 当前 Image Detector V1 只识别图片占位文字和基础 image_role，不处理真实图片文件、嵌入图片对象、尺寸推断或复杂锚点。
+# Table Detector Guardrail Pipeline Update
+
+Reality Validation 发现 Table Detector V1 过宽：
+- 普通字段区可能被 table 覆盖。
+- choice 行可能被识别为 table。
+- image placeholder 行可能被识别为 table。
+- validation/control mapping 行可能被逐行识别为 table。
+
+当前已加入 Table Detector Guardrail V1：
+
+Excel Reader
+↓
+Table Detector V1
+↓
+Guardrail exclusions
+↓
+TableAnalysisResult.tables
+↓
+DocumentModel TableNode
+
+Guardrail 只收紧 detection，不修改 ExportStrategy、table operation contract 或 Excel Executor。

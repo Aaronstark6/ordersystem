@@ -485,3 +485,9 @@ ConfirmedChoice 字段设计建议：
 - 可推断 image_role：logo、product_image、label_image、package_image、stamp、signature、generic_image。
 - 当前仍为 Upgrade Candidate。
 - 当前不扫描真实嵌入图片、不推断图片尺寸、不绑定图片文件、不处理复杂锚点。
+# Table Detector Guardrail V1
+
+- Table Detector Guardrail V1 目标是减少误判，不是增强复杂表格能力。
+- 已避免把明显字段布局行、choice 行、image placeholder 行和 validation/control mapping 行识别为 table。
+- Table V1 候选需要表头证据，并且需要数据行或明确 table 标题。
+- 当前仍不做复杂表格引擎、不修改 table export contract、不修改 Excel Executor。
