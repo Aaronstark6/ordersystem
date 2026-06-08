@@ -1,0 +1,53 @@
+{
+  "validation_case": "STAGE3_REALITY_VALIDATION_INPUT_SETUP_01",
+  "description": "Minimal sample order for OrderSystem Stage3 reality validation.",
+  "customer_name": "Global Wellness Ltd.",
+  "order_no": "OS-TEST-001",
+  "product_name": "Omega Softgel",
+  "quantity": 10000,
+  "destination": "Canada",
+  "rush_order": "No",
+  "private_label": "No",
+  "dosage_form": {
+    "choice_key": "dosage_form",
+    "choice_mode": "radio_group",
+    "final_selected_values": [
+      "softgel"
+    ],
+    "final_value": "Softgel"
+  },
+  "condition_expectation": {
+    "private_label_condition": {
+      "source_field": "private_label",
+      "operator": "equals",
+      "expected_value": "No",
+      "action": "skip_export",
+      "controls_node_ids": [
+        "brand_name",
+        "logo_required"
+      ]
+    }
+  },
+  "order_items": [
+    {
+      "item": "Omega 3 Softgel",
+      "spec": "1000mg",
+      "unit": "bottle",
+      "qty": 500,
+      "notes": "Private label skipped"
+    },
+    {
+      "item": "Vitamin D3 Softgel",
+      "spec": "2000IU",
+      "unit": "bottle",
+      "qty": 300,
+      "notes": "Standard label"
+    }
+  ],
+  "image": {
+    "label_image": {
+      "role": "label_mockup",
+      "expected_behavior": "insert_image placeholder or warning according to current executor capability"
+    }
+  }
+}

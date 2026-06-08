@@ -25,3 +25,21 @@
 - 已创建 `data/` 标准目录结构。
 - 已新增 `app/storage/` 最小路径管理层。
 - 系统运行写入统一进入 `data/`；`audit_output/` 仅作为开发审计临时目录。
+# Template Analysis Reality Gap 状态更新
+
+当前任务：
+- `STAGE3_TEMPLATE_ANALYSIS_REBUILD_PLAN_01`
+
+当前阶段：
+- Stage3 已进入 Template Analysis Reality Gap 修复阶段。
+- 下游主链已验证出结构可用：DocumentModel、Workspace、Confirmed、ExportStrategy 和 Excel Executor 均可被真实链路调用。
+- 当前优先级转向上游 detector 能力补齐。
+
+真实验证暴露：
+- Field = 0。
+- Choice = 0。
+- Condition = 0。
+- Image = 0。
+- Table = 13。
+- ExportStrategy 只生成 `write_table`。
+- 当前最大断点是 Template Analysis 未正确产出下游对象。

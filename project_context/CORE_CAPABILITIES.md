@@ -401,3 +401,41 @@ ConfirmedChoice 字段设计建议：
 
 升级方向（Upgrade Direction）：
 - 优先审计并对齐 ExportOperation 与各 Executor 的输入契约，再评估真实图片、PDF 和 Word 写入能力。
+# Template Analysis Reality Gap
+
+来源：`STAGE3_REALITY_VALIDATION_RUN_01`。
+
+真实验证结果：
+- Field = 0。
+- Choice = 0。
+- Condition = 0。
+- Image = 0。
+- Table = 13。
+- ExportStrategy 只生成 `write_table`。
+- Excel Executor 的 `table start_cell` 报错是后续执行契约问题，不是当前 Template Analysis 主要断点。
+
+当前判断：
+- 下游主链结构已经较完整：DocumentModel、Workspace、Confirmed、ExportStrategy、Excel Executor 均可被真实链路调用。
+- 当前最大断点位于上游 Template Analysis 与 Detector 层。
+- Pipeline 已完成不等于 Detection 已完成。
+
+当前能力缺口：
+- Field Detection 弱，真实模板中未产出字段；需补齐中英文标签、冒号字段、相邻空白目标格等规则。
+- Choice Detection 未真正实现；Choice Pipeline 已完成，但真实模板未产出 ChoiceCandidate。
+- Condition Detection 未真正实现；Condition Pipeline / ConditionPolicy 已完成，但真实模板未产出 ConditionCandidate。
+- Image Detection 未真正实现；Image Pipeline 已完成，但真实模板未产出 ImageAreaCandidate / ImageAnchorCandidate。
+- Table Detection 过于激进，误把普通布局识别为 Table。
+
+状态标记：
+- Template Analysis：`Upgrade Candidate`
+- Field Detector：`Upgrade Candidate`
+- Choice Detector：`Upgrade Candidate`
+- Condition Detector：`Upgrade Candidate`
+- Image Detector：`Upgrade Candidate`
+- Table Detector：`Reviewing`
+
+升级原则：
+- Template Analysis 后续升级以 detector 能力补齐为主。
+- 不直接重写 Template Analysis。
+- 不把 Field / Choice / Condition / Image / Table 识别规则塞进 `app/core/template_analysis/analyzer.py`。
+- detector 文件保持小职责；超过约 200 到 300 行再评估拆分。

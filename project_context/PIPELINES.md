@@ -230,3 +230,47 @@ ExportStrategy
 - 不生成 ExportStrategy。
 - 不绕过 ExportStrategy 直接读取 ConfirmedOrderObject。
 - 不自行判断字段目标位置。
+# Template Analysis Reality Gap
+
+`STAGE3_REALITY_VALIDATION_RUN_01` 暴露的断点位于：
+
+Template Reader
+↓
+Template Analysis
+↓
+Detector 层
+
+而不是：
+
+DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
+
+说明：
+- 当前真实验证中 Template Reader 能读取真实 Excel 模板。
+- Template Analysis 只产出 Table，未产出 Field、Choice、Condition、Image。
+- DocumentModel、Workspace、Confirmed 和 ExportStrategy 均能消费现有 TemplateAnalysisResult。
+- Excel Executor 的 `write_table` / `start_cell` 契约问题属于后续执行层契约对齐，不是本轮 Template Analysis 首要断点。
+
+后续目标链：
+
+Excel Template
+↓
+Excel Reader
+↓
+Field Detector
+↓
+Choice Detector
+↓
+Condition Detector
+↓
+Image Detector
+↓
+Table Detector
+↓
+TemplateAnalysisResult
+↓
+DocumentModel
+
+升级原则：
+- Pipeline 只组织流程。
+- Detector 负责识别能力。
+- Pipeline 已完成不等于 Detection 已完成。

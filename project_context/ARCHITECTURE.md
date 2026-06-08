@@ -150,3 +150,25 @@ Excel Executor
 ## 后续
 
 PDF / Word
+# Template Analysis 内部分层
+
+Template Analysis 不应成为巨型文件。
+
+未来结构应保持：
+- `app/core/template_analysis/analyzer.py`：只负责调度 Template Reader 结果、调用各 detector、汇总 `TemplateAnalysisResult`。
+- `app/core/field_logic/`：负责字段识别。
+- `app/core/choice_logic/`：负责选择识别。
+- `app/core/condition_logic/`：负责条件规则识别。
+- `app/core/image_logic/`：负责图片区域和图片锚点识别。
+- `app/core/table_logic/`：负责表格识别。
+
+禁止：
+- 把所有识别规则写进 `analyzer.py`。
+- 把 Field / Choice / Condition / Image / Table 混成一个巨型 detector。
+- 在 Template Analysis 层引入 Workspace、Confirmed、Export 或 Executor 业务判断。
+
+拆分原则：
+- `analyzer.py` 保持调度入口，不承载具体识别规则。
+- detector 文件优先保持小职责、小文件。
+- 当单一 detector 超过约 200 到 300 行，或同时承载多种识别策略时，再评估拆出 patterns、parser 或更细 detector。
+- 拆分必须尊重真实文件树，不把尚未存在的文件写成已存在。

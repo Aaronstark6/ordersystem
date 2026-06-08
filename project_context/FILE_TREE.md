@@ -150,3 +150,55 @@ app/core/template_reader：
 - word_reader.py：识别 Word 模板文件并返回 WordTemplateInfo。
 - reader_dispatcher.py：根据文件后缀调用对应模板读取器。
 - README.md：说明模板读取能力和当前边界。
+# Template Analysis / Detector 文件职责
+
+当前真实文件：
+- `app/core/template_analysis/analyzer.py`
+- `app/core/field_logic/field_detector.py`
+- `app/core/field_logic/field_normalizer.py`
+- `app/core/field_logic/field_matcher.py`
+- `app/core/choice_logic/choice_detector.py`
+- `app/core/choice_logic/choice_resolver.py`
+- `app/core/condition_logic/condition_detector.py`
+- `app/core/condition_logic/condition_evaluator.py`
+- `app/core/image_logic/image_detector.py`
+- `app/core/image_logic/image_anchor.py`
+- `app/core/table_logic/table_detector.py`
+- `app/core/table_logic/header_detector.py`
+- `app/core/table_logic/merged_cell_detector.py`
+
+`analyzer.py` 职责：
+- 调用各 detector。
+- 汇总 `TemplateAnalysisResult`。
+- 记录 warnings / errors / metadata。
+
+`analyzer.py` 禁止：
+- 写具体字段识别规则。
+- 写具体 choice 识别规则。
+- 写具体 condition 识别规则。
+- 写具体 image 识别规则。
+- 写具体 table 边界识别规则。
+
+`field_logic/` 后续升级：
+- `field_detector.py` 保持轻量。
+- 可在需要时新增 `label_patterns.py` 或等价小文件，用于中英文标签、冒号字段、相邻空白目标格等规则。
+
+`choice_logic/` 后续升级：
+- `choice_detector.py` 可继续保留 ChoiceCandidate / ChoiceOption / ChoiceGroup 的结构能力。
+- 如识别逻辑增长，再评估拆出 `checkbox_detector.py`、`dropdown_detector.py` 或 `patterns.py`。
+- 不要一开始过度拆分；超过约 200 到 300 行再评估。
+
+`condition_logic/` 后续升级：
+- `condition_detector.py` 负责最小条件候选识别。
+- 可按真实业务增长拆出 `condition_patterns.py` 或 `condition_rule_parser.py`。
+- 第一版只聚焦 `equals` / `skip_export` 等最小规则识别。
+
+`image_logic/` 后续升级：
+- `image_detector.py` 负责图片区域候选。
+- 后续可按真实复杂度新增 `image_area_detector.py`，但不得提前写成已存在文件。
+
+`table_logic/` 后续升级：
+- `table_detector.py` 负责表格候选主判断。
+- 当前真实文件包含 `header_detector.py` 和 `merged_cell_detector.py`。
+- 不得把不存在的 `header_detection.py` 或 `merged_cell_detection.py` 写成已存在。
+- 后续重点是降低误判，避免普通布局行被吞成 table。
