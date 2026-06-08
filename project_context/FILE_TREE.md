@@ -5,7 +5,7 @@
 - app/workflow：主链流程组织。
 - app/workspace：工作区模型和构建。
 - app/export：导出策略和操作模型。
-- app/storage：持久化读写。
+- app/storage：基础设施层路径管理。
 - app/state：状态记录和推进。
 - app/routes：接口层。
 - app/diagnostics：诊断层。
@@ -26,10 +26,20 @@
 - 本目录规范描述授权边界，不要求预先创建尚不存在的 `data/` 子目录。
 
 app/storage：
-- 未来统一承担系统持久化路径管理。
-- 负责授权目录创建、清理策略和文件命名。
+- paths.py：定义仓库根目录、`data/` 根目录和六个标准子目录路径常量。
+- manager.py：提供授权目录创建、目录读取函数和安全路径解析。
+- __init__.py：导出 Storage V1 最小公开函数。
+- README.md：说明 Storage Layer 职责、边界和目录策略。
 - 不做业务判断，不保存第二套业务事实。
 - 业务模块不得绕过 Storage 规则自行拼接路径写文件。
+
+data/ Git 策略：
+- `data/templates/.gitkeep` 可进入 Git，用于保留正式模板目录；真实大模板后续按大小和敏感性决定是否提交。
+- `data/samples/.gitkeep` 可进入 Git，用于保留小型样本目录；小型非敏感样本允许进入 Git。
+- `data/uploads/.gitignore` 可进入 Git；目录内容默认不进入 Git。
+- `data/runtime/.gitignore` 可进入 Git；目录内容默认不进入 Git。
+- `data/cache/.gitignore` 可进入 Git；目录内容默认不进入 Git。
+- `data/exports/.gitignore` 可进入 Git；目录内容默认不进入 Git。
 
 app/workspace：
 - 中层工作区表达层，不是页面。

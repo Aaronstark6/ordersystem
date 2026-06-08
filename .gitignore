@@ -14,3 +14,12 @@ audit_temp/
 
 Thumbs.db
 Desktop.ini
+
+data/uploads/*
+!data/uploads/.gitignore
+data/runtime/*
+!data/runtime/.gitignore
+data/cache/*
+!data/cache/.gitignore
+data/exports/*
+!data/exports/.gitignore

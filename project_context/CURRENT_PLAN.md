@@ -22,6 +22,7 @@ Stage3 当前步骤：
 12. Condition Policy Implementation。
 13. Storage Policy Design。
 14. Storage / Cache / Runtime Design。
+15. Storage Structure and Layer。
 
 后续：
 - Stage4 配置中心。

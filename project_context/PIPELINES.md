@@ -30,6 +30,12 @@ Executor
 
 # 主链存储边界
 
+- Template Reader 读取 `data/templates/`。
+- Upload 未来写入 `data/uploads/`。
+- Runtime 状态未来写入 `data/runtime/`。
+- Cache 未来写入 `data/cache/`。
+- Executor 导出未来写入 `data/exports/`。
+- Samples 用于真实验证。
 - Template Intake Pipeline：读取 `data/templates/` 中的正式模板，或接收并登记 `data/uploads/` 中的用户上传文件。
 - Template Analysis Pipeline：读取模板；可通过 Storage 读取或写入 `data/cache/` 中可重新生成的分析缓存，并把当前分析状态写入 `data/runtime/`。
 - DocumentModel Pipeline：可通过 Storage 把当前 DocumentModel 运行状态写入 `data/runtime/`。
