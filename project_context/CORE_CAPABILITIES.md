@@ -401,6 +401,26 @@ ConfirmedChoice 字段设计建议：
 
 升级方向（Upgrade Direction）：
 - 优先审计并对齐 ExportOperation 与各 Executor 的输入契约，再评估真实图片、PDF 和 Word 写入能力。
+# Field Detection Reality Upgrade V1
+
+状态：
+- Field Detector 已完成 Reality Upgrade V1。
+- Field Detector 仍是 `Upgrade Candidate`，不标记为 `Stable`。
+
+已补齐：
+- 支持常见中文字段标签。
+- 支持常见英文字段标签，英文匹配大小写不敏感。
+- 支持英文冒号 `:` 与中文冒号 `：`。
+- 支持去除冒号和空白后再判断 label hint。
+- 支持最小 `target_cell` 推断，并以候选对象运行时 metadata 形式预留。
+
+当前边界：
+- 不修改 `FieldLabelCandidate` 合同。
+- 不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
+- 不支持复杂合并单元格推断。
+- 不支持跨区域搜索。
+- 不负责 Choice / Condition / Table / Image 识别。
+
 # Template Analysis Reality Gap
 
 来源：`STAGE3_REALITY_VALIDATION_RUN_01`。

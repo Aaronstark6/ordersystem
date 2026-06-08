@@ -19,6 +19,7 @@ def build_workspace_field(field_node: FieldNode) -> WorkspaceField:
         editable=True,
         coordinate=coordinate,
         metadata={
+            **dict(field_node.metadata),
             "normalized_name": field_node.normalized_name,
             "value_type": field_node.value_type,
         },

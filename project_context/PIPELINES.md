@@ -230,6 +230,20 @@ ExportStrategy
 - 不生成 ExportStrategy。
 - 不绕过 ExportStrategy 直接读取 ConfirmedOrderObject。
 - 不自行判断字段目标位置。
+# Field Detection V1 Reality Upgrade
+
+Template Analysis Reality Gap 修复第一步为 Field Detection V1。
+
+本小步目标：
+- 让真实 Excel 模板至少能产出基础 FieldLabelCandidate。
+- 支持中英文常见标签与中英文冒号标签。
+- 在不修改下游合同的前提下，为候选字段预留最小 `target_cell` metadata。
+
+边界：
+- 不修改 Template Analysis 调度职责。
+- 不修改 Choice / Condition / Image / Table detector。
+- 不修改 DocumentModel 之后的主链。
+
 # Template Analysis Reality Gap
 
 `STAGE3_REALITY_VALIDATION_RUN_01` 暴露的断点位于：

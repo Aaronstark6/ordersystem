@@ -28,6 +28,41 @@ Stage3 当前步骤：
 - Stage4 配置中心。
 - Stage5 外层入口。
 - Stage6 AI Runtime。
+# 当前小步：STAGE3_FIELD_TARGET_CELL_PIPELINE_FIX_01
+
+Field Detection Reality Upgrade 后续小步：打通 `target_cell` 主链。
+
+目标链路：
+- Field Detector
+- TemplateAnalysisResult
+- DocumentModel FieldNode
+- Workspace Field
+- Confirmed Field
+- ExportStrategy `write_value`
+
+修复原则：
+- `target_cell` 进入 FieldNode 后作为 Field 的目标坐标使用。
+- 不新增第二套坐标模型。
+- 不修改 Choice / Condition / Image / Table。
+- 不修改 Excel Executor。
+
+# 当前小步：STAGE3_FIELD_DETECTION_REALITY_UPGRADE_01
+
+Field Detection Reality Upgrade 是 Template Analysis Reality Gap 修复路线的当前小步。
+
+目标：
+- 修复 Field Detector 中文 hint 乱码。
+- 补充英文 label hint。
+- 支持中英文冒号标签。
+- 增加相邻右侧 / 下方空白格的最小 `target_cell` 推断。
+
+完成后继续按路线推进：
+- `STAGE3_CHOICE_DETECTION_V1_01`
+- `STAGE3_TABLE_DETECTION_GUARDRAIL_01`
+- `STAGE3_IMAGE_DETECTION_V1_01`
+- `STAGE3_CONDITION_DETECTION_V1_01`
+- `STAGE3_REALITY_VALIDATION_RUN_02`
+
 # Template Analysis Reality Gap 修复路线
 
 推荐顺序：
@@ -56,3 +91,18 @@ Stage3 当前步骤：
 - 不直接重写 Template Analysis。
 - 不把所有 detector 逻辑塞进 `analyzer.py`。
 - detector 保持小文件、小职责，超过约 200 到 300 行再评估拆分。
+# 当前小步：STAGE3_TABLE_EXPORT_CONTRACT_FIX_01
+
+目标：
+- 修复 Table Export Contract。
+- 让 `ConfirmedTable -> ExportOperation(write_table)` 生成 Excel Executor 可直接消费的 `target.start_cell` 与 row-list value。
+
+边界：
+- 不修改 Excel Executor。
+- 不修改 Table Detector。
+- 不新增复杂表格引擎。
+- 不新增第二套 table 坐标模型。
+
+后续：
+- 本小步只解决 operation contract。
+- 表格真实数据填充、复杂表头、误判 guardrail 后续单独处理。

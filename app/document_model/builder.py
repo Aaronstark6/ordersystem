@@ -1,6 +1,8 @@
 from dataclasses import asdict, is_dataclass
 from uuid import uuid4
 
+from openpyxl.utils.cell import coordinate_to_tuple
+
 from app.contracts.template_analysis_result import (
     FieldLabelCandidate,
     TableCandidate,
@@ -20,6 +22,17 @@ from app.document_model.nodes import (
 
 
 def _field_coordinate(candidate: FieldLabelCandidate, document_type: str) -> Coordinate:
+    target_cell = getattr(candidate, "metadata", {}).get("target_cell")
+    if target_cell:
+        target_row, target_column = coordinate_to_tuple(target_cell)
+        return Coordinate(
+            document_type=document_type,
+            sheet_name=candidate.sheet_name,
+            cell=target_cell,
+            row=target_row,
+            column=target_column,
+        )
+
     return Coordinate(
         document_type=document_type,
         sheet_name=candidate.sheet_name,
@@ -27,6 +40,18 @@ def _field_coordinate(candidate: FieldLabelCandidate, document_type: str) -> Coo
         row=candidate.row,
         column=candidate.column,
     )
+
+
+def _field_metadata(candidate: FieldLabelCandidate) -> dict:
+    metadata = dict(getattr(candidate, "metadata", {}) or {})
+    metadata.update(
+        {
+            "confidence": candidate.confidence,
+            "reason": candidate.reason,
+            "label_cell": candidate.cell,
+        }
+    )
+    return metadata
 
 
 def _table_coordinate(candidate: TableCandidate, document_type: str) -> Coordinate:
@@ -91,10 +116,7 @@ def build_document_model(analysis_result: TemplateAnalysisResult) -> DocumentMod
             coordinate=_field_coordinate(candidate, analysis_result.document_type),
             field_key=node_id,
             normalized_name=candidate.label,
-            metadata={
-                "confidence": candidate.confidence,
-                "reason": candidate.reason,
-            },
+            metadata=_field_metadata(candidate),
         )
 
     for index, candidate in enumerate(analysis_result.tables, start=1):

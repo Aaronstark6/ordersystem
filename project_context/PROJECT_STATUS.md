@@ -25,6 +25,28 @@
 - 已创建 `data/` 标准目录结构。
 - 已新增 `app/storage/` 最小路径管理层。
 - 系统运行写入统一进入 `data/`；`audit_output/` 仅作为开发审计临时目录。
+# Field Target Cell Pipeline Fix 状态
+
+当前任务：
+- `STAGE3_FIELD_TARGET_CELL_PIPELINE_FIX_01`
+
+当前状态：
+- 已定位 `target_cell` 丢失点在 TemplateAnalysisResult 到 DocumentModel 的 FieldNode 构建阶段。
+- Field Detector 产出的 `metadata["target_cell"]` 必须进入 DocumentModel FieldNode 坐标。
+- Workspace、Confirmed、ExportStrategy 继续沿用同一字段坐标，不新增第二套坐标模型。
+- 本任务只修 Field target_cell 传递，不修改 Choice / Condition / Image / Table / Storage / Excel Executor。
+
+# Field Detection Reality Upgrade 状态
+
+当前任务：
+- `STAGE3_FIELD_DETECTION_REALITY_UPGRADE_01`
+
+当前状态：
+- Field Detector V1 已进入真实模板补强小步。
+- 本小步只补强 Field Logic，不修改 Choice / Condition / Image / Table。
+- 本小步不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
+- Field Detector 支持中英文标签、冒号标签和最小 `target_cell` metadata。
+
 # Template Analysis Reality Gap 状态更新
 
 当前任务：
@@ -43,3 +65,18 @@
 - Table = 13。
 - ExportStrategy 只生成 `write_table`。
 - 当前最大断点是 Template Analysis 未正确产出下游对象。
+# Table Export Contract Fix 状态
+
+当前任务：
+- `STAGE3_TABLE_EXPORT_CONTRACT_FIX_01`
+
+Contract Gap：
+- ExportStrategy 生成的 `write_table` 缺少 Excel Executor 所需的 `target.start_cell`。
+- ExportStrategy 生成的 `write_table.value` 是描述性 dict，不是 Excel Executor 所需的行列表。
+
+当前状态：
+- `write_table.target.start_cell` 从现有 Coordinate 推导。
+- `write_table.value` 转为 `list[list]`。
+- 原 headers / row_count / column_count 保留在 operation metadata。
+- 未修改 Excel Executor。
+- 未新增第二套 table 坐标模型。

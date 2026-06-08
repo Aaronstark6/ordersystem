@@ -17,5 +17,6 @@ def build_value_operation(field: ConfirmedField) -> ExportOperation:
             "confirmed": field.confirmed,
             "original_value": field.original_value,
             "user_value": field.user_value,
+            "field_metadata": dict(field.metadata),
         },
     )

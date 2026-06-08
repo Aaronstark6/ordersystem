@@ -64,3 +64,9 @@ Excel 执行器（Excel Executor）。
 ExportStrategy 只生成写入计划。
 Executor 才真正写文件。
 ConfirmedOrderObject 不能绕过 ExportStrategy 直接进入 Executor。
+Table Export Contract V1:
+- `ConfirmedTable -> ExportOperation(write_table)` now emits an executor-ready contract.
+- `write_table.target.start_cell` is derived from the existing Coordinate.
+- `write_table.value` is a row-list that Excel Executor can consume directly.
+- Original table headers, row count, and column count remain in operation metadata.
+- Excel Executor was not modified for this contract fix.

@@ -27,3 +27,25 @@
 - 不读取模板文件。
 - 不写文件。
 - 不处理 Routes / UI。
+# Table Export Contract V1
+
+`table_operation.py` is responsible for converting `ConfirmedTable` into an executor-ready `write_table` operation.
+
+Contract gap fixed in `STAGE3_TABLE_EXPORT_CONTRACT_FIX_01`:
+- Before: `write_table.target` carried Coordinate fields such as `row`, `column`, `width`, and `height`, but did not include `start_cell`.
+- Before: `write_table.value` was a descriptive dict containing `headers`, `row_count`, and `column_count`.
+- Excel Executor expects `target["start_cell"]` and `value` as a list of rows.
+
+Current contract:
+- `target["sheet_name"]` comes from the existing Coordinate.
+- `target["start_cell"]` is derived from existing Coordinate `cell`, or from `row` + `column`.
+- `value` is a `list[list]`.
+- The first row contains table headers.
+- Remaining rows are blank placeholders based on current `row_count`.
+- Original descriptive table data is preserved in operation metadata.
+
+Boundary:
+- This operation builder does not read Excel files.
+- This operation builder does not execute exports.
+- This operation builder does not create a second table coordinate model.
+- Complex table filling remains a future capability.
