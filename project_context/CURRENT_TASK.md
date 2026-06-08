@@ -112,3 +112,17 @@ Contract Gap：
 - 只修改 Excel Executor 的 table 写入保护。
 - 不修改 Field / Choice / Condition / Image / Template Analysis / ExportStrategy。
 - 不修改 table operation contract。
+# 当前任务：Image Detection V1
+
+当前任务：
+- `STAGE3_IMAGE_DETECTION_V1_01`
+
+目标：
+- 实现 Image Detection V1。
+- 让真实模板首次产生 `image_count > 0` 并进入现有 Image 主链。
+
+边界：
+- 只修改 Image Logic 与 analyzer 接入。
+- 不修改 Field / Choice / Table / Condition。
+- 不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
+- 不处理真实图片文件、嵌入图片对象、图片尺寸或复杂锚点。

@@ -305,3 +305,24 @@ Template Analysis Reality Gap 修复新增 Choice Detection V1。
 - Choice Detector 只产出 ChoiceCandidate。
 - 后续传播继续复用现有主链。
 - Pipeline 已完成不等于 Detection 已完成；本小步只补齐 Detection V1。
+# Image Detection V1 Pipeline Update
+
+Template Analysis 已接入 Image Detector V1：
+
+Excel Template
+↓
+Excel Reader
+↓
+Image Detector V1
+↓
+TemplateAnalysisResult.images
+↓
+DocumentModel ImageNode
+↓
+WorkspaceImage
+↓
+ConfirmedImage
+↓
+ExportStrategy insert_image
+
+当前 Image Detector V1 只识别图片占位文字和基础 image_role，不处理真实图片文件、嵌入图片对象、尺寸推断或复杂锚点。

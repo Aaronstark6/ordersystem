@@ -4,6 +4,7 @@ from typing import Optional
 from app.contracts.template_analysis_result import TemplateAnalysisResult, VisualRegionCandidate
 from app.core.choice_logic.choice_detector import detect_choices
 from app.core.field_logic.field_detector import detect_field_labels
+from app.core.image_logic.image_detector import detect_images
 from app.core.table_logic.table_detector import detect_tables
 from app.core.template_reader.excel_reader import read_excel_template
 
@@ -40,6 +41,7 @@ def analyze_excel_template(file_path: str, template_id: Optional[str] = None) ->
         result.sheets = read_excel_template(file_path)
         result.field_labels = detect_field_labels(result.sheets)
         result.choices = detect_choices(result.sheets)
+        result.images = detect_images(result.sheets)
         result.tables = detect_tables(result.sheets)
         _build_basic_visual_regions(result)
 
@@ -47,6 +49,7 @@ def analyze_excel_template(file_path: str, template_id: Optional[str] = None) ->
         result.metadata["sheet_count"] = len(result.sheets)
         result.metadata["field_label_count"] = len(result.field_labels)
         result.metadata["choice_count"] = len(result.choices)
+        result.metadata["image_count"] = len(result.images)
         result.metadata["table_count"] = len(result.tables)
         result.metadata["visual_region_count"] = len(result.visual_regions)
 

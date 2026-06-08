@@ -477,3 +477,11 @@ ConfirmedChoice 字段设计建议：
 - 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
 - 不支持 Dropdown。
 - 不支持复杂 MultiSelect 或跨区域复杂分组。
+# Image Detection V1 Update
+
+- Image Detection V1 已开始支持图片占位文字识别。
+- 支持英文关键词：image、product image、label image、package image、packaging image、logo、stamp、signature。
+- 支持中文关键词：图片、产品图片、标签图片、包装图片、商标、印章、签名。
+- 可推断 image_role：logo、product_image、label_image、package_image、stamp、signature、generic_image。
+- 当前仍为 Upgrade Candidate。
+- 当前不扫描真实嵌入图片、不推断图片尺寸、不绑定图片文件、不处理复杂锚点。

@@ -99,3 +99,13 @@ Contract Gap：
 - `write_table` 剩余失败点为 Excel Executor 写入 merged cell 时触发 openpyxl read-only 异常。
 - 本小步只在 Excel Executor 的 table 写入层增加 MergedCell 防护。
 - 不修改 Field / Choice / Condition / Image / Template Analysis / ExportStrategy / table operation contract。
+# Image Detection V1 状态
+当前任务：
+- `STAGE3_IMAGE_DETECTION_V1_01`
+
+当前状态：
+- Field / Choice / Table 已完成真实链路验证。
+- 当前小步补齐 Image Detection V1，让真实模板产出 `image_count > 0`。
+- Image Detector V1 只识别图片占位文字，并推断基础 `image_role`。
+- 不修改 DocumentModel / Workspace / Confirmed / Export / Executor。
+- 不处理真实图片插入、嵌入图片扫描、图片尺寸或复杂锚点。
