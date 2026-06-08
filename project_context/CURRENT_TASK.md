@@ -140,3 +140,16 @@ Contract Gap：
 - 不修改 Field / Choice / Image / Condition。
 - 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。
 - 不修改 table export contract。
+# 当前任务：Condition Detection V1
+
+当前任务：
+- `STAGE3_CONDITION_DETECTION_V1_01`
+
+目标：
+- 实现 Condition Detection V1。
+- 让真实模板首次产生 `condition_count > 0` 并进入现有 Condition Pipeline。
+
+边界：
+- 只修改 Condition Logic 与 analyzer 接入。
+- 不修改 Field / Choice / Table / Image。
+- 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。

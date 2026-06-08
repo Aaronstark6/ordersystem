@@ -347,3 +347,24 @@ TableAnalysisResult.tables
 DocumentModel TableNode
 
 Guardrail 只收紧 detection，不修改 ExportStrategy、table operation contract 或 Excel Executor。
+# Condition Detection V1 Pipeline Update
+
+Template Analysis 已接入 Condition Detector V1：
+
+Excel Template
+↓
+Excel Reader
+↓
+Condition Detector V1
+↓
+TemplateAnalysisResult.conditions
+↓
+DocumentModel ConditionNode
+↓
+WorkspaceCondition
+↓
+ConfirmedCondition
+↓
+ConditionPolicy
+
+当前 V1 只识别简单 equals / contains / export / skip_export 条件，不处理 AND / OR、嵌套条件或复杂表达式。

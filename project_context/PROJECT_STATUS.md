@@ -118,3 +118,12 @@ Contract Gap：
 - 当前小步只收紧 Table Detection，不修改 Field / Choice / Image / Condition。
 - 已加入 guardrail，减少字段布局、choice、image placeholder 和 validation/control mapping 行误判。
 - 目标是减少误判，不是增强复杂表格能力。
+# Condition Detection V1 状态
+当前任务：
+- `STAGE3_CONDITION_DETECTION_V1_01`
+
+当前状态：
+- Field / Choice / Table / Image 已完成真实链路验证。
+- 当前小步补齐 Condition Detection V1，让真实模板产出 `condition_count > 0`。
+- Condition Detector V1 只识别简单 equals / contains / export / skip_export 规则。
+- 不修改 DocumentModel / Workspace / Confirmed / ExportStrategy / Executor。

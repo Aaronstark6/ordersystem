@@ -491,3 +491,12 @@ ConfirmedChoice 字段设计建议：
 - 已避免把明显字段布局行、choice 行、image placeholder 行和 validation/control mapping 行识别为 table。
 - Table V1 候选需要表头证据，并且需要数据行或明确 table 标题。
 - 当前仍不做复杂表格引擎、不修改 table export contract、不修改 Excel Executor。
+# Condition Detection V1
+
+- Condition Detection V1 已开始支持简单规则识别。
+- 支持 if / 如果 / 满足 / 当 触发词。
+- 支持 equals / = / == / 等于。
+- 支持 contains / 包含 / 包含关键词。
+- 支持 export / skip export / 隐藏 / 显示 基础导出控制识别。
+- 当前只产出 ConditionCandidate，不直接执行条件。
+- 当前不支持 AND / OR、nested condition 或复杂表达式。
